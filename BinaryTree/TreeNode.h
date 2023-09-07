@@ -24,6 +24,7 @@ namespace DSAABinaryTree
 		// ”казатель на дочерний правый узел
 		TreeNode* Right;
 
+
 		TreeNode() = default;
 
 		/// <summary>
@@ -43,11 +44,6 @@ namespace DSAABinaryTree
 		TreeNode(T data, TreeNode* parent, TreeNode* left, TreeNode* right);
 
 		~TreeNode();		
-
-		TreeNode(const T& Data, TreeNode* Parent, TreeNode* Left, TreeNode* Right)
-			: Data(Data), Parent(Parent), Left(Left), Right(Right)
-		{
-		}
 	};
 }  // namespace DSAABinaryTree
 
