@@ -1,5 +1,6 @@
 #include "TreeNode.h"
 #include <iostream>
+#include <iomanip>
 
 
 using namespace std;
@@ -16,6 +17,17 @@ void DeleteBinaryTree(TreeNode<T>* root)
     if (root == nullptr) return;
     delete root;
     root = nullptr;
+}
+
+
+template <typename T>
+void TreePrint(TreeNode<T>* root)
+{
+    if (root == nullptr) return;
+
+    cout << root->Data << endl;
+    TreePrint(root->Left);
+    TreePrint(root->Right);
 }
 
 
@@ -36,11 +48,13 @@ int main()
     //        / \
     //       4   5
 
-    cout << root->Left->Left->Data; // 4
+    //cout << root->Left->Left->Data; // 4
 
-    DeleteBinaryTree(root);
+    //DeleteBinaryTree(root);
 
-    cout << root->Data;
+    // << root->Data;
+
+    TreePrint(root);
 
     return 0;
 }
