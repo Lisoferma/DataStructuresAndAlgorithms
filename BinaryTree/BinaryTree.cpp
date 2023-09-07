@@ -5,6 +5,20 @@
 using namespace std;
 using namespace DSAABinaryTree;
 
+/// <summary>
+/// Удалить бинарное дерево, root будет равен nullptr.
+/// </summary>
+/// <typeparam name="T">Тип данных которое хранит дерево.</typeparam>
+/// <param name="root">Корень дерева.</param>
+template <typename T>
+void DeleteBinaryTree(TreeNode<T>* root)
+{
+    if (root == nullptr) return;
+    delete root;
+    root = nullptr;
+}
+
+
 int main()
 {
     TreeNode<int>* root = new TreeNode<int>(1);
@@ -24,22 +38,9 @@ int main()
 
     cout << root->Left->Left->Data; // 4
 
-    //DeleteBinaryTree(root);
+    DeleteBinaryTree(root);
 
-    //cout << root->Data;
+    cout << root->Data;
 
     return 0;
-}
-
-
-/// <summary>
-/// Удалить бинарное дерево, root будет равен nullptr.
-/// </summary>
-/// <typeparam name="T">Тип данных которое хранит дерево.</typeparam>
-/// <param name="root">Корень дерева.</param>
-template <typename T>
-void DeleteBinaryTree(TreeNode<typename T>* root)
-{
-    if (root == nullptr) return;
-    delete root;
 }
