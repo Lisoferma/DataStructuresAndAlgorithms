@@ -27,6 +27,7 @@ namespace DSAABinaryTree
 
 		TreeNode() = default;
 
+
 		/// <summary>
 		///	»нициализировать данные узла.
 		/// </summary>
@@ -42,6 +43,7 @@ namespace DSAABinaryTree
 		/// <param name="left">”казатель на левый узел.</param>
 		/// <param name="right">”казатель на правый узел.</param>
 		TreeNode(T data, TreeNode* parent, TreeNode* left, TreeNode* right);
+
 
 		~TreeNode();		
 	};
