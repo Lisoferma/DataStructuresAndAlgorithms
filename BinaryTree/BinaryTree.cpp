@@ -1,4 +1,4 @@
-#include "TreeNode.h"
+п»ї#include "TreeNode.h"
 #include <iostream>
 #include <iomanip>
 
@@ -7,10 +7,10 @@ using namespace std;
 using namespace DSAABinaryTree;
 
 /// <summary>
-/// Удалить бинарное дерево, root будет равен nullptr.
+/// РЈРґР°Р»РёС‚СЊ Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ, root Р±СѓРґРµС‚ СЂР°РІРµРЅ nullptr.
 /// </summary>
-/// <typeparam name="T">Тип данных которое хранит дерево.</typeparam>
-/// <param name="root">Корень дерева.</param>
+/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂРѕРµ С…СЂР°РЅРёС‚ РґРµСЂРµРІРѕ.</typeparam>
+/// <param name="root">РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</param>
 template <typename T>
 void DeleteBinaryTree(TreeNode<T>* root)
 {
@@ -41,7 +41,7 @@ int main()
     root->Left->Left = new TreeNode<int>(4);
     root->Left->Right = new TreeNode<int>(5);
 
-    // Полученное дерево:
+    // РџРѕР»СѓС‡РµРЅРЅРѕРµ РґРµСЂРµРІРѕ:
     //           1
     //          / \
     //         2   3
