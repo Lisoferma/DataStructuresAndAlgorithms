@@ -1,12 +1,26 @@
 ﻿#pragma once
 
-class TreeNodeTests
+#include "TreeNode.h"
+#include <cassert>
+
+namespace DSAABinaryTree
 {
-	void TreeNode_CreateTree_DataIsEqualInitial()
+	static class TreeNodeTests
 	{
-		int initialData[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
+	public:
+		static void TreeNode_CreateTree_DataIsEqualInitial()
+		{
+			TreeNode<int>* root = new TreeNode<int>(1);
 
+			root->Left = new TreeNode<int>(2);
+			root->Right = new TreeNode<int>(3);
 
-	}
-};
+			root->Left->Left = new TreeNode<int>(4);
+			root->Left->Right = new TreeNode<int>(5);
+
+			assert(root->Left->Left->Data == 4 && "Данные узла не совпадают с инициализованными.");
+		}
+	};
+}
+
 

@@ -1,4 +1,5 @@
 ﻿#include "TreeNode.h"
+#include "TreeNodeTests.h"
 #include <iostream>
 #include <iomanip>
 
@@ -20,6 +21,8 @@ void TreePrint(TreeNode<T>* root)
 
 int main()
 {
+    TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
+
     TreeNode<int>* root = new TreeNode<int>(1);
 
     root->Left = new TreeNode<int>(2);
