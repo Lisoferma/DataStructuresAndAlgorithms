@@ -31,6 +31,12 @@ namespace DSAABinaryTree
 			assert(root->Left->Left->Data  == 4 && "Данные узла не совпадают с инициализованными.");
 			assert(root->Left->Right->Data == 5 && "Данные узла не совпадают с инициализованными.");
 		}
+
+	private:
+		void CreateBinareTree()
+		{
+
+		}
 	};
 }
 
