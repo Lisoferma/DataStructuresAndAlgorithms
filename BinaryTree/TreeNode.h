@@ -25,6 +25,10 @@ namespace DSAABinaryTree
 		TreeNode* Right;
 
 
+		// default - компилятор сделает конструктор
+		TreeNode() = default;
+
+
 		/// <summary>
 		///	Инициализировать данные узла.
 		/// </summary>
