@@ -27,6 +27,10 @@ namespace DSAABinaryTree
 		}
 
 	private:
+		/// <summary>
+		/// Создать бинарное дерево для теста.
+		/// </summary>
+		/// <returns>Указатель на корень.</returns>
 		static TreeNode<int>* CreateBinareTree()
 		{
 			TreeNode<int>* root = new TreeNode<int>(1);
