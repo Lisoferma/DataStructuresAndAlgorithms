@@ -19,6 +19,24 @@ void TreePrint(TreeNode<T>* root)
 }
 
 
+/// <summary>
+/// Создать бинарное дерево.
+/// </summary>
+/// <returns>Указатель на корень.</returns>
+TreeNode<int>* CreateBinareTree()
+{
+    TreeNode<int>* root = new TreeNode<int>(1);
+
+    root->Left = new TreeNode<int>(2);
+    root->Right = new TreeNode<int>(3);
+
+    root->Left->Left = new TreeNode<int>(4);
+    root->Left->Right = new TreeNode<int>(5);
+
+    return root;
+}
+
+
 int main()
 {
     TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
@@ -41,8 +59,6 @@ int main()
     cout << root->Left->Left->Data; // 4
 
     delete root;
-
-    //TreePrint(root);
 
     return 0;
 }
