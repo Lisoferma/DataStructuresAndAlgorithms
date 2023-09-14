@@ -8,7 +8,7 @@ namespace DSAABinaryTree
 	/// <summary>
 	/// Unit test для класса TreeNode.
 	/// </summary>
-	static class TreeNodeTests
+	class TreeNodeTests
 	{
 	public:
 		/// <summary>
@@ -19,7 +19,7 @@ namespace DSAABinaryTree
 		{
 			TreeNode<int>* root = CreateBinareTree();
 
-			assert(root->Data              == 6 && "Данные узла не совпадают с инициализованными.");
+			assert(root->Data              == 1 && "Данные узла не совпадают с инициализованными.");
 			assert(root->Left->Data        == 2 && "Данные узла не совпадают с инициализованными.");
 			assert(root->Right->Data       == 3 && "Данные узла не совпадают с инициализованными.");
 			assert(root->Left->Left->Data  == 4 && "Данные узла не совпадают с инициализованными.");
