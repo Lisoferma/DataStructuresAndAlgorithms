@@ -1,7 +1,7 @@
 ﻿#include "TreeNode.h"
 #include "TreeNodeTests.h"
+#include "BinaryTreeService.h"
 #include <iostream>
-#include <iomanip>
 
 
 using namespace std;
@@ -16,6 +16,14 @@ void TreePrint(TreeNode<T>* root)
     cout << root->Data << endl;
     TreePrint(root->Left);
     TreePrint(root->Right);
+}
+
+
+template <typename T>
+void VectorPrintToConsole(const vector<T>& vector)
+{
+    for (size_t i = 0; i < vector.size(); i++)
+        cout << vector[i] << endl;
 }
 
 
@@ -58,7 +66,12 @@ int main()
 
     cout << root->Left->Left->Data; // 4
 
-    delete root;
+    //delete root;
+
+
+    vector<int> vectorFromTree;
+    BinaryTreeService::TreeToVector(root, vectorFromTree);
+    VectorPrintToConsole(vectorFromTree);
 
     return 0;
 }
