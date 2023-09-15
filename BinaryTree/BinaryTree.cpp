@@ -1,4 +1,6 @@
-﻿#include "TreeNode.h"
+﻿//@author Alexander
+
+#include "TreeNode.h"
 #include "TreeNodeTests.h"
 #include "BinaryTreeService.h"
 #include <iostream>
@@ -23,7 +25,7 @@ template <typename T>
 void VectorPrintToConsole(const vector<T>& vector)
 {
     for (size_t i = 0; i < vector.size(); i++)
-        cout << vector[i] << endl;
+        cout << vector[i] << " ";
 }
 
 
@@ -49,29 +51,36 @@ int main()
 {
     TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
 
-    TreeNode<int>* root = new TreeNode<int>(1);
+    TreeNode<int>* root = new TreeNode<int>(5);
 
-    root->Left = new TreeNode<int>(2);
-    root->Right = new TreeNode<int>(3);
+    root->Left = new TreeNode<int>(4);
+    root->Right = new TreeNode<int>(6);
 
-    root->Left->Left = new TreeNode<int>(4);
+    root->Left->Left = new TreeNode<int>(3);
     root->Left->Right = new TreeNode<int>(5);
 
     // Полученное дерево:
-    //           1
+    //           5
     //          / \
-    //         2   3
+    //         4   6
     //        / \
-    //       4   5
+    //       3   5
 
-    cout << root->Left->Left->Data; // 4
+    //cout << root->Left->Left->Data; // 4
 
     //delete root;
 
 
-    vector<int> vectorFromTree;
-    BinaryTreeService::TreeToVector(root, vectorFromTree);
-    VectorPrintToConsole(vectorFromTree);
+    //vector<int> vectorFromTree;
+    //BinaryTreeService::TreeToVector(root, vectorFromTree);
+    //VectorPrintToConsole(vectorFromTree);
+
+    int aaa;
+    cout << "LNR: " << endl;
+    BinaryTreeService::TraversalLNR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+
+    cout << endl << "LRN: " << endl;
+    BinaryTreeService::TraversalLRN<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
     return 0;
 }
