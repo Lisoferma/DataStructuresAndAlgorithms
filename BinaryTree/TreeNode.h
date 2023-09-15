@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿//@author Alexander
+
+#pragma once
 
 namespace DSAABinaryTree
 {
