@@ -1,4 +1,4 @@
-﻿//@author Alexander
+﻿//@author Lisoferma
 
 #include "TreeNode.h"
 #include "TreeNodeTests.h"
@@ -29,58 +29,41 @@ void VectorPrintToConsole(const vector<T>& vector)
 }
 
 
-/// <summary>
-/// Создать бинарное дерево.
-/// </summary>
-/// <returns>Указатель на корень.</returns>
-TreeNode<int>* CreateBinareTree()
-{
-    TreeNode<int>* root = new TreeNode<int>(1);
-
-    root->Left = new TreeNode<int>(2);
-    root->Right = new TreeNode<int>(3);
-
-    root->Left->Left = new TreeNode<int>(4);
-    root->Left->Right = new TreeNode<int>(5);
-
-    return root;
-}
-
-
 int main()
 {
     TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
 
-    TreeNode<int>* root = new TreeNode<int>(5);
+    TreeNode<int>* root = CreateBinarySearchTree();
 
-    root->Left = new TreeNode<int>(4);
-    root->Right = new TreeNode<int>(6);
-
-    root->Left->Left = new TreeNode<int>(3);
-    root->Left->Right = new TreeNode<int>(5);
-
-    // Полученное дерево:
+    // Созданное дерево:
     //           5
     //          / \
     //         4   6
     //        / \
     //       3   5
 
-    //cout << root->Left->Left->Data; // 4
-
-    //delete root;
+    // delete root; // удаление дерева
 
 
-    //vector<int> vectorFromTree;
-    //BinaryTreeService::TreeToVector(root, vectorFromTree);
-    //VectorPrintToConsole(vectorFromTree);
+    // Вывод дерева в консоль разными способами обхода
+    cout << "Tree (LNR): ";
+    TraversalLNR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
-    int aaa;
-    cout << "LNR: " << endl;
-    BinaryTreeService::TraversalLNR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    cout << "\n\nTree (NLR): ";
+    TraversalNLR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
-    cout << endl << "LRN: " << endl;
-    BinaryTreeService::TraversalLRN<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    cout << "\n\nTree (LRN): ";
+    TraversalLRN<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+
+
+    // Получение вектора на основе дерева
+    vector<int> vectorFromTree;
+
+    TraversalLNR<int>(root, [&vectorFromTree](TreeNode<int>& node) {
+        vectorFromTree.push_back(node.Data); });
+
+    cout << "\n\nVector from tree (LNR): ";
+    VectorPrintToConsole(vectorFromTree);
 
     return 0;
 }
