@@ -54,5 +54,16 @@ int main()
     cout << "\n\nVector from tree (LNR): ";
     VectorPrintToConsole(vectorFromTree);
 
+
+    // Количество узлов в дереве
+    cout << "\n\nNode count: " << NodeCount(root);
+
+    // Высота дерева
+    cout << "\nHeight: " << TreeHeight(root);
+
+    // Поиск узла по ключу
+    TreeNode<int>* findedNode = Find(root, 1);
+    cout << "\n\nFind node: " << findedNode->Data;
+
     return 0;
 }

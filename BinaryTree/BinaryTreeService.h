@@ -3,10 +3,20 @@
 #pragma once
 
 #include "TreeNode.h"
+#include <iostream>
 #include <functional>
 
 namespace DSAABinaryTree
 {
+	/// <summary>
+	/// Синоним для указателя на функцию, которая обрабатывает данные узла.
+	/// Применяется в функциях обхода.
+	/// </summary>
+	/// <typeparam name="T">Тип данных бинарного дерева</typeparam>
+	template <typename T>
+	using NodeProcessing = std::function<void(TreeNode<T>&)>;
+
+
 	/// <summary>
 	/// Создать бинарное дерево из пяти узлов.
 	/// </summary>
@@ -43,10 +53,6 @@ namespace DSAABinaryTree
 	}
 
 
-	template <typename T>
-	using NodeProcessing = std::function<void(TreeNode<T>&)>;
-
-
 	template<typename T>
 	void TraversalNLR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
@@ -78,6 +84,58 @@ namespace DSAABinaryTree
 		TraversalLRN(node->Left, nodeProcessing);
 		TraversalLRN(node->Right, nodeProcessing);
 		nodeProcessing(*node);
+	}
+
+
+	/// <summary>
+	/// Количество узлов в бинарном дереве.
+	/// </summary>
+	/// <typeparam name="T">Тип данных дерева.</typeparam>
+	/// <param name="node">Узел с которого начинать отсчёт.</param>
+	/// <returns>Количество узлов.</returns>
+	template<typename T>
+	size_t NodeCount(TreeNode<T>* node)
+	{	
+		if (node == nullptr) return 0;
+
+		size_t leftCount = NodeCount(node->Left);
+		size_t rightCount = NodeCount(node->Right);
+
+		return 1 + leftCount + rightCount;
+	}
+
+
+	/// <summary>
+	/// Высота бинарного дерева.
+	/// </summary>
+	/// <typeparam name="T">Тип данных дерева.</typeparam>
+	/// <param name="node">Узел с которого начинать отсчёт.</param>
+	/// <returns>Высота дерева.</returns>
+	template<typename T>
+	size_t TreeHeight(TreeNode<T>* node)
+	{
+		if (node == nullptr) return 0;
+
+		size_t leftCount = TreeHeight(node->Left);
+		size_t rightCount = TreeHeight(node->Right);
+
+		return 1 + (leftCount > rightCount ? leftCount : rightCount);
+	}
+
+
+	template<typename T>
+	TreeNode<T>* Find(TreeNode<T>* node, T keyData)
+	{
+		TreeNode<T>* current = node;
+
+		while (current != nullptr)
+			if (current->Data == keyData)
+				return current;
+			else
+				current = keyData < current->Data ?
+				current->Left : current->Right;
+
+		return nullptr;
 	}
 }
 
