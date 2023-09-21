@@ -1,3 +1,3 @@
-﻿//@author Alexander
+﻿//@author Lisoferma
 
 #include "TreeNodeTests.h"

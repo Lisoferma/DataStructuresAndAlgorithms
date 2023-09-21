@@ -1,4 +1,4 @@
-﻿//@author Alexander
+﻿//@author Lisoferma
 
 #pragma once
 
@@ -61,5 +61,5 @@ namespace DSAABinaryTree
 			delete Right;
 		}
 	};
-}  // namespace DSAABinaryTree
+}
 

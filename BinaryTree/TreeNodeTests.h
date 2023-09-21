@@ -1,8 +1,8 @@
-﻿#pragma once
+﻿//@author Lisoferma
+
+#pragma once
 
 #include "TreeNode.h"
-//@author Alexander
-
 #include <cassert>
 
 namespace DSAABinaryTree
