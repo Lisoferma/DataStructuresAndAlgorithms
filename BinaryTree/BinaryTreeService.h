@@ -1,61 +1,83 @@
-//@author Alexander
+//@author Lisoferma
 
 #pragma once
 
 #include "TreeNode.h"
-#include <vector>
+#include <functional>
 
 namespace DSAABinaryTree
 {
-	namespace BinaryTreeService
+	/// <summary>
+	/// —оздать бинарное дерево из п€ти узлов.
+	/// </summary>
+	/// <returns>”казатель на корень.</returns>
+	TreeNode<int>* CreateBinaryTree()
 	{
-		template <typename T>
-		using NodeProcessing = void (*)(TreeNode<T>&);
+		TreeNode<int>* root = new TreeNode<int>(1);
 
-		template<typename T>
-		static void TraversalNLR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
-		{
-			if (node == nullptr) return;
+		root->Left = new TreeNode<int>(2);
+		root->Right = new TreeNode<int>(3);
 
-			nodeProcessing(*node);
-			TraversalNLR(node->Left, nodeProcessing);
-			TraversalNLR(node->Right, nodeProcessing);
-		}
+		root->Left->Left = new TreeNode<int>(4);
+		root->Left->Right = new TreeNode<int>(5);
+
+		return root;
+	}
 
 
-		template<typename T>
-		static void TraversalLNR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
-		{
-			if (node == nullptr) return;
+	/// <summary>
+	/// —оздать бинарное дерево поиска из п€ти узлов.
+	/// </summary>
+	/// <returns>”казатель на корень.</returns>
+	TreeNode<int>* CreateBinarySearchTree()
+	{
+		TreeNode<int>* root = new TreeNode<int>(5);
 
-			TraversalLNR(node->Left, nodeProcessing);
-			nodeProcessing(*node);
-			TraversalLNR(node->Right, nodeProcessing);
-		}
+		root->Left = new TreeNode<int>(4);
+		root->Right = new TreeNode<int>(6);
 
+		root->Left->Left = new TreeNode<int>(3);
+		root->Left->Right = new TreeNode<int>(5);
 
-		// какой будет пор€док дл€ дерева поиска
-		template<typename T>
-		static void TraversalLRN(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
-		{
-			if (node == nullptr) return;
-
-			TraversalLRN(node->Left, nodeProcessing);
-			TraversalLRN(node->Right, nodeProcessing);
-			nodeProcessing(*node);
-		}
+		return root;
+	}
 
 
-		template<typename T>
-		static void TreeToVector(TreeNode<T>* node, std::vector<T>& vector)
-		{
-			if (node == nullptr) return;
+	template <typename T>
+	using NodeProcessing = std::function<void(TreeNode<T>&)>;
 
-			if (vector == nullptr)
-				vector = new std::vector<T>();
 
-			vector.push_back(node->Data);
-		}
+	template<typename T>
+	void TraversalNLR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	{
+		if (node == nullptr) return;
+
+		nodeProcessing(*node);
+		TraversalNLR(node->Left, nodeProcessing);
+		TraversalNLR(node->Right, nodeProcessing);
+	}
+
+
+	template<typename T>
+	void TraversalLNR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	{
+		if (node == nullptr) return;
+
+		TraversalLNR(node->Left, nodeProcessing);
+		nodeProcessing(*node);
+		TraversalLNR(node->Right, nodeProcessing);
+	}
+
+
+	// какой будет пор€док дл€ дерева поиска
+	template<typename T>
+	void TraversalLRN(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	{
+		if (node == nullptr) return;
+
+		TraversalLRN(node->Left, nodeProcessing);
+		TraversalLRN(node->Right, nodeProcessing);
+		nodeProcessing(*node);
 	}
 }
 
