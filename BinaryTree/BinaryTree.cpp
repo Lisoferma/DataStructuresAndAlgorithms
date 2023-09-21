@@ -11,17 +11,6 @@ using namespace DSAABinaryTree;
 
 
 template <typename T>
-void TreePrint(TreeNode<T>* root)
-{
-    if (root == nullptr) return;
-
-    cout << root->Data << endl;
-    TreePrint(root->Left);
-    TreePrint(root->Right);
-}
-
-
-template <typename T>
 void VectorPrintToConsole(const vector<T>& vector)
 {
     for (size_t i = 0; i < vector.size(); i++)
