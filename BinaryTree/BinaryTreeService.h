@@ -122,7 +122,14 @@ namespace DSAABinaryTree
 		return 1 + (leftCount > rightCount ? leftCount : rightCount);
 	}
 
-
+	
+	/// <summary>
+	/// Поиск узла по ключу.
+	/// </summary>
+	/// <typeparam name="T">Тип данных который хранит узел.</typeparam>
+	/// <param name="node">Узел с которого начинать поиск.</param>
+	/// <param name="keyData">Ключ по которому производится поиск.</param>
+	/// <returns>Указатель на найденный узел.</returns>
 	template<typename T>
 	TreeNode<T>* Find(TreeNode<T>* node, T keyData)
 	{
@@ -136,6 +143,53 @@ namespace DSAABinaryTree
 				current->Left : current->Right;
 
 		return nullptr;
+	}
+
+
+	//go up the tree until we have our root node a left child of its parent
+	template<typename T>
+	TreeNode<T>* GetParent(TreeNode<T>* root)
+	{
+		if (root->Parent == nullptr)
+			return nullptr;
+
+		if (root->Parent->Left == root)
+			return root->Parent;
+		else
+			return GetParent(root->Parent);
+	}
+
+
+	template<typename T>
+	TreeNode<T>* GetLeftMostNode(TreeNode<T>* root)
+	{
+		if (root == nullptr)
+			return nullptr;
+
+		TreeNode<T>* left = GetLeftMostNode(root->Left);
+		if (left)
+			return left;
+
+		return root;
+	}
+
+
+	//return the in order successor if there is one.
+	//parameters - root, the node whose in order successor we are 'searching' for
+	template<typename T>
+	TreeNode<T>* GetInOrderSuccessor(TreeNode<T>* root)
+	{
+		//no tree, therefore no successor
+		if (root == nullptr)
+			return nullptr;
+
+		//if we have a right tree, get its left most node
+		if (root->Right)
+			return GetLeftMostNode(root->Right);
+		else
+			//bubble up so the root node becomes the left child of its
+			//parent, the parent will be the inorder successor.
+			return GetParent(root);
 	}
 }
 
