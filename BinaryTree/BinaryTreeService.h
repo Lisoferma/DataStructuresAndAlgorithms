@@ -174,21 +174,21 @@ namespace DSAABinaryTree
 	}
 
 
-	//return the in order successor if there is one.
-	//parameters - root, the node whose in order successor we are 'searching' for
+	/// <summary>
+	/// Найти следующего наибольшего преемника узла.
+	/// </summary>
+	/// <typeparam name="T">Тип данных узла.</typeparam>
+	/// <param name="root">Узел для которого ищется следующий наибольший узел.</param>
+	/// <returns>Указатель на найденный узел.</returns>
 	template<typename T>
 	TreeNode<T>* GetInOrderSuccessor(TreeNode<T>* root)
 	{
-		//no tree, therefore no successor
 		if (root == nullptr)
 			return nullptr;
 
-		//if we have a right tree, get its left most node
 		if (root->Right)
 			return GetLeftMostNode(root->Right);
 		else
-			//bubble up so the root node becomes the left child of its
-			//parent, the parent will be the inorder successor.
 			return GetParent(root);
 	}
 }
