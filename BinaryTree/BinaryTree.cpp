@@ -62,8 +62,12 @@ int main()
     cout << "\nHeight: " << TreeHeight(root);
 
     // Поиск узла по ключу
-    TreeNode<int>* findedNode = Find(root, 1);
+    TreeNode<int>* findedNode = Find(root, 4);
     cout << "\n\nFind node: " << findedNode->Data;
+
+    // Поиск следующего наибольшего
+    TreeNode<int>* successor = GetInOrderSuccessor(findedNode);
+    cout << "\n\nSuccessor for 4: " << successor->Data;
 
     return 0;
 }
