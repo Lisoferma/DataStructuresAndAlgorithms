@@ -12,7 +12,7 @@ namespace DSAABinaryTree
 	/// Синоним для указателя на функцию, которая обрабатывает данные узла.
 	/// Применяется в функциях обхода.
 	/// </summary>
-	/// <typeparam name="T">Тип данных бинарного дерева</typeparam>
+	/// <typeparam name="T">Тип данных узла.</typeparam>
 	template <typename T>
 	using NodeProcessing = std::function<void(TreeNode<T>&)>;
 
@@ -53,6 +53,13 @@ namespace DSAABinaryTree
 	}
 
 
+	/// <summary>
+	/// Обойти дерево в порядке NLR.
+	/// Является топологически отсортированным.
+	/// </summary>
+	/// <typeparam name="T">Тип данных дерева.</typeparam>
+	/// <param name="node">Узел с которого начинать обход.</param>
+	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
 	void TraversalNLR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
@@ -64,6 +71,13 @@ namespace DSAABinaryTree
 	}
 
 
+	/// <summary>
+	/// Обойти дерево в порядке LNR.
+	/// В бинарном дереве поиска ключи извлекаются в порядке возрастания.
+	/// </summary>
+	/// <typeparam name="T">Тип данных дерева.</typeparam>
+	/// <param name="node">Узел с которого начинать обход.</param>
+	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
 	void TraversalLNR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
@@ -75,7 +89,13 @@ namespace DSAABinaryTree
 	}
 
 
-	// какой будет порядок для дерева поиска
+	/// <summary>
+	/// Обойти дерево в порядке LRN.
+	/// Может быть полезно для получения постфиксного выражения дерева двоичных выражений.
+	/// </summary>
+	/// <typeparam name="T">Тип данных дерева.</typeparam>
+	/// <param name="node">Узел с которого начинать обход.</param>
+	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
 	void TraversalLRN(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
@@ -146,36 +166,47 @@ namespace DSAABinaryTree
 	}
 
 
-	//go up the tree until we have our root node a left child of its parent
+	/// <summary>
+	/// Получить родительский узел для узла - при котором он будет левым потомком. 
+	/// </summary>
+	/// <typeparam name="T">Тип данных узла.</typeparam>
+	/// <param name="node">Узел для которого нужно получить родителя.</param>
+	/// <returns>Указатель на найденного родителя. nullptr - если не нашлось</returns>
 	template<typename T>
-	TreeNode<T>* GetParent(TreeNode<T>* root)
+	TreeNode<T>* GetParent(TreeNode<T>* node)
 	{
-		if (root->Parent == nullptr)
+		if (node->Parent == nullptr)
 			return nullptr;
 
-		if (root->Parent->Left == root)
-			return root->Parent;
+		if (node->Parent->Left == node)
+			return node->Parent;
 		else
-			return GetParent(root->Parent);
-	}
-
-
-	template<typename T>
-	TreeNode<T>* GetLeftMostNode(TreeNode<T>* root)
-	{
-		if (root == nullptr)
-			return nullptr;
-
-		TreeNode<T>* left = GetLeftMostNode(root->Left);
-		if (left)
-			return left;
-
-		return root;
+			return GetParent(node->Parent);
 	}
 
 
 	/// <summary>
-	/// Найти следующего наибольшего преемника узла.
+	/// Получить крайний левый узел в поддереве.
+	/// </summary>
+	/// <typeparam name="T">Тип данных узла.</typeparam>
+	/// <param name="node">Узел с которого начинать поиск.</param>
+	/// <returns>Указатель на крайний левый узел.</returns>
+	template<typename T>
+	TreeNode<T>* GetLeftMostNode(TreeNode<T>* node)
+	{
+		if (node == nullptr)
+			return nullptr;
+
+		TreeNode<T>* left = GetLeftMostNode(node->Left);
+		if (left)
+			return left;
+
+		return node;
+	}
+
+
+	/// <summary>
+	/// Получить следующего наибольшего преемника узла.
 	/// </summary>
 	/// <typeparam name="T">Тип данных узла.</typeparam>
 	/// <param name="root">Узел для которого ищется следующий наибольший узел.</param>
