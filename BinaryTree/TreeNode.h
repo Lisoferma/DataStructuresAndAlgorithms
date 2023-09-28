@@ -33,7 +33,6 @@ namespace DSAABinaryTree
 		TreeNode* Parent;
 
 
-		// default - компилятор сделает конструктор
 		TreeNode() = default;
 
 
@@ -41,27 +40,25 @@ namespace DSAABinaryTree
 		///	Инициализировать данные узла.
 		/// </summary>
 		/// <param name="data">Данные узла.</param>
-		TreeNode(T data)
+		TreeNode(const T& data)
 		{
 			Data = data;
 			Left = nullptr;
 			Right = nullptr;
+			Parent = nullptr;
 		}
 
 
 		/// <summary>
-		///	Инициализировать все поля узла.
+		/// Инициализировать узел всеми данными.
 		/// </summary>
-		/// <param name="data">Данные узла.</param>
-		/// <param name="parent">Указатель на родительский узел.</param>
-		/// <param name="left">Указатель на левый узел.</param>
-		/// <param name="right">Указатель на правый узел.</param>
-		TreeNode(T data, TreeNode* left, TreeNode* right)
-		{
-			Data = data;
-			Left = left;
-			Right = right;
-		}
+		/// <param name="data">Данные которые хранит узел.</param>
+		/// <param name="left">Дочерний левый узел.</param>
+		/// <param name="right">Дочерний правый узел.</param>
+		/// <param name="parent">Родительский узел.</param>
+		TreeNode(const T& data, TreeNode* left, TreeNode* right, TreeNode* parent)
+			: Data(data), Left(left), Right(right), Parent(parent)
+		{ }
 
 
 		~TreeNode()
