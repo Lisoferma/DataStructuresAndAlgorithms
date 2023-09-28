@@ -30,14 +30,13 @@ int main()
     TreeNode<int>* root = CreateBinarySearchTree();
 
     // Созданное дерево:
-    //           5
+    //           6
     //          / \
-    //         4   6
+    //         4   7
     //        / \
     //       3   5
 
     // delete root; // удаление дерева
-
 
     // Вывод дерева в консоль разными способами обхода
     cout << "Tree (LNR): ";
@@ -73,6 +72,11 @@ int main()
     // Поиск следующего наибольшего
     TreeNode<int>* successor = GetInOrderSuccessor(findedNode);
     cout << "\n\nSuccessor for 4: " << successor->Data;
+
+    // Удаление узла по ключу
+    cout << "\n\nDelete 4: " << endl;
+    //Remove(root, 4);
+    //TraversalLNR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
     return 0;
 }
