@@ -41,13 +41,19 @@ namespace DSAABinaryTree
 	/// <returns>”казатель на корень.</returns>
 	TreeNode<int>* CreateBinarySearchTree()
 	{
-		TreeNode<int>* root = new TreeNode<int>(5);
+		TreeNode<int>* root = new TreeNode<int>(6);
 
 		root->Left = new TreeNode<int>(4);
-		root->Right = new TreeNode<int>(6);
+		root->Left->Parent = root;
+
+		root->Right = new TreeNode<int>(7);
+		root->Right->Parent = root;
 
 		root->Left->Left = new TreeNode<int>(3);
+		root->Left->Left->Parent = root->Left;
+
 		root->Left->Right = new TreeNode<int>(5);
+		root->Left->Right->Parent = root->Left;
 
 		return root;
 	}
@@ -221,6 +227,69 @@ namespace DSAABinaryTree
 			return GetLeftMostNode(root->Right);
 		else
 			return GetParent(root);
+	}
+
+
+	template<typename T>
+	TreeNode<T>* FindMinValueNode(TreeNode<T>* root)
+	{
+		TreeNode<T>* current = root;
+
+		while (current && current->left != nullptr)
+			current = current->left;
+
+		return current;
+	}
+
+
+	template<typename T>
+	void Remove(TreeNode<T>* node, T keyData)
+	{
+		if (node == nullptr) return;
+
+		if (keyData == node->Data)
+		{
+			TreeNode<T>* temp = nullptr;
+
+			if (node->Left == nullptr && node->Right == nullptr)
+			{
+				delete node;
+			}
+			else if (node->Left != nullptr && node->Right == nullptr)
+			{
+				temp = node;
+				node = node->Left;
+				delete temp;
+			}
+			else if (node->Left == nullptr && node->Right != nullptr)
+			{
+				temp = node;
+				node = node->Right;
+				delete temp;
+			}
+			else
+			{
+				TreeNode<T>* successor = GetInOrderSuccessor(node);
+				node->Data = successor->Data;
+				Remove(successor, successor->Data);
+			}
+
+			//if (temp != nullptr)
+			//{
+			//	temp->Left = nullptr;
+			//	temp->Right = nullptr;
+			//	delete temp;
+			//}
+				
+		}
+		else if (keyData < node->Data)
+		{
+			Remove(node->Left, keyData);
+		}
+		else
+		{
+			Remove(node->Right, keyData);
+		}
 	}
 }
 
