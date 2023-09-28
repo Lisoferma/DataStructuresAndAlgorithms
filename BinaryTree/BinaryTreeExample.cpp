@@ -18,6 +18,7 @@ void VectorPrintToConsole(const vector<T>& vector)
 }
 
 
+// Пример работы с двоичным деревом
 int main()
 {
     TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
