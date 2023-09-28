@@ -5,11 +5,15 @@
 #include "BinaryTreeService.h"
 #include <iostream>
 
-
 using namespace std;
 using namespace DSAABinaryTree;
 
 
+/// <summary>
+/// Вывести вектор в консоль.
+/// </summary>
+/// <typeparam name="T">Тип данных вектора.</typeparam>
+/// <param name="vector">Вектор который нужно вывести.</param>
 template <typename T>
 void VectorPrintToConsole(const vector<T>& vector)
 {
