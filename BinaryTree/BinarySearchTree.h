@@ -3,6 +3,7 @@
 #pragma once
 
 #include "BinaryNode.h"
+#include <vector>
 
 namespace DSAABinaryTree
 {
@@ -10,8 +11,8 @@ namespace DSAABinaryTree
 	class BinarySearchTree
 	{
 	private:
-		// Корень двоичного дерева поиска
-		BinaryNode<T>* root;
+        // Корень двоичного дерева поиска
+        BinaryNode<T>* root;
 
 	public:
         BinarySearchTree() : root(nullptr)
@@ -45,6 +46,9 @@ namespace DSAABinaryTree
         /// <param name="data">Данные для нового узла.</param>
         void Insert(const T& data)
         {
+            if (root == nullptr)
+                root = new BinaryNode<T>(data);
+
             BinaryNode<T>* current = root;
 
             while (current && current->Data != data)
@@ -68,6 +72,12 @@ namespace DSAABinaryTree
                     current = current->Right;
                 }                 
             }
+        }
+
+
+        BinaryNode<T>* GetRoot()
+        {
+            return root;
         }
 	};
 }

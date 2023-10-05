@@ -2,7 +2,9 @@
 
 #include "BinaryNode.h"
 #include "BinaryNodeTests.h"
+#include "BinarySearchTree.h"
 #include "BinaryTreeService.h"
+#include <vector>
 #include <iostream>
 
 using namespace std;
@@ -56,7 +58,7 @@ int main()
     InorderTraversal<int>(root, [&vectorFromTree](BinaryNode<int>& node) {
         vectorFromTree.push_back(node.Data); });
 
-    cout << "\n\nVector from tree (LNR): ";
+    cout << "\n\nVector from tree: ";
     VectorPrintToConsole(vectorFromTree);
 
 
@@ -79,5 +81,14 @@ int main()
     Remove(root, 4);
     InorderTraversal<int>(root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
 
+
+    //
+    cout << "\n\nBST: " << endl;
+    BinarySearchTree<int> bst;
+
+    bst.Insert(1);
+
+    InorderTraversal<int>(bst.root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
+    
     return 0;
 }
