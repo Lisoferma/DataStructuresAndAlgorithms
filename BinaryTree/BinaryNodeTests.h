@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "TreeNode.h"
+#include "BinaryNode.h"
 #include <cassert>
 
 namespace DSAABinaryTree

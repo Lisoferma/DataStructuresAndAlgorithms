@@ -1,3 +1,3 @@
 ﻿//@author Lisoferma
 
-#include "TreeNodeTests.h"
+#include "BinaryNodeTests.h"
