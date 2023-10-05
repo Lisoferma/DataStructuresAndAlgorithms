@@ -1,7 +1,7 @@
 ﻿//@author Lisoferma
 
-#include "TreeNode.h"
-#include "TreeNodeTests.h"
+#include "BinaryNode.h"
+#include "BinaryNodeTests.h"
 #include "BinaryTreeService.h"
 #include <iostream>
 
