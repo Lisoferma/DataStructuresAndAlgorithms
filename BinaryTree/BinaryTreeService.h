@@ -26,10 +26,16 @@ namespace DSAABinaryTree
 		TreeNode<int>* root = new TreeNode<int>(1);
 
 		root->Left = new TreeNode<int>(2);
+		root->Left->Parent = root;
+
 		root->Right = new TreeNode<int>(3);
+		root->Right->Parent = root;
 
 		root->Left->Left = new TreeNode<int>(4);
+		root->Left->Left->Parent = root->Left;
+
 		root->Left->Right = new TreeNode<int>(5);
+		root->Left->Right->Parent = root->Left;
 
 		return root;
 	}
@@ -67,13 +73,13 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать обход.</param>
 	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
-	void TraversalNLR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	void PreorderTraversal(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
 		if (node == nullptr) return;
 
 		nodeProcessing(*node);
-		TraversalNLR(node->Left, nodeProcessing);
-		TraversalNLR(node->Right, nodeProcessing);
+		PreorderTraversal(node->Left, nodeProcessing);
+		PreorderTraversal(node->Right, nodeProcessing);
 	}
 
 
@@ -85,13 +91,13 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать обход.</param>
 	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
-	void TraversalLNR(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	void InorderTraversal(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
 		if (node == nullptr) return;
 
-		TraversalLNR(node->Left, nodeProcessing);
+		InorderTraversal(node->Left, nodeProcessing);
 		nodeProcessing(*node);
-		TraversalLNR(node->Right, nodeProcessing);
+		InorderTraversal(node->Right, nodeProcessing);
 	}
 
 
@@ -103,12 +109,12 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать обход.</param>
 	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
-	void TraversalLRN(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	void PostorderTraversal(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
 		if (node == nullptr) return;
 
-		TraversalLRN(node->Left, nodeProcessing);
-		TraversalLRN(node->Right, nodeProcessing);
+		PostorderTraversal(node->Left, nodeProcessing);
+		PostorderTraversal(node->Right, nodeProcessing);
 		nodeProcessing(*node);
 	}
 
@@ -230,65 +236,69 @@ namespace DSAABinaryTree
 	}
 
 
+	/// <summary>
+	/// Получить минимальный узел.
+	/// </summary>
+	/// <typeparam name="T">Тип данных узла.</typeparam>
+	/// <param name="root">Узел с которого начинать поиск минимального.</param>
+	/// <returns>Минимальный узел в дереве.</returns>
 	template<typename T>
-	TreeNode<T>* FindMinValueNode(TreeNode<T>* root)
+	TreeNode<T>* GetMinimumNode(TreeNode<T>* root)
 	{
 		TreeNode<T>* current = root;
 
-		while (current && current->left != nullptr)
-			current = current->left;
+		while (current && current->Left != nullptr)
+			current = current->Left;
 
 		return current;
 	}
 
-
+	
+	/// <summary>
+	/// Удалить узел по ключу.
+	/// </summary>
+	/// <typeparam name="T">Тип данных узла.</typeparam>
+	/// <param name="node">Узел с которого начинать поиск удаляемого узла.</param>
+	/// <param name="key">Данные узла который нужно удалить.</param>
 	template<typename T>
-	void Remove(TreeNode<T>* node, T keyData)
+	void Remove(TreeNode<T>*& node, T key)
 	{
 		if (node == nullptr) return;
 
-		if (keyData == node->Data)
+		if (key < node->Data)
+		{
+			Remove(node->Left, key);
+		}
+		else if (key > node->Data)
+		{
+			Remove(node->Right, key);
+		}
+		else if (node->Left != nullptr && node->Right != nullptr)
+		{
+			node->Data = GetMinimumNode(node->Right)->Data;
+			Remove(node->Right, node->Data);
+		}
+		else
 		{
 			TreeNode<T>* temp = nullptr;
 
-			if (node->Left == nullptr && node->Right == nullptr)
-			{
-				delete node;
-			}
-			else if (node->Left != nullptr && node->Right == nullptr)
+			if (node->Left != nullptr)
 			{
 				temp = node;
-				node = node->Left;
+				node = temp->Left;
 				delete temp;
 			}
-			else if (node->Left == nullptr && node->Right != nullptr)
+			else if (node->Right != nullptr)
 			{
 				temp = node;
-				node = node->Right;
+				node = temp->Right;
 				delete temp;
 			}
 			else
 			{
-				TreeNode<T>* successor = GetInOrderSuccessor(node);
-				node->Data = successor->Data;
-				Remove(successor, successor->Data);
+				delete node;
+				node = nullptr;
 			}
-
-			//if (temp != nullptr)
-			//{
-			//	temp->Left = nullptr;
-			//	temp->Right = nullptr;
-			//	delete temp;
-			//}
-				
-		}
-		else if (keyData < node->Data)
-		{
-			Remove(node->Left, keyData);
-		}
-		else
-		{
-			Remove(node->Right, keyData);
 		}
 	}
 }

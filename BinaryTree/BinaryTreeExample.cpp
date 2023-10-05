@@ -38,21 +38,22 @@ int main()
 
     // delete root; // удаление дерева
 
+
     // Вывод дерева в консоль разными способами обхода
-    cout << "Tree (LNR): ";
-    TraversalLNR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    cout << "Tree (Inorder): ";
+    InorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
-    cout << "\n\nTree (NLR): ";
-    TraversalNLR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    cout << "\n\nTree (Preorder): ";
+    PreorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
-    cout << "\n\nTree (LRN): ";
-    TraversalLRN<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    cout << "\n\nTree (Postorder): ";
+    PostorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
 
     // Получение вектора на основе дерева
     vector<int> vectorFromTree;
 
-    TraversalLNR<int>(root, [&vectorFromTree](TreeNode<int>& node) {
+    InorderTraversal<int>(root, [&vectorFromTree](TreeNode<int>& node) {
         vectorFromTree.push_back(node.Data); });
 
     cout << "\n\nVector from tree (LNR): ";
@@ -75,8 +76,8 @@ int main()
 
     // Удаление узла по ключу
     cout << "\n\nDelete 4: " << endl;
-    //Remove(root, 4);
-    //TraversalLNR<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    Remove(root, 4);
+    InorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
 
     return 0;
 }
