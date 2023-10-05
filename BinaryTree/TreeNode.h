@@ -11,9 +11,8 @@ namespace DSAABinaryTree
 	///	Тип данных который хранит узел.
 	/// </typeparam>
 	template<typename T>
-	class TreeNode
+	struct TreeNode
 	{
-	public:
 		// Данные узла
 		T Data;
 
