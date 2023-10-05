@@ -27,7 +27,7 @@ int main()
 {
     TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
 
-    TreeNode<int>* root = CreateBinarySearchTree();
+    BinaryNode<int>* root = CreateBinarySearchTree();
 
     // Созданное дерево:
     //           6
@@ -41,19 +41,19 @@ int main()
 
     // Вывод дерева в консоль разными способами обхода
     cout << "Tree (Inorder): ";
-    InorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    InorderTraversal<int>(root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
 
     cout << "\n\nTree (Preorder): ";
-    PreorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    PreorderTraversal<int>(root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
 
     cout << "\n\nTree (Postorder): ";
-    PostorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    PostorderTraversal<int>(root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
 
 
     // Получение вектора на основе дерева
     vector<int> vectorFromTree;
 
-    InorderTraversal<int>(root, [&vectorFromTree](TreeNode<int>& node) {
+    InorderTraversal<int>(root, [&vectorFromTree](BinaryNode<int>& node) {
         vectorFromTree.push_back(node.Data); });
 
     cout << "\n\nVector from tree (LNR): ";
@@ -67,17 +67,17 @@ int main()
     cout << "\nHeight: " << TreeHeight(root);
 
     // Поиск узла по ключу
-    TreeNode<int>* findedNode = Find(root, 4);
+    BinaryNode<int>* findedNode = Find(root, 4);
     cout << "\n\nFind node: " << findedNode->Data;
 
     // Поиск следующего наибольшего
-    TreeNode<int>* successor = GetInOrderSuccessor(findedNode);
+    BinaryNode<int>* successor = GetInOrderSuccessor(findedNode);
     cout << "\n\nSuccessor for 4: " << successor->Data;
 
     // Удаление узла по ключу
     cout << "\n\nDelete 4: " << endl;
     Remove(root, 4);
-    InorderTraversal<int>(root, [](TreeNode<int>& node) { cout << node.Data << " "; });
+    InorderTraversal<int>(root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
 
     return 0;
 }

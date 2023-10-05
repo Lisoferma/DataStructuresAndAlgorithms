@@ -19,7 +19,7 @@ namespace DSAABinaryTree
 		/// </summary>
 		static void TreeNode_CreateTree_DataIsEqualInitial()
 		{
-			TreeNode<int>* root = CreateBinareTree();
+			BinaryNode<int>* root = CreateBinareTree();
 
 			assert(root->Data              == 1 && "Данные узла не совпадают с инициализованными.");
 			assert(root->Left->Data        == 2 && "Данные узла не совпадают с инициализованными.");
@@ -33,15 +33,15 @@ namespace DSAABinaryTree
 		/// Создать бинарное дерево для теста.
 		/// </summary>
 		/// <returns>Указатель на корень.</returns>
-		static TreeNode<int>* CreateBinareTree()
+		static BinaryNode<int>* CreateBinareTree()
 		{
-			TreeNode<int>* root = new TreeNode<int>(1);
+			BinaryNode<int>* root = new BinaryNode<int>(1);
 
-			root->Left = new TreeNode<int>(2);
-			root->Right = new TreeNode<int>(3);
+			root->Left = new BinaryNode<int>(2);
+			root->Right = new BinaryNode<int>(3);
 
-			root->Left->Left = new TreeNode<int>(4);
-			root->Left->Right = new TreeNode<int>(5);
+			root->Left->Left = new BinaryNode<int>(4);
+			root->Left->Right = new BinaryNode<int>(5);
 
 			return root;
 		}

@@ -14,27 +14,27 @@ namespace DSAABinaryTree
 	/// </summary>
 	/// <typeparam name="T">Тип данных узла.</typeparam>
 	template <typename T>
-	using NodeProcessing = std::function<void(TreeNode<T>&)>;
+	using NodeProcessing = std::function<void(BinaryNode<T>&)>;
 
 
 	/// <summary>
 	/// Создать бинарное дерево из пяти узлов.
 	/// </summary>
 	/// <returns>Указатель на корень.</returns>
-	TreeNode<int>* CreateBinaryTree()
+	BinaryNode<int>* CreateBinaryTree()
 	{
-		TreeNode<int>* root = new TreeNode<int>(1);
+		BinaryNode<int>* root = new BinaryNode<int>(1);
 
-		root->Left = new TreeNode<int>(2);
+		root->Left = new BinaryNode<int>(2);
 		root->Left->Parent = root;
 
-		root->Right = new TreeNode<int>(3);
+		root->Right = new BinaryNode<int>(3);
 		root->Right->Parent = root;
 
-		root->Left->Left = new TreeNode<int>(4);
+		root->Left->Left = new BinaryNode<int>(4);
 		root->Left->Left->Parent = root->Left;
 
-		root->Left->Right = new TreeNode<int>(5);
+		root->Left->Right = new BinaryNode<int>(5);
 		root->Left->Right->Parent = root->Left;
 
 		return root;
@@ -45,20 +45,20 @@ namespace DSAABinaryTree
 	/// Создать бинарное дерево поиска из пяти узлов.
 	/// </summary>
 	/// <returns>Указатель на корень.</returns>
-	TreeNode<int>* CreateBinarySearchTree()
+	BinaryNode<int>* CreateBinarySearchTree()
 	{
-		TreeNode<int>* root = new TreeNode<int>(6);
+		BinaryNode<int>* root = new BinaryNode<int>(6);
 
-		root->Left = new TreeNode<int>(4);
+		root->Left = new BinaryNode<int>(4);
 		root->Left->Parent = root;
 
-		root->Right = new TreeNode<int>(7);
+		root->Right = new BinaryNode<int>(7);
 		root->Right->Parent = root;
 
-		root->Left->Left = new TreeNode<int>(3);
+		root->Left->Left = new BinaryNode<int>(3);
 		root->Left->Left->Parent = root->Left;
 
-		root->Left->Right = new TreeNode<int>(5);
+		root->Left->Right = new BinaryNode<int>(5);
 		root->Left->Right->Parent = root->Left;
 
 		return root;
@@ -73,7 +73,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать обход.</param>
 	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
-	void PreorderTraversal(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	void PreorderTraversal(BinaryNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
 		if (node == nullptr) return;
 
@@ -91,7 +91,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать обход.</param>
 	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
-	void InorderTraversal(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	void InorderTraversal(BinaryNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
 		if (node == nullptr) return;
 
@@ -109,7 +109,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать обход.</param>
 	/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
 	template<typename T>
-	void PostorderTraversal(TreeNode<T>* node, NodeProcessing<T> nodeProcessing)
+	void PostorderTraversal(BinaryNode<T>* node, NodeProcessing<T> nodeProcessing)
 	{
 		if (node == nullptr) return;
 
@@ -126,7 +126,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать отсчёт.</param>
 	/// <returns>Количество узлов.</returns>
 	template<typename T>
-	size_t NodeCount(TreeNode<T>* node)
+	size_t NodeCount(BinaryNode<T>* node)
 	{	
 		if (node == nullptr) return 0;
 
@@ -144,7 +144,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать отсчёт.</param>
 	/// <returns>Высота дерева.</returns>
 	template<typename T>
-	size_t TreeHeight(TreeNode<T>* node)
+	size_t TreeHeight(BinaryNode<T>* node)
 	{
 		if (node == nullptr) return 0;
 
@@ -163,9 +163,9 @@ namespace DSAABinaryTree
 	/// <param name="keyData">Ключ по которому производится поиск.</param>
 	/// <returns>Указатель на найденный узел.</returns>
 	template<typename T>
-	TreeNode<T>* Find(TreeNode<T>* node, T keyData)
+	BinaryNode<T>* Find(BinaryNode<T>* node, T keyData)
 	{
-		TreeNode<T>* current = node;
+		BinaryNode<T>* current = node;
 
 		while (current != nullptr)
 			if (current->Data == keyData)
@@ -185,7 +185,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел для которого нужно получить родителя.</param>
 	/// <returns>Указатель на найденного родителя. nullptr - если не нашлось</returns>
 	template<typename T>
-	TreeNode<T>* GetParent(TreeNode<T>* node)
+	BinaryNode<T>* GetParent(BinaryNode<T>* node)
 	{
 		if (node->Parent == nullptr)
 			return nullptr;
@@ -204,12 +204,12 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать поиск.</param>
 	/// <returns>Указатель на крайний левый узел.</returns>
 	template<typename T>
-	TreeNode<T>* GetLeftMostNode(TreeNode<T>* node)
+	BinaryNode<T>* GetLeftMostNode(BinaryNode<T>* node)
 	{
 		if (node == nullptr)
 			return nullptr;
 
-		TreeNode<T>* left = GetLeftMostNode(node->Left);
+		BinaryNode<T>* left = GetLeftMostNode(node->Left);
 		if (left)
 			return left;
 
@@ -224,7 +224,7 @@ namespace DSAABinaryTree
 	/// <param name="root">Узел для которого ищется следующий наибольший узел.</param>
 	/// <returns>Указатель на найденный узел.</returns>
 	template<typename T>
-	TreeNode<T>* GetInOrderSuccessor(TreeNode<T>* root)
+	BinaryNode<T>* GetInOrderSuccessor(BinaryNode<T>* root)
 	{
 		if (root == nullptr)
 			return nullptr;
@@ -243,9 +243,9 @@ namespace DSAABinaryTree
 	/// <param name="root">Узел с которого начинать поиск минимального.</param>
 	/// <returns>Минимальный узел в дереве.</returns>
 	template<typename T>
-	TreeNode<T>* GetMinimumNode(TreeNode<T>* root)
+	BinaryNode<T>* GetMinimumNode(BinaryNode<T>* root)
 	{
-		TreeNode<T>* current = root;
+		BinaryNode<T>* current = root;
 
 		while (current && current->Left != nullptr)
 			current = current->Left;
@@ -261,7 +261,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать поиск удаляемого узла.</param>
 	/// <param name="key">Данные узла который нужно удалить.</param>
 	template<typename T>
-	void Remove(TreeNode<T>*& node, T key)
+	void Remove(BinaryNode<T>*& node, T key)
 	{
 		if (node == nullptr) return;
 
@@ -280,7 +280,7 @@ namespace DSAABinaryTree
 		}
 		else
 		{
-			TreeNode<T>* temp = nullptr;
+			BinaryNode<T>* temp = nullptr;
 
 			if (node->Left != nullptr)
 			{

@@ -11,7 +11,7 @@ namespace DSAABinaryTree
 	///	Тип данных который хранит узел.
 	/// </typeparam>
 	template<typename T>
-	struct TreeNode
+	struct BinaryNode
 	{
 		// Данные узла
 		T Data;
@@ -19,27 +19,27 @@ namespace DSAABinaryTree
 		/// <summary>
 		/// Указатель на дочерний левый узел.
 		/// </summary>
-		TreeNode* Left;
+		BinaryNode* Left;
  
 		/// <summary>
 		/// Указатель на дочерний правый узел.
 		/// </summary>
-		TreeNode* Right;
+		BinaryNode* Right;
 
 		/// <summary>
 		/// Указатель на родительский узел.
 		/// </summary>
-		TreeNode* Parent;
+		BinaryNode* Parent;
 
 
-		TreeNode() = default;
+		BinaryNode() = default;
 
 
 		/// <summary>
 		///	Инициализировать данные узла.
 		/// </summary>
 		/// <param name="data">Данные узла.</param>
-		TreeNode(const T& data)
+		BinaryNode(const T& data)
 		{
 			Data = data;
 			Left = nullptr;
@@ -55,12 +55,12 @@ namespace DSAABinaryTree
 		/// <param name="left">Дочерний левый узел.</param>
 		/// <param name="right">Дочерний правый узел.</param>
 		/// <param name="parent">Родительский узел.</param>
-		TreeNode(const T& data, TreeNode* left, TreeNode* right, TreeNode* parent)
+		BinaryNode(const T& data, BinaryNode* left, BinaryNode* right, BinaryNode* parent)
 			: Data(data), Left(left), Right(right), Parent(parent)
 		{ }
 
 
-		~TreeNode()
+		~BinaryNode()
 		{
 			delete Left;
 			delete Right;
