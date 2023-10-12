@@ -31,9 +31,7 @@ namespace DSAABinaryTree
         BinarySearchTree(const std::vector<T>& dataVector)
         {
             for (T data : dataVector)
-            {
                 Insert(data);
-            }
         }
         
 
