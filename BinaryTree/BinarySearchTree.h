@@ -61,7 +61,7 @@ namespace DSAABinaryTree
         /// <param name="data">Данные для нового узла.</param>
         void Insert(const T& data)
         {
-            if (root == nullptr)
+            if (IsEmpty())
                 root = new BinaryNode<T>(data);
 
             BinaryNode<T>* current = root;
@@ -100,6 +100,15 @@ namespace DSAABinaryTree
         }
 
         
+        bool IsEmpty()
+        {
+            if (root == nullptr)
+                return true;
+            else
+                return false;
+        }
+
+
         BinaryNode<T>* const GetRoot() const
         {
             return root;
