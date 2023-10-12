@@ -60,7 +60,10 @@ namespace DSAABinaryTree
 		{ }
 
 
-		~BinaryNode()
+		/// <summary>
+		/// Удалить всё поддерево начиная с этого узла.
+		/// </summary>
+		void DeleteSubtree()
 		{
 			delete Left;
 			delete Right;
