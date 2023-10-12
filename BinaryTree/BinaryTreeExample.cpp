@@ -113,7 +113,7 @@ int main()
     bst.Insert(7);
     bst.Insert(9);
     
-    // Удаление
+    // Удаление узлов
     bst.Remove(8);
     bst.Remove(9);
 
@@ -122,6 +122,10 @@ int main()
     // Поиск узла по ключу
     BinaryNode<int>* findedNodeInBst = bst.Search(6);
     cout << "\n\nSearch in BST: " << findedNodeInBst->Data;
+
+    // Удаление всего дерева
+    bst.Delete();
+    cout << "\n\nDelete BST, is empty: " << bst.IsEmpty() << endl;
 
     return 0;
 }
