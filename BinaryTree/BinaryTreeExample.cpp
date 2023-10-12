@@ -9,6 +9,19 @@
 
 using namespace std;
 using namespace DSAABinaryTree;
+using namespace BinaryTreeService;
+
+
+/// <summary>
+/// Вывести дерево в консоль.
+/// </summary>
+/// <typeparam name="T">Тип данных дерева.</typeparam>
+/// <param name="vector">Корень дерева которое нужно вывести.</param>
+template <typename T>
+void TreePrintToConsole(BinaryNode<T>* root)
+{
+    InorderTraversal<T>(root, [](BinaryNode<T>& node) { cout << node.Data << " "; });
+}
 
 
 /// <summary>
@@ -38,7 +51,7 @@ int main()
     //        / \
     //       3   5
 
-    // delete root; // удаление дерева
+    // Delete(root); // удаление дерева
 
 
     // Вывод дерева в консоль разными способами обхода
@@ -79,16 +92,33 @@ int main()
     // Удаление узла по ключу
     cout << "\n\nDelete 4: " << endl;
     Remove(root, 4);
-    InorderTraversal<int>(root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
+    TreePrintToConsole(root);
 
 
-    //
-    cout << "\n\nBST: " << endl;
+    // Класс бинарного дерева поиска
+    cout << "\n\nBST class: " << endl;
     BinarySearchTree<int> bst;
 
-    bst.Insert(1);
+    // Вставка
+    bst.Insert(6);
+    bst.Insert(4);
+    bst.Insert(3);
+    bst.Insert(5);
+    bst.Insert(8);
+    bst.Insert(7);
+    bst.Insert(9);
+    
+    // Удаление
+    bst.Remove(8);
+    bst.Remove(9);
 
-    InorderTraversal<int>(bst.root, [](BinaryNode<int>& node) { cout << node.Data << " "; });
+    TreePrintToConsole(bst.GetRoot());
+
+
+    // Клонирование дерева
+    cout << "\n\nClone binary tree: " << endl;
+    BinaryNode<int>* rootClone = Clone(root);
+    TreePrintToConsole(rootClone);
     
     return 0;
 }
