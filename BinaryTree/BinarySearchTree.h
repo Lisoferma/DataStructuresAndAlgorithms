@@ -3,6 +3,7 @@
 #pragma once
 
 #include "BinaryNode.h"
+#include "BinaryTreeService.h"
 #include <vector>
 
 namespace DSAABinaryTree
@@ -10,10 +11,6 @@ namespace DSAABinaryTree
 	template<typename T>
 	class BinarySearchTree
 	{
-	private:
-        // Корень двоичного дерева поиска
-        BinaryNode<T>* root;
-
 	public:
         BinarySearchTree() : root(nullptr)
         { }
@@ -74,10 +71,27 @@ namespace DSAABinaryTree
             }
         }
 
+        
+        /// <summary>
+        /// Удалить узел по ключу.
+        /// </summary>
+        /// <typeparam name="T">Тип данных узла.</typeparam>
+        /// <param name="key">Данные узла который нужно удалить.</param>
+        template<typename T>
+        void Remove(const T& key)
+        {
+            BinaryTreeService::Remove(root, key);
+        }
 
-        BinaryNode<T>* GetRoot()
+        
+        BinaryNode<T>* const GetRoot() const
         {
             return root;
         }
+
+
+    private:
+        // Корень двоичного дерева поиска
+        BinaryNode<T>* root;
 	};
 }
