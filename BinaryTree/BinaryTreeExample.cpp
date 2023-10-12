@@ -119,13 +119,17 @@ int main()
 
     TreePrintToConsole(bst.GetRoot());
 
+    // Максимум и минимум
+    cout << "\n\nBST max: " << bst.MaxItem();
+    cout << "\nBST min: " << bst.MinItem();
+
     // Поиск узла по ключу
     BinaryNode<int>* findedNodeInBst = bst.Search(6);
     cout << "\n\nSearch in BST: " << findedNodeInBst->Data;
 
     // Удаление всего дерева
     bst.Delete();
-    cout << "\n\nDelete BST, is empty: " << bst.IsEmpty() << endl;
+    cout << "\n\nBST is empty after delete: " << bst.IsEmpty() << endl;
 
     return 0;
 }
