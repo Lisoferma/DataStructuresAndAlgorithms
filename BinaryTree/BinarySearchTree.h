@@ -109,10 +109,10 @@ namespace DSAABinaryTree
         {
             BinaryNode<T>* current = root;
 
-            while (current->right != nullptr)
-                current = current->right;
+            while (current->Right != nullptr)
+                current = current->Right;
 
-            return current->data;
+            return current->Data;
         }
 
 
@@ -124,10 +124,10 @@ namespace DSAABinaryTree
         {
             BinaryNode<T>* current = root;
 
-            while (current->left != nullptr)
-                current = current->left;
+            while (current->Left != nullptr)
+                current = current->Left;
 
-            return current->data;
+            return current->Data;
         }
 
 
