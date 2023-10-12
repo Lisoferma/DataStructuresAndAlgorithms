@@ -35,6 +35,26 @@ namespace DSAABinaryTree
                 Insert(data);
             }
         }
+        
+
+        /// <summary>
+        /// Поиск узла по ключу.
+        /// </summary>
+        /// <param name="keyData">Ключ по которому производится поиск.</param>
+        /// <returns>Указатель на найденный узел. Если не найден - nullptr.</returns>
+        BinaryNode<T>* Search(const T& keyData)
+        {
+            BinaryNode<T>* current = root;
+
+            while (current != nullptr)
+                if (current->Data == keyData)
+                    return current;
+                else
+                    current = keyData < current->Data ?
+                    current->Left : current->Right;
+
+            return nullptr;
+        }
 
 
         /// <summary>
@@ -75,9 +95,7 @@ namespace DSAABinaryTree
         /// <summary>
         /// Удалить узел по ключу.
         /// </summary>
-        /// <typeparam name="T">Тип данных узла.</typeparam>
         /// <param name="key">Данные узла который нужно удалить.</param>
-        template<typename T>
         void Remove(const T& key)
         {
             BinaryTreeService::Remove(root, key);
