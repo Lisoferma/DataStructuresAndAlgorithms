@@ -58,16 +58,6 @@ namespace DSAABinaryTree
 		BinaryNode(const T& data, BinaryNode* left, BinaryNode* right, BinaryNode* parent)
 			: Data(data), Left(left), Right(right), Parent(parent)
 		{ }
-
-
-		/// <summary>
-		/// Удалить всё поддерево начиная с этого узла.
-		/// </summary>
-		void DeleteSubtree()
-		{
-			delete Left;
-			delete Right;
-		}
 	};
 }
 
