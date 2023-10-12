@@ -285,6 +285,12 @@ namespace DSAABinaryTree
 		}
 
 
+		/// <summary>
+		/// Скопировать дерево.
+		/// </summary>
+		/// <typeparam name="T">Тип данных дерева.</typeparam>
+		/// <param name="root">Дерево которое нужно скопировать.</param>
+		/// <returns>Указатель на новое скопированное дерево.</returns>
 		template<typename T>
 		BinaryNode<T>* Clone(BinaryNode<T>* root)
 		{
