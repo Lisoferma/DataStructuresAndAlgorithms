@@ -99,7 +99,11 @@ namespace DSAABinaryTree
             BinaryTreeService::Remove(root, key);
         }
 
-        
+
+        /// <summary>
+        /// Пустое ли дерево.
+        /// </summary>
+        /// <returns>True - пустое, false - не пустое.</returns>
         bool IsEmpty()
         {
             if (root == nullptr)
@@ -109,6 +113,10 @@ namespace DSAABinaryTree
         }
 
 
+        /// <summary>
+        /// Получить указатель на корень дерева.
+        /// </summary>
+        /// <returns>Указатель на корень дерева.</returns>
         BinaryNode<T>* const GetRoot() const
         {
             return root;
