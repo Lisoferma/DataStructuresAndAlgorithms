@@ -5,6 +5,7 @@
 #include "BinaryNode.h"
 #include "BinaryTreeService.h"
 #include <vector>
+#include <queue>
 
 namespace DSAABinaryTree
 {
@@ -101,6 +102,36 @@ namespace DSAABinaryTree
 
 
         /// <summary>
+        /// Максимум в дереве.
+        /// </summary>
+        /// <returns>Максимальные данные в дереве.</returns>
+        T MaxItem()
+        {
+            BinaryNode<T>* current = root;
+
+            while (current->right != nullptr)
+                current = current->right;
+
+            return current->data;
+        }
+
+
+        /// <summary>
+        /// Минимум в дереве.
+        /// </summary>
+        /// <returns>Минимальные данные в дереве.</returns>
+        T MinItem()
+        {
+            BinaryNode<T>* current = root;
+
+            while (current->left != nullptr)
+                current = current->left;
+
+            return current->data;
+        }
+
+
+        /// <summary>
         /// Пустое ли дерево.
         /// </summary>
         /// <returns>True - пустое, false - не пустое.</returns>
@@ -110,6 +141,36 @@ namespace DSAABinaryTree
                 return true;
             else
                 return false;
+        }
+
+
+        /// <summary>
+        /// Удалить дерево.
+        /// </summary>
+        void Delete()
+        {
+            if (IsEmpty()) return;
+
+            std::queue<BinaryNode<T>*> queue;
+            queue.push(root);
+
+            BinaryNode<T>* front = nullptr;
+
+            while (!queue.empty())
+            {
+                front = queue.front();
+                queue.pop();
+
+                if (front->Left)
+                    queue.push(front->Left);
+
+                if (front->Right)
+                    queue.push(front->Right);
+
+                delete front;
+            }
+
+            root = nullptr;
         }
 
 
