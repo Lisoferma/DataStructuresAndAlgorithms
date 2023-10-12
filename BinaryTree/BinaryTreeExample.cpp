@@ -94,6 +94,11 @@ int main()
     Remove(root, 4);
     TreePrintToConsole(root);
 
+    // Клонирование дерева
+    cout << "\n\nClone binary tree: " << endl;
+    BinaryNode<int>* rootClone = Clone(root);
+    TreePrintToConsole(rootClone);
+
 
     // Класс бинарного дерева поиска
     cout << "\n\nBST class: " << endl;
@@ -114,11 +119,9 @@ int main()
 
     TreePrintToConsole(bst.GetRoot());
 
+    // Поиск узла по ключу
+    BinaryNode<int>* findedNodeInBst = bst.Search(6);
+    cout << "\n\nSearch in BST: " << findedNodeInBst->Data;
 
-    // Клонирование дерева
-    cout << "\n\nClone binary tree: " << endl;
-    BinaryNode<int>* rootClone = Clone(root);
-    TreePrintToConsole(rootClone);
-    
     return 0;
 }
