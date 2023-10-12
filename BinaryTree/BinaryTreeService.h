@@ -11,18 +11,18 @@ namespace DSAABinaryTree
 	namespace BinaryTreeService
 	{
 		/// <summary>
-		/// Синоним для указателя на функцию, которая обрабатывает данные узла.
-		/// Применяется в функциях обхода.
+		/// РЎРёРЅРѕРЅРёРј РґР»СЏ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РґР°РЅРЅС‹Рµ СѓР·Р»Р°.
+		/// РџСЂРёРјРµРЅСЏРµС‚СЃСЏ РІ С„СѓРЅРєС†РёСЏС… РѕР±С…РѕРґР°.
 		/// </summary>
-		/// <typeparam name="T">Тип данных узла.</typeparam>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… СѓР·Р»Р°.</typeparam>
 		template <typename T>
 		using NodeProcessing = std::function<void(BinaryNode<T>&)>;
 
 
 		/// <summary>
-		/// Создать бинарное дерево из пяти узлов.
+		/// РЎРѕР·РґР°С‚СЊ Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ РёР· РїСЏС‚Рё СѓР·Р»РѕРІ.
 		/// </summary>
-		/// <returns>Указатель на корень.</returns>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРµРЅСЊ.</returns>
 		BinaryNode<int>* CreateBinaryTree()
 		{
 			BinaryNode<int>* root = new BinaryNode<int>(1);
@@ -44,9 +44,9 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Создать бинарное дерево поиска из пяти узлов.
+		/// РЎРѕР·РґР°С‚СЊ Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ РїРѕРёСЃРєР° РёР· РїСЏС‚Рё СѓР·Р»РѕРІ.
 		/// </summary>
-		/// <returns>Указатель на корень.</returns>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРµРЅСЊ.</returns>
 		BinaryNode<int>* CreateBinarySearchTree()
 		{
 			BinaryNode<int>* root = new BinaryNode<int>(6);
@@ -68,12 +68,12 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Обойти дерево в порядке NLR.
-		/// Является топологически отсортированным.
+		/// РћР±РѕР№С‚Рё РґРµСЂРµРІРѕ РІ РїРѕСЂСЏРґРєРµ NLR.
+		/// РЇРІР»СЏРµС‚СЃСЏ С‚РѕРїРѕР»РѕРіРёС‡РµСЃРєРё РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рј.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="node">Узел с которого начинать обход.</param>
-		/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РѕР±С…РѕРґ.</param>
+		/// <param name="nodeProcessing">Р¤СѓРЅРєС†РёСЏ РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ СѓР·Р»С‹.</param>
 		template<typename T>
 		void PreorderTraversal(BinaryNode<T>* node, NodeProcessing<T> nodeProcessing)
 		{
@@ -86,12 +86,12 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Обойти дерево в порядке LNR.
-		/// В бинарном дереве поиска ключи извлекаются в порядке возрастания.
+		/// РћР±РѕР№С‚Рё РґРµСЂРµРІРѕ РІ РїРѕСЂСЏРґРєРµ LNR.
+		/// Р’ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ РїРѕРёСЃРєР° РєР»СЋС‡Рё РёР·РІР»РµРєР°СЋС‚СЃСЏ РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="node">Узел с которого начинать обход.</param>
-		/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РѕР±С…РѕРґ.</param>
+		/// <param name="nodeProcessing">Р¤СѓРЅРєС†РёСЏ РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ СѓР·Р»С‹.</param>
 		template<typename T>
 		void InorderTraversal(BinaryNode<T>* node, NodeProcessing<T> nodeProcessing)
 		{
@@ -104,12 +104,12 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Обойти дерево в порядке LRN.
-		/// Может быть полезно для получения постфиксного выражения дерева двоичных выражений.
+		/// РћР±РѕР№С‚Рё РґРµСЂРµРІРѕ РІ РїРѕСЂСЏРґРєРµ LRN.
+		/// РњРѕР¶РµС‚ Р±С‹С‚СЊ РїРѕР»РµР·РЅРѕ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРѕСЃС‚С„РёРєСЃРЅРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ РґРµСЂРµРІР° РґРІРѕРёС‡РЅС‹С… РІС‹СЂР°Р¶РµРЅРёР№.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="node">Узел с которого начинать обход.</param>
-		/// <param name="nodeProcessing">Функция которая будет обрабатывать узлы.</param>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РѕР±С…РѕРґ.</param>
+		/// <param name="nodeProcessing">Р¤СѓРЅРєС†РёСЏ РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ СѓР·Р»С‹.</param>
 		template<typename T>
 		void PostorderTraversal(BinaryNode<T>* node, NodeProcessing<T> nodeProcessing)
 		{
@@ -122,11 +122,11 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Количество узлов в бинарном дереве.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ СѓР·Р»РѕРІ РІ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="node">Узел с которого начинать отсчёт.</param>
-		/// <returns>Количество узлов.</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РѕС‚СЃС‡С‘С‚.</param>
+		/// <returns>РљРѕР»РёС‡РµСЃС‚РІРѕ СѓР·Р»РѕРІ.</returns>
 		template<typename T>
 		size_t NodeCount(BinaryNode<T>* node)
 		{	
@@ -140,11 +140,11 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Высота бинарного дерева.
+		/// Р’С‹СЃРѕС‚Р° Р±РёРЅР°СЂРЅРѕРіРѕ РґРµСЂРµРІР°.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="node">Узел с которого начинать отсчёт.</param>
-		/// <returns>Высота дерева.</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РѕС‚СЃС‡С‘С‚.</param>
+		/// <returns>Р’С‹СЃРѕС‚Р° РґРµСЂРµРІР°.</returns>
 		template<typename T>
 		size_t TreeHeight(BinaryNode<T>* node)
 		{
@@ -158,12 +158,12 @@ namespace DSAABinaryTree
 
 	
 		/// <summary>
-		/// Поиск узла по ключу.
+		/// РџРѕРёСЃРє СѓР·Р»Р° РїРѕ РєР»СЋС‡Сѓ.
 		/// </summary>
-		/// <typeparam name="T">Тип данных который хранит узел.</typeparam>
-		/// <param name="node">Узел с которого начинать поиск.</param>
-		/// <param name="keyData">Ключ по которому производится поиск.</param>
-		/// <returns>Указатель на найденный узел.</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ СѓР·РµР».</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РїРѕРёСЃРє.</param>
+		/// <param name="keyData">РљР»СЋС‡ РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РїРѕРёСЃРє.</param>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°Р№РґРµРЅРЅС‹Р№ СѓР·РµР».</returns>
 		template<typename T>
 		BinaryNode<T>* Find(BinaryNode<T>* node, const T& keyData)
 		{
@@ -181,11 +181,11 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Получить родительский узел для узла - при котором он будет левым потомком. 
+		/// РџРѕР»СѓС‡РёС‚СЊ СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ СѓР·РµР» РґР»СЏ СѓР·Р»Р° - РїСЂРё РєРѕС‚РѕСЂРѕРј РѕРЅ Р±СѓРґРµС‚ Р»РµРІС‹Рј РїРѕС‚РѕРјРєРѕРј. 
 		/// </summary>
-		/// <typeparam name="T">Тип данных узла.</typeparam>
-		/// <param name="node">Узел для которого нужно получить родителя.</param>
-		/// <returns>Указатель на найденного родителя. nullptr - если не нашлось</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… СѓР·Р»Р°.</typeparam>
+		/// <param name="node">РЈР·РµР» РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЂРѕРґРёС‚РµР»СЏ.</param>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°Р№РґРµРЅРЅРѕРіРѕ СЂРѕРґРёС‚РµР»СЏ. nullptr - РµСЃР»Рё РЅРµ РЅР°С€Р»РѕСЃСЊ</returns>
 		template<typename T>
 		BinaryNode<T>* GetParent(BinaryNode<T>* node)
 		{
@@ -200,11 +200,11 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Получить минимальный узел.
+		/// РџРѕР»СѓС‡РёС‚СЊ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓР·РµР».
 		/// </summary>
-		/// <typeparam name="T">Тип данных узла.</typeparam>
-		/// <param name="root">Узел с которого начинать поиск минимального.</param>
-		/// <returns>Минимальный узел в дереве.</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… СѓР·Р»Р°.</typeparam>
+		/// <param name="root">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РїРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ.</param>
+		/// <returns>РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓР·РµР» РІ РґРµСЂРµРІРµ.</returns>
 		template<typename T>
 		BinaryNode<T>* GetMinimumNode(BinaryNode<T>* root)
 		{
@@ -218,11 +218,11 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Получить следующего наибольшего преемника узла.
+		/// РџРѕР»СѓС‡РёС‚СЊ СЃР»РµРґСѓСЋС‰РµРіРѕ РЅР°РёР±РѕР»СЊС€РµРіРѕ РїСЂРµРµРјРЅРёРєР° СѓР·Р»Р°.
 		/// </summary>
-		/// <typeparam name="T">Тип данных узла.</typeparam>
-		/// <param name="root">Узел для которого ищется следующий наибольший узел.</param>
-		/// <returns>Указатель на найденный узел.</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… СѓР·Р»Р°.</typeparam>
+		/// <param name="root">РЈР·РµР» РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РёС‰РµС‚СЃСЏ СЃР»РµРґСѓСЋС‰РёР№ РЅР°РёР±РѕР»СЊС€РёР№ СѓР·РµР».</param>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°Р№РґРµРЅРЅС‹Р№ СѓР·РµР».</returns>
 		template<typename T>
 		BinaryNode<T>* GetInOrderSuccessor(BinaryNode<T>* root)
 		{
@@ -237,11 +237,11 @@ namespace DSAABinaryTree
 
 	
 		/// <summary>
-		/// Удалить узел по ключу.
+		/// РЈРґР°Р»РёС‚СЊ СѓР·РµР» РїРѕ РєР»СЋС‡Сѓ.
 		/// </summary>
-		/// <typeparam name="T">Тип данных узла.</typeparam>
-		/// <param name="node">Узел с которого начинать поиск удаляемого узла.</param>
-		/// <param name="key">Данные узла который нужно удалить.</param>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… СѓР·Р»Р°.</typeparam>
+		/// <param name="node">РЈР·РµР» СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°С‚СЊ РїРѕРёСЃРє СѓРґР°Р»СЏРµРјРѕРіРѕ СѓР·Р»Р°.</param>
+		/// <param name="key">Р”Р°РЅРЅС‹Рµ СѓР·Р»Р° РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ.</param>
 		template<typename T>
 		void Remove(BinaryNode<T>*& node, const T& key)
 		{
@@ -286,11 +286,11 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Скопировать дерево.
+		/// РЎРєРѕРїРёСЂРѕРІР°С‚СЊ РґРµСЂРµРІРѕ.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="root">Дерево которое нужно скопировать.</param>
-		/// <returns>Указатель на новое скопированное дерево.</returns>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="root">Р”РµСЂРµРІРѕ РєРѕС‚РѕСЂРѕРµ РЅСѓР¶РЅРѕ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ.</param>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅРѕРІРѕРµ СЃРєРѕРїРёСЂРѕРІР°РЅРЅРѕРµ РґРµСЂРµРІРѕ.</returns>
 		template<typename T>
 		BinaryNode<T>* Clone(BinaryNode<T>* root)
 		{
@@ -306,10 +306,10 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Удалить дерево.
+		/// РЈРґР°Р»РёС‚СЊ РґРµСЂРµРІРѕ.
 		/// </summary>
-		/// <typeparam name="T">Тип данных дерева.</typeparam>
-		/// <param name="root">Корень дерева.</param>
+		/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РґРµСЂРµРІР°.</typeparam>
+		/// <param name="root">РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</param>
 		template<typename T>
 		void Delete(BinaryNode<T>*& root)
 		{

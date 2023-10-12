@@ -18,17 +18,17 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Инициализировать корень дерева.
+        /// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.
         /// </summary>
-        /// <param name="root">Корень дерева.</param>
+        /// <param name="root">РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</param>
         BinarySearchTree(BinaryNode<T>* root) : root(root)
         { }
 
 
         /// <summary>
-        /// Инициализировать дерево вектором.
+        /// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РґРµСЂРµРІРѕ РІРµРєС‚РѕСЂРѕРј.
         /// </summary>
-        /// <param name="dataVector">Вектор который хранит данные для узлов.</param>
+        /// <param name="dataVector">Р’РµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РґР°РЅРЅС‹Рµ РґР»СЏ СѓР·Р»РѕРІ.</param>
         BinarySearchTree(const std::vector<T>& dataVector)
         {
             for (T data : dataVector)
@@ -37,10 +37,10 @@ namespace DSAABinaryTree
         
 
         /// <summary>
-        /// Поиск узла по ключу.
+        /// РџРѕРёСЃРє СѓР·Р»Р° РїРѕ РєР»СЋС‡Сѓ.
         /// </summary>
-        /// <param name="keyData">Ключ по которому производится поиск.</param>
-        /// <returns>Указатель на найденный узел. Если не найден - nullptr.</returns>
+        /// <param name="keyData">РљР»СЋС‡ РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РїРѕРёСЃРє.</param>
+        /// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°Р№РґРµРЅРЅС‹Р№ СѓР·РµР». Р•СЃР»Рё РЅРµ РЅР°Р№РґРµРЅ - nullptr.</returns>
         BinaryNode<T>* Search(const T& keyData)
         {
             BinaryNode<T>* current = root;
@@ -57,9 +57,9 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Вставить данные в дерево.
+        /// Р’СЃС‚Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ РІ РґРµСЂРµРІРѕ.
         /// </summary>
-        /// <param name="data">Данные для нового узла.</param>
+        /// <param name="data">Р”Р°РЅРЅС‹Рµ РґР»СЏ РЅРѕРІРѕРіРѕ СѓР·Р»Р°.</param>
         void Insert(const T& data)
         {
             if (IsEmpty())
@@ -92,9 +92,9 @@ namespace DSAABinaryTree
 
         
         /// <summary>
-        /// Удалить узел по ключу.
+        /// РЈРґР°Р»РёС‚СЊ СѓР·РµР» РїРѕ РєР»СЋС‡Сѓ.
         /// </summary>
-        /// <param name="key">Данные узла который нужно удалить.</param>
+        /// <param name="key">Р”Р°РЅРЅС‹Рµ СѓР·Р»Р° РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ.</param>
         void Remove(const T& key)
         {
             BinaryTreeService::Remove(root, key);
@@ -102,9 +102,9 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Максимум в дереве.
+        /// РњР°РєСЃРёРјСѓРј РІ РґРµСЂРµРІРµ.
         /// </summary>
-        /// <returns>Максимальные данные в дереве.</returns>
+        /// <returns>РњР°РєСЃРёРјР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РІ РґРµСЂРµРІРµ.</returns>
         T MaxItem()
         {
             BinaryNode<T>* current = root;
@@ -117,9 +117,9 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Минимум в дереве.
+        /// РњРёРЅРёРјСѓРј РІ РґРµСЂРµРІРµ.
         /// </summary>
-        /// <returns>Минимальные данные в дереве.</returns>
+        /// <returns>РњРёРЅРёРјР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РІ РґРµСЂРµРІРµ.</returns>
         T MinItem()
         {
             BinaryNode<T>* current = root;
@@ -132,9 +132,9 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Пустое ли дерево.
+        /// РџСѓСЃС‚РѕРµ Р»Рё РґРµСЂРµРІРѕ.
         /// </summary>
-        /// <returns>True - пустое, false - не пустое.</returns>
+        /// <returns>True - РїСѓСЃС‚РѕРµ, false - РЅРµ РїСѓСЃС‚РѕРµ.</returns>
         bool IsEmpty()
         {
             if (root == nullptr)
@@ -145,7 +145,7 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Удалить дерево.
+        /// РЈРґР°Р»РёС‚СЊ РґРµСЂРµРІРѕ.
         /// </summary>
         void Delete()
         {
@@ -175,9 +175,9 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Получить указатель на корень дерева.
+        /// РџРѕР»СѓС‡РёС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.
         /// </summary>
-        /// <returns>Указатель на корень дерева.</returns>
+        /// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</returns>
         BinaryNode<T>* const GetRoot() const
         {
             return root;
@@ -185,7 +185,7 @@ namespace DSAABinaryTree
 
 
     private:
-        // Корень двоичного дерева поиска
+        // РљРѕСЂРµРЅСЊ РґРІРѕРёС‡РЅРѕРіРѕ РґРµСЂРµРІР° РїРѕРёСЃРєР°
         BinaryNode<T>* root;
 	};
 }
