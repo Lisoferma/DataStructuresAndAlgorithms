@@ -163,7 +163,7 @@ namespace DSAABinaryTree
 	/// <param name="keyData">Ключ по которому производится поиск.</param>
 	/// <returns>Указатель на найденный узел.</returns>
 	template<typename T>
-	BinaryNode<T>* Find(BinaryNode<T>* node, T keyData)
+	BinaryNode<T>* Find(BinaryNode<T>* node, const T& keyData)
 	{
 		BinaryNode<T>* current = node;
 
@@ -261,7 +261,7 @@ namespace DSAABinaryTree
 	/// <param name="node">Узел с которого начинать поиск удаляемого узла.</param>
 	/// <param name="key">Данные узла который нужно удалить.</param>
 	template<typename T>
-	void Remove(BinaryNode<T>*& node, T key)
+	void Remove(BinaryNode<T>*& node, const T& key)
 	{
 		if (node == nullptr) return;
 
