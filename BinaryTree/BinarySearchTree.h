@@ -55,6 +55,7 @@ namespace DSAABinaryTree
             return nullptr;
         }
 
+        // to do поясняющие комментарии, вынести в Service
 
         /// <summary>
         /// Вставить данные в дерево.
