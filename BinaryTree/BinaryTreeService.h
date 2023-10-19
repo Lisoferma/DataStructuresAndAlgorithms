@@ -247,6 +247,7 @@ namespace DSAABinaryTree
 		{
 			if (node == nullptr) return;
 
+			// Поиск удаляемого узла
 			if (key < node->Data)
 			{
 				Remove(node->Left, key);
@@ -255,6 +256,7 @@ namespace DSAABinaryTree
 			{
 				Remove(node->Right, key);
 			}
+			// Если у удаляемого узла есть оба дочерних узла
 			else if (node->Left != nullptr && node->Right != nullptr)
 			{
 				node->Data = GetMinimumNode(node->Right)->Data;
@@ -264,18 +266,21 @@ namespace DSAABinaryTree
 			{
 				BinaryNode<T>* temp = nullptr;
 
+				// Есть только левый дочерний узел
 				if (node->Left != nullptr)
 				{
 					temp = node;
 					node = node->Left;
 					delete temp;
 				}
+				// Есть только правый дочерний узел
 				else if (node->Right != nullptr)
 				{
 					temp = node;
 					node = node->Right;
 					delete temp;
 				}
+				// Нет дочерних узлов
 				else
 				{
 					delete node;
