@@ -5,7 +5,6 @@
 #include "BinaryNode.h"
 #include "BinaryTreeService.h"
 #include <vector>
-#include <queue>
 
 namespace DSAABinaryTree
 {
@@ -105,28 +104,7 @@ namespace DSAABinaryTree
         /// </summary>
         void Delete()
         {
-            if (IsEmpty()) return;
-
-            std::queue<BinaryNode<T>*> queue;
-            queue.push(root);
-
-            BinaryNode<T>* front = nullptr;
-
-            while (!queue.empty())
-            {
-                front = queue.front();
-                queue.pop();
-
-                if (front->Left)
-                    queue.push(front->Left);
-
-                if (front->Right)
-                    queue.push(front->Right);
-
-                delete front;
-            }
-
-            root = nullptr;
+            BinaryTreeService::Delete(root);
         }
 
 

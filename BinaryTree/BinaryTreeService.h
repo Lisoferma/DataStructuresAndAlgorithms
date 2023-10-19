@@ -5,6 +5,7 @@
 #include "BinaryNode.h"
 #include <iostream>
 #include <functional>
+#include <queue>
 
 namespace DSAABinaryTree
 {
@@ -380,6 +381,39 @@ namespace DSAABinaryTree
 			Delete(root->Right);
 
 			delete root;
+			root = nullptr;
+		}
+
+
+		/// <summary>
+		/// Удалить дерево итеративным методом.
+		/// </summary>
+		/// <typeparam name="T">Тип данных дерева.</typeparam>
+		/// <param name="root">Корень дерева.</param>
+		template<typename T>
+		void Delete(BinaryNode<T>*& root)
+		{
+			if (root == nullptr) return;
+
+			std::queue<BinaryNode<T>*> queue;
+			queue.push(root);
+
+			BinaryNode<T>* front = nullptr;
+
+			while (!queue.empty())
+			{
+				front = queue.front();
+				queue.pop();
+
+				if (front->Left)
+					queue.push(front->Left);
+
+				if (front->Right)
+					queue.push(front->Right);
+
+				delete front;
+			}
+
 			root = nullptr;
 		}
 	}
