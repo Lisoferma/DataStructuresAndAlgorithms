@@ -73,12 +73,7 @@ namespace DSAABinaryTree
         /// <returns>Максимальные данные в дереве.</returns>
         T MaxItem()
         {
-            BinaryNode<T>* current = root;
-
-            while (current->Right != nullptr)
-                current = current->Right;
-
-            return current->Data;
+            return BinaryTreeService::GetMaximumNode(root)->Data;
         }
 
 
