@@ -200,6 +200,24 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
+		/// Получить максимальный узел.
+		/// </summary>
+		/// <typeparam name="T">Тип данных узла.</typeparam>
+		/// <param name="root">Узел с которого начинать поиск максимального.</param>
+		/// <returns>Максимальный узел в дереве.</returns>
+		template<typename T>
+		BinaryNode<T>* GetMaximumNode(BinaryNode<T>* root)
+		{
+            BinaryNode<T>* current = root;
+
+            while (current->Right != nullptr)
+                current = current->Right;
+
+            return current;
+		}
+
+
+		/// <summary>
 		/// Получить минимальный узел.
 		/// </summary>
 		/// <typeparam name="T">Тип данных узла.</typeparam>
@@ -210,7 +228,7 @@ namespace DSAABinaryTree
 		{
 			BinaryNode<T>* current = root;
 
-			while (current && current->Left != nullptr)
+			while (current->Left != nullptr)
 				current = current->Left;
 
 			return current;
