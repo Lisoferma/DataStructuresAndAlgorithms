@@ -88,12 +88,7 @@ namespace DSAABinaryTree
         /// <returns>Минимальные данные в дереве.</returns>
         T MinItem()
         {
-            BinaryNode<T>* current = root;
-
-            while (current->Left != nullptr)
-                current = current->Left;
-
-            return current->Data;
+            return BinaryTreeService::GetMinimumNode(root)->Data;
         }
 
 
