@@ -291,6 +291,44 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
+		/// Вставить данные в бинарное дерево поиска.
+		/// </summary>
+		/// <typeparam name="T">Тип данных узла.</typeparam>
+		/// <param name="root">Корень дерева поиска.</param>
+		/// <param name="data">Данные для нового узла.</param>
+		template<typename T>
+		void Insert(BinaryNode<T>*& root, const T& data)
+		{
+			if (root == nullptr)
+				root = new BinaryNode<T>(data);
+
+			BinaryNode<T>* current = root;
+
+			while (current && current->Data != data)
+			{
+				if (current->Data > data && current->Left == NULL)
+				{
+					current->Left = new BinaryNode<T>(data);
+					return;
+				}
+				if (current->Data < data && current->Right == NULL)
+				{
+					current->Right = new BinaryNode<T>(data);
+					return;
+				}
+				if (current->Data > data)
+				{
+					current = current->Left;
+				}
+				else
+				{
+					current = current->Right;
+				}
+			}
+		}
+
+
+		/// <summary>
 		/// Скопировать дерево.
 		/// </summary>
 		/// <typeparam name="T">Тип данных дерева.</typeparam>

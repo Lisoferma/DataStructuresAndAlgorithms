@@ -55,7 +55,6 @@ namespace DSAABinaryTree
             return nullptr;
         }
 
-        // to do поясняющие комментарии, вынести в Service
 
         /// <summary>
         /// Вставить данные в дерево.
@@ -63,32 +62,7 @@ namespace DSAABinaryTree
         /// <param name="data">Данные для нового узла.</param>
         void Insert(const T& data)
         {
-            if (IsEmpty())
-                root = new BinaryNode<T>(data);
-
-            BinaryNode<T>* current = root;
-
-            while (current && current->Data != data)
-            {
-                if (current->Data > data && current->Left == NULL)
-                {
-                    current->Left = new BinaryNode<T>(data);
-                    return;
-                }
-                if (current->Data < data && current->Right == NULL)
-                {
-                    current->Right = new BinaryNode<T>(data);
-                    return;
-                }
-                if (current->Data > data)
-                {
-                    current = current->Left;
-                }
-                else
-                {
-                    current = current->Right;
-                }                 
-            }
+            BinaryTreeService::Insert(root, data);
         }
 
         
