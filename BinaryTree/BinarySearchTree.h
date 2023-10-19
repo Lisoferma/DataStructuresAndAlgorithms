@@ -43,16 +43,7 @@ namespace DSAABinaryTree
         /// <returns>Указатель на найденный узел. Если не найден - nullptr.</returns>
         BinaryNode<T>* Search(const T& keyData)
         {
-            BinaryNode<T>* current = root;
-
-            while (current != nullptr)
-                if (current->Data == keyData)
-                    return current;
-                else
-                    current = keyData < current->Data ?
-                    current->Left : current->Right;
-
-            return nullptr;
+            return BinaryTreeService::Search(root, keyData);
         }
 
 
