@@ -165,7 +165,7 @@ namespace DSAABinaryTree
 		/// <param name="keyData">Ключ по которому производится поиск.</param>
 		/// <returns>Указатель на найденный узел.</returns>
 		template<typename T>
-		BinaryNode<T>* Find(BinaryNode<T>* node, const T& keyData)
+		BinaryNode<T>* Search(BinaryNode<T>* node, const T& keyData)
 		{
 			BinaryNode<T>* current = node;
 

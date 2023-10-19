@@ -82,7 +82,7 @@ int main()
     cout << "\nHeight: " << TreeHeight(root);
 
     // Поиск узла по ключу
-    BinaryNode<int>* findedNode = Find(root, 4);
+    BinaryNode<int>* findedNode = Search(root, 4);
     cout << "\n\nFind node: " << findedNode->Data;
 
     // Поиск следующего наибольшего
