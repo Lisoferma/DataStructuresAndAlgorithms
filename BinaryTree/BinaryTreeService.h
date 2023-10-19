@@ -367,12 +367,12 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Удалить дерево.
+		/// Удалить дерево рекурсивным методом.
 		/// </summary>
 		/// <typeparam name="T">Тип данных дерева.</typeparam>
 		/// <param name="root">Корень дерева.</param>
 		template<typename T>
-		void Delete(BinaryNode<T>*& root)
+		void DeleteRecursively(BinaryNode<T>*& root)
 		{
 			if (root == nullptr) return;
 
