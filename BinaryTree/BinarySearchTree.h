@@ -40,7 +40,7 @@ namespace DSAABinaryTree
         /// </summary>
         /// <param name="keyData">Ключ по которому производится поиск.</param>
         /// <returns>Указатель на найденный узел. Если не найден - nullptr.</returns>
-        BinaryNode<T>* Search(const T& keyData)
+        BinaryNode<T>* Search(const T& keyData) const
         {
             return BinaryTreeService::Search(root, keyData);
         }
@@ -70,7 +70,7 @@ namespace DSAABinaryTree
         /// Максимум в дереве.
         /// </summary>
         /// <returns>Максимальные данные в дереве.</returns>
-        T MaxItem()
+        T MaxItem() const
         {
             return BinaryTreeService::GetMaximumNode(root)->Data;
         }
@@ -80,7 +80,7 @@ namespace DSAABinaryTree
         /// Минимум в дереве.
         /// </summary>
         /// <returns>Минимальные данные в дереве.</returns>
-        T MinItem()
+        T MinItem() const
         {
             return BinaryTreeService::GetMinimumNode(root)->Data;
         }
@@ -90,7 +90,7 @@ namespace DSAABinaryTree
         /// Пустое ли дерево.
         /// </summary>
         /// <returns>True - пустое, false - не пустое.</returns>
-        bool IsEmpty()
+        bool IsEmpty() const
         {
             if (root == nullptr)
                 return true;
