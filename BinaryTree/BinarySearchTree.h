@@ -4,12 +4,14 @@
 
 #include "BinaryNode.h"
 #include "BinaryTreeService.h"
+#include "IIterated.h"
+#include "InorderIterator.h"
 #include <vector>
 
 namespace DSAABinaryTree
 {
 	template<typename T>
-	class BinarySearchTree
+	class BinarySearchTree //: public IIterated<T>
 	{
 	public:
         BinarySearchTree() : root(nullptr)
@@ -92,10 +94,7 @@ namespace DSAABinaryTree
         /// <returns>True - пустое, false - не пустое.</returns>
         bool IsEmpty() const
         {
-            if (root == nullptr)
-                return true;
-            else
-                return false;
+            return root == nullptr;
         }
 
 
@@ -118,8 +117,20 @@ namespace DSAABinaryTree
         }
 
 
-    private:
-        // Корень двоичного дерева поиска
-        BinaryNode<T>* root;
+        InorderIterator<T>& begin() //override
+        {
+            return *new InorderIterator<T>(root, true);
+        }
+
+
+        InorderIterator<T>& end() //override
+        {
+            return *new InorderIterator<T>(nullptr, false);
+        }
+
+
+        private:
+            // Корень двоичного дерева поиска
+            BinaryNode<T>* root;
 	};
 }
