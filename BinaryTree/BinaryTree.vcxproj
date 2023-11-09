@@ -135,7 +135,10 @@
     <ClInclude Include="BinaryNode.h" />
     <ClInclude Include="BinaryNodeTests.h" />
     <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="IIterated.h" />
+    <ClInclude Include="InorderIterator.h" />
     <ClInclude Include="BinaryTreeService.h" />
+    <ClInclude Include="IIterator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
