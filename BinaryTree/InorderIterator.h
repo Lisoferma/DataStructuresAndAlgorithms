@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "IIterator.h"
 #include "BinaryNode.h"
@@ -70,10 +70,10 @@ namespace DSAABinaryTree
 
 
     private:
-        // Указатель на текущий узел
+        // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С‚РµРєСѓС‰РёР№ СѓР·РµР»
         BinaryNode<T>* _current;
 
-        // Стэк для хранения и извлечения узлов в упорядоченном (inorder) проходе
+        // РЎС‚СЌРє РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Рё РёР·РІР»РµС‡РµРЅРёСЏ СѓР·Р»РѕРІ РІ СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅРѕРј (inorder) РїСЂРѕС…РѕРґРµ
         std::stack< BinaryNode<T>* > _traversal;
 
 
