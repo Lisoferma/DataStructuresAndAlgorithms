@@ -136,22 +136,25 @@ int main()
     //auto end = bst.end();
     cout << "\nEnd: " << (bst.end() == InorderIterator<int>(nullptr, false) ? "true" : "false");
     
-    auto iterator = bst.begin();
-    auto end = bst.end();
+    cout << endl;
 
-    while (iterator != end)
+    for (int item : bst)
     {
-        cout << *iterator << " " << endl;
-        ++iterator;
+        cout << item;
     }
 
+    // Другие способы итерирования:
 
-    //for (int item : bst)
+    //auto iterator = bst.begin();
+    //auto end = bst.end();
+
+    //while (iterator != end)
     //{
-    //    cout << item;
+    //    cout << *iterator << " " << endl;
+    //    ++iterator;
     //}
 
-    //std::for_each(bst.begin(), bst.end(), [](auto item) { std::cout << item << " "; });
+    std::for_each(bst.begin(), bst.end(), [](auto item) { std::cout << item << " "; });
 
     return 0;
 }
