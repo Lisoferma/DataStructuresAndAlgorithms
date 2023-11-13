@@ -130,13 +130,8 @@ int main()
     //// Удаление всего дерева
     //bst.Delete();
     //cout << "\n\nBST is empty after delete: " << bst.IsEmpty() << endl;
-    
-    cout << "\n\nBegin: " << *bst.begin();
-
-    //auto end = bst.end();
-    cout << "\nEnd: " << (bst.end() == InorderIterator<int>(nullptr, false) ? "true" : "false");
-    
-    cout << endl;
+        
+    cout << "\n\nIterator: ";
 
     for (int item : bst)
     {
@@ -154,7 +149,7 @@ int main()
     //    ++iterator;
     //}
 
-    std::for_each(bst.begin(), bst.end(), [](auto item) { std::cout << item << " "; });
+    // std::for_each(bst.begin(), bst.end(), [](auto item) { std::cout << item << " "; });
 
     return 0;
 }
