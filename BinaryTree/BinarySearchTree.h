@@ -11,7 +11,7 @@
 namespace DSAABinaryTree
 {
 	template<typename T>
-	class BinarySearchTree //: public IIterated<T>
+	class BinarySearchTree : public IIterated<T>
 	{
 	public:
         BinarySearchTree() : root(nullptr)
@@ -117,13 +117,19 @@ namespace DSAABinaryTree
         }
 
 
-        InorderIterator<T>& begin() //override
+        /// <summary>
+        /// Получить итератор в начале коллекции.
+        /// </summary>
+        InorderIterator<T>& begin() override
         {
             return *new InorderIterator<T>(root, true);
         }
 
 
-        InorderIterator<T>& end() //override
+        /// <summary>
+        /// Получить итератор в конце коллекции.
+        /// </summary>
+        InorderIterator<T>& end() override
         {
             return *new InorderIterator<T>(nullptr, false);
         }
