@@ -10,6 +10,10 @@
 
 namespace DSAABinaryTree
 {
+	/// <summary>
+	/// Бинарное дерево поиска.
+	/// </summary>
+	/// <typeparam name="T">Тип данных который хранит дерево.</typeparam>
 	template<typename T>
 	class BinarySearchTree : public IIterated<T>
 	{
