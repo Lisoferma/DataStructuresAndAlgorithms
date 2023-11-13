@@ -26,7 +26,7 @@ namespace DSAABinaryTree
 
         bool operator ==(const IIterator<T>& iter) const override
         {
-            if (IsEnd() && iter.IsEnd())
+            if (BothIsEnd(*this, iter))
                 return true;
                 
             return _current->Data == *iter;
@@ -35,7 +35,9 @@ namespace DSAABinaryTree
 
         bool operator !=(const IIterator<T>& iter) const override
         {
-            if (IsEnd() && iter.IsEnd())
+            if (BothIsEnd(*this, iter))
+                return false;
+            else
                 return true;
 
             return _current->Data != *iter;
@@ -77,6 +79,12 @@ namespace DSAABinaryTree
         std::stack< BinaryNode<T>* > _traversal;
 
 
+        bool BothIsEnd(const IIterator<T>& iter1, const IIterator<T>& iter2) const
+        {
+            return iter1.IsEnd() && iter2.IsEnd();
+        }
+
+
         void MoveLeft(BinaryNode<T>* node)
         {
             while (node)
@@ -89,7 +97,7 @@ namespace DSAABinaryTree
         }
 
 
-        bool HasNext()
+        bool HasNext() const
         {
             return !_traversal.empty();
         }
@@ -98,8 +106,11 @@ namespace DSAABinaryTree
         void Next()
         {
             if (!HasNext())
+            {
                 _current = nullptr;
-
+                return;
+            }
+                
             BinaryNode<T>* top = _traversal.top();
             _traversal.pop();
 
