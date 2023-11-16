@@ -126,7 +126,7 @@ namespace DSAABinaryTree
         /// </summary>
         InorderIterator<T>& begin() override
         {
-            return *new InorderIterator<T>(root, true);
+            return *new InorderIterator<T>(root);
         }
 
 
