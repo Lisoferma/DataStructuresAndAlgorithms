@@ -26,11 +26,6 @@ namespace DSAABinaryTree
 		/// </summary>
 		BinaryNode* Right;
 
-		/// <summary>
-		/// Указатель на родительский узел.
-		/// </summary>
-		BinaryNode* Parent;
-
 
 		BinaryNode() = default;
 
@@ -44,7 +39,6 @@ namespace DSAABinaryTree
 			Data = data;
 			Left = nullptr;
 			Right = nullptr;
-			Parent = nullptr;
 		}
 
 
@@ -56,7 +50,7 @@ namespace DSAABinaryTree
 		/// <param name="right">Дочерний правый узел.</param>
 		/// <param name="parent">Родительский узел.</param>
 		BinaryNode(const T& data, BinaryNode* left, BinaryNode* right, BinaryNode* parent)
-			: Data(data), Left(left), Right(right), Parent(parent)
+			: Data(data), Left(left), Right(right)
 		{ }
 	};
 }

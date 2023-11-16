@@ -29,16 +29,12 @@ namespace DSAABinaryTree
 			BinaryNode<int>* root = new BinaryNode<int>(1);
 
 			root->Left = new BinaryNode<int>(2);
-			root->Left->Parent = root;
 
 			root->Right = new BinaryNode<int>(3);
-			root->Right->Parent = root;
 
 			root->Left->Left = new BinaryNode<int>(4);
-			root->Left->Left->Parent = root->Left;
 
 			root->Left->Right = new BinaryNode<int>(5);
-			root->Left->Right->Parent = root->Left;
 
 			return root;
 		}
@@ -53,16 +49,12 @@ namespace DSAABinaryTree
 			BinaryNode<int>* root = new BinaryNode<int>(6);
 
 			root->Left = new BinaryNode<int>(4);
-			root->Left->Parent = root;
 
 			root->Right = new BinaryNode<int>(7);
-			root->Right->Parent = root;
 
 			root->Left->Left = new BinaryNode<int>(3);
-			root->Left->Left->Parent = root->Left;
 
 			root->Left->Right = new BinaryNode<int>(5);
-			root->Left->Right->Parent = root->Left;
 
 			return root;
 		}
