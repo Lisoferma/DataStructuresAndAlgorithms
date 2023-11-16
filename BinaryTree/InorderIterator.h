@@ -118,7 +118,8 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Установить указател итератора на крайний левый узел от указанного.
+        /// Заполнить стэк _current
+        /// от указаного узла всеми левым узлами до крайнего левого.
         /// </summary>
         /// <param name="node">Узел от которого идти влево.</param>
         void MoveLeft(BinaryNode<T>* node)
