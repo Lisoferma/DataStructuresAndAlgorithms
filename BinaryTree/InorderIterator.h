@@ -32,7 +32,10 @@ namespace DSAABinaryTree
         InorderIterator(BinaryNode<T>* node, bool setToStart = true) : _current(node)
         {
             if (setToStart)
+            {
                 MoveLeft(_current);
+                Next();
+            }      
         }
 
 
@@ -124,9 +127,7 @@ namespace DSAABinaryTree
             {
                 _traversal.push(node);
                 node = node->Left;
-            }
-
-            _current = _traversal.top();
+            }         
         }
 
 
