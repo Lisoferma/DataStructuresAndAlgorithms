@@ -182,25 +182,6 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Получить родительский узел для узла - при котором он будет левым потомком. 
-		/// </summary>
-		/// <typeparam name="T">Тип данных узла.</typeparam>
-		/// <param name="node">Узел для которого нужно получить родителя.</param>
-		/// <returns>Указатель на найденного родителя. nullptr - если не нашлось</returns>
-		template<typename T>
-		BinaryNode<T>* GetParent(BinaryNode<T>* node)
-		{
-			if (node->Parent == nullptr)
-				return nullptr;
-
-			if (node->Parent->Left == node)
-				return node->Parent;
-			else
-				return GetParent(node->Parent);
-		}
-
-
-		/// <summary>
 		/// Получить максимальный узел.
 		/// </summary>
 		/// <typeparam name="T">Тип данных узла.</typeparam>
@@ -237,21 +218,62 @@ namespace DSAABinaryTree
 
 
 		/// <summary>
-		/// Получить следующего наибольшего преемника узла.
+		/// Получить узел преемник для указанного ключа.
 		/// </summary>
 		/// <typeparam name="T">Тип данных узла.</typeparam>
-		/// <param name="root">Узел для которого ищется следующий наибольший узел.</param>
-		/// <returns>Указатель на найденный узел.</returns>
+		/// <param name="root">Корень дерева.</param>
+		/// <param name="key">Ключ для которого нужно найти преемника.</param>
+		/// <returns>Найденный узел.</returns>
 		template<typename T>
-		BinaryNode<T>* GetInOrderSuccessor(BinaryNode<T>* root)
+		BinaryNode<T>* Successor(BinaryNode<T>* root, int key)
 		{
-			if (root == nullptr)
-				return nullptr;
+			BinaryNode<T>* temp = root;
+			BinaryNode<T>* s = nullptr;
 
-			if (root->Right)
-				return GetMinimumNode(root->Right);
-			else
-				return GetParent(root);
+			while (temp != nullptr)
+			{
+				if (temp->Data < key)
+				{
+					temp = temp->Right;
+				}
+				else if (temp->Data > key)
+				{
+					temp = temp->Left;
+				}
+				// если ключ найден в узле, то самый левый узел правого поддерева
+				// является преемником ключа
+				else if (temp->Data == key)
+				{
+					// находит крайний левый узел правого поддерева
+					if (temp->Right != nullptr)
+					{
+						temp = GetMinimumNode(temp->Right);
+					}
+					// если правого поддерева не существует, то преемником
+					// будет узел, от которого сделан последний поворот налево
+					else
+					{
+						// переход начинается от корня к этому узлу
+						while (root->Data != key)
+						{
+							// если ключ меньше корневого, переходит в левое поддерево
+							// s сохраняет узел, откуда берется левый поворот
+							if (key < root->Data)
+							{
+								s = root;
+								root = root->Left;
+							}
+							// иначе, к правому поддереву
+							else
+								root = root->Right;
+						}
+						temp = s;
+					}
+					return temp;
+				}
+			}
+
+			return nullptr;
 		}
 
 	

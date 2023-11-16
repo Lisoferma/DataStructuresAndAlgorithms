@@ -87,7 +87,7 @@ int main()
     cout << "\n\nFind node: " << findedNode->Data;
 
     // Поиск следующего наибольшего
-    BinaryNode<int>* successor = GetInOrderSuccessor(findedNode);
+    BinaryNode<int>* successor = Successor(root, 4);
     cout << "\n\nSuccessor for 4: " << successor->Data;
 
     // Удаление узла по ключу
