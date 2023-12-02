@@ -1,4 +1,4 @@
-// @author Lisoferma
+п»ї// @author Lisoferma
 
 #include <iostream>
 #include "Heap.h"
@@ -7,10 +7,10 @@ using namespace std;
 
 int main()
 {
-    // Создать кучу целых чисел
+    // РЎРѕР·РґР°С‚СЊ РєСѓС‡Сѓ С†РµР»С‹С… С‡РёСЃРµР»
     Heap<int> integerHeap;
 
-    // Вставка элементов
+    // Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚РѕРІ
     integerHeap.Insert(10);
     integerHeap.Insert(5);
     integerHeap.Insert(7);
@@ -19,15 +19,15 @@ int main()
     integerHeap.Insert(200);
     integerHeap.Insert(1);
 
-    // Инициализация кучи вектором
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєСѓС‡Рё РІРµРєС‚РѕСЂРѕРј
     //vector<int> integerVector{ 10, 5, 7, 15, 4, 200, 1 };
     //Heap<int> heapFromVector(integerVector);
 
-    // Удаление элементов
+    // РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ
     integerHeap.Remove(7);
     integerHeap.Remove(1);
 
-    // Получить вектор из кучи
+    // РџРѕР»СѓС‡РёС‚СЊ РІРµРєС‚РѕСЂ РёР· РєСѓС‡Рё
     vector<int> heapVector;
     integerHeap.CopyToVector(heapVector);
 
@@ -35,16 +35,16 @@ int main()
     for (int item : heapVector)
         cout << item << " ";
 
-    // Получить минимальный элемент
+    // РџРѕР»СѓС‡РёС‚СЊ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚
     cout << "\nTop element: " << integerHeap.Top() << endl;
 
-    // Удалить минимальный элемент
+    // РЈРґР°Р»РёС‚СЊ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚
     integerHeap.Pop();
 
-    // Получить минимальный элемент после извлечения предыдущего
+    // РџРѕР»СѓС‡РёС‚СЊ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РїРѕСЃР»Рµ РёР·РІР»РµС‡РµРЅРёСЏ РїСЂРµРґС‹РґСѓС‰РµРіРѕ
     cout << "Top element after Pop(): " << integerHeap.Top() << endl;
 
-    // Проверка на пустую кучу
+    // РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚СѓСЋ РєСѓС‡Сѓ
     if (integerHeap.IsEmpty())
     {
         cout << "Heap is empty" << endl;
