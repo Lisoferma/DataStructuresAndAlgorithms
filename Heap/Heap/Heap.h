@@ -89,7 +89,7 @@ public:
     /// Получить минимальный элемент.
     /// </summary>
     /// <returns>Минимальный элемент.</returns>
-    T Top()
+    const T& Top()
     {
         if (IsEmpty())
         {
