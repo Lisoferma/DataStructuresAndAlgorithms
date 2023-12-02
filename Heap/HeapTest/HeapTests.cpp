@@ -1,4 +1,4 @@
-// @author Lisoferma
+п»ї// @author Lisoferma
 
 #include <vector>
 #include <stdexcept>
@@ -7,9 +7,9 @@
 
 
 /// <summary>
-/// Проверить сохранила ли куча свойства кучи.
+/// РџСЂРѕРІРµСЂРёС‚СЊ СЃРѕС…СЂР°РЅРёР»Р° Р»Рё РєСѓС‡Р° СЃРІРѕР№СЃС‚РІР° РєСѓС‡Рё.
 /// </summary>
-/// <typeparam name="T">Тип данных кучи</typeparam>
+/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєСѓС‡Рё</typeparam>
 /// <param name="heap"></param>
 /// <returns></returns>
 template <typename T>
@@ -22,11 +22,11 @@ bool IsMinHeap(const Heap<T>& heap)
 
 
 /// <summary>
-/// Является ли вектор минимальной кучей.
+/// РЇРІР»СЏРµС‚СЃСЏ Р»Рё РІРµРєС‚РѕСЂ РјРёРЅРёРјР°Р»СЊРЅРѕР№ РєСѓС‡РµР№.
 /// </summary>
-/// <param name="vector">Вектор который нужно проверить.</param>
-/// <param name="index">Индекс с которого начать проверку.</param>
-/// <typeparam name="T">Тип данных который содержит вектор.</typeparam>
+/// <param name="vector">Р’РµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ.</param>
+/// <param name="index">РРЅРґРµРєСЃ СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ.</param>
+/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂС‹Р№ СЃРѕРґРµСЂР¶РёС‚ РІРµРєС‚РѕСЂ.</typeparam>
 template <typename T>
 bool VectorIsMinHeap(const std::vector<T>& vector, size_t index)
 {
