@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <vector>
 #include <stdexcept>
 
@@ -97,6 +96,16 @@ public:
         }
 
         return _heapArray[1];;
+    }
+
+
+    /// <summary>
+    /// Скопировать кучу в вектор.
+    /// </summary>
+    /// <param name="copyVector">Вектор который будет принимать данные кучи.</param>
+    void CopyToVector(std::vector<T>& copyVector)
+    {
+        copyVector.insert(copyVector.begin(), _heapArray.begin() + 1, _heapArray.end());
     }
 
 
