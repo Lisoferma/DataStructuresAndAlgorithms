@@ -7,11 +7,10 @@
 
 
 /// <summary>
-/// Проверить сохранила ли куча свойства кучи.
+/// Является ли заданная куча минимальной кучей.
 /// </summary>
 /// <typeparam name="T">Тип данных кучи</typeparam>
-/// <param name="heap"></param>
-/// <returns></returns>
+/// <param name="heap">Куча которую нужно проверить</param>
 template <typename T>
 bool IsMinHeap(const Heap<T>& heap)
 {
@@ -22,7 +21,7 @@ bool IsMinHeap(const Heap<T>& heap)
 
 
 /// <summary>
-/// Является ли вектор минимальной кучей.
+/// Является ли заданный вектор минимальной кучей.
 /// </summary>
 /// <param name="vector">Вектор который нужно проверить.</param>
 /// <param name="index">Индекс с которого начать проверку.</param>
