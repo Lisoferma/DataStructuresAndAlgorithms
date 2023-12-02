@@ -81,7 +81,22 @@ public:
 
 
     /// <summary>
-    /// Извлечь минимальный элемент.
+    /// Получить минимальный элемент.
+    /// </summary>
+    /// <returns>Минимальный элемент.</returns>
+    const T& Top() const
+    {
+        if (IsEmpty())
+        {
+            throw std::out_of_range("Heap is empty.");
+        }
+
+        return _heapArray[1];;
+    }
+
+
+    /// <summary>
+    /// Удалить минимальный элемент.
     /// </summary>
     /// <returns>Минимальный элемент.</returns>
     void Pop()
@@ -94,21 +109,6 @@ public:
         _heapArray[1] = _heapArray.back();
         _heapArray.pop_back();
         HeapifyDown(1);
-    }
-
-
-    /// <summary>
-    /// Получить минимальный элемент.
-    /// </summary>
-    /// <returns>Минимальный элемент.</returns>
-    const T& Top() const
-    {
-        if (IsEmpty())
-        {
-            throw std::out_of_range("Heap is empty.");
-        }
-
-        return _heapArray[1];;
     }
 
 
