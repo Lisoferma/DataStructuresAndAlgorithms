@@ -101,7 +101,7 @@ public:
     /// Получить минимальный элемент.
     /// </summary>
     /// <returns>Минимальный элемент.</returns>
-    const T& Top()
+    const T& Top() const
     {
         if (IsEmpty())
         {
@@ -116,7 +116,7 @@ public:
     /// Скопировать кучу в вектор.
     /// </summary>
     /// <param name="copyVector">Вектор который будет принимать данные кучи.</param>
-    void CopyToVector(std::vector<T>& copyVector)
+    void CopyToVector(std::vector<T>& copyVector) const
     {
         copyVector.insert(copyVector.begin(), _heapArray.begin() + 1, _heapArray.end());
     }
@@ -125,7 +125,7 @@ public:
     /// <summary>
     /// Пустая ли куча.
     /// </summary>
-    bool IsEmpty()
+    bool IsEmpty() const
     {
         return _heapArray.size() == 1;
     }
@@ -197,7 +197,7 @@ private:
     /// Проверить выходит ли индекс за пределы кучи. 
     /// </summary>
     /// <param name="index">Индекс элемента кучи который нужно проверить.</param>
-    bool IsOutOfRange(size_t index)
+    bool IsOutOfRange(size_t index) const
     {
         return index >= _heapArray.size() || index < 1;
     }
