@@ -1,3 +1,5 @@
+// @author Lisoferma
+
 #pragma once
 
 #include <vector>
@@ -18,6 +20,17 @@ public:
     {
         // Заглушка для отсчёта элементов с индекса 1.
         _heapArray.push_back(T());
+    }
+
+
+    /// <summary>
+    /// Инициализировать кучу вектором.
+    /// </summary>
+    /// <param name="vector">Вектор который содержит данные для кучи.</param>
+    Heap(const std::vector<T>& vector) : Heap()
+    {
+        for (const T& item : vector)
+            Insert(item);
     }
 
 

@@ -1,3 +1,5 @@
+// @author Lisoferma
+
 #include <iostream>
 #include "Heap.h"
 
@@ -16,6 +18,10 @@ int main()
     integerHeap.Insert(4);
     integerHeap.Insert(200);
     integerHeap.Insert(1);
+
+    // Инициализация кучи вектором
+    //vector<int> integerVector{ 10, 5, 7, 15, 4, 200, 1 };
+    //Heap<int> heapFromVector(integerVector);
 
     // Удаление элементов
     integerHeap.Remove(7);
