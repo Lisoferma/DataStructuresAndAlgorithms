@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Heap.h"
 
+using namespace std;
+
 int main()
 {
     // Создать кучу целых чисел
@@ -19,23 +21,31 @@ int main()
     integerHeap.Remove(7);
     integerHeap.Remove(1);
 
+    // Получить вектор из кучи
+    vector<int> heapVector;
+    integerHeap.CopyToVector(heapVector);
+
+    cout << "Heap: ";
+    for (int item : heapVector)
+        cout << item << " ";
+
     // Получить минимальный элемент
-    std::cout << "Top element: " << integerHeap.Top() << std::endl;
+    cout << "\nTop element: " << integerHeap.Top() << endl;
 
     // Удалить минимальный элемент
     integerHeap.Pop();
 
     // Получить минимальный элемент после извлечения предыдущего
-    std::cout << "Top element after Pop(): " << integerHeap.Top() << std::endl;
+    cout << "Top element after Pop(): " << integerHeap.Top() << endl;
 
     // Проверка на пустую кучу
     if (integerHeap.IsEmpty())
     {
-        std::cout << "Heap is empty" << std::endl;
+        cout << "Heap is empty" << endl;
     }
     else
     {
-        std::cout << "Heap is not empty" << std::endl;
+        cout << "Heap is not empty" << endl;
     }
 
     return 0;
