@@ -53,6 +53,30 @@ public:
         _heapArray = heap._heapArray;
         heap._heapArray = nullptr;
     }
+    
+
+    Heap& operator=(const Heap& heap)
+    {
+        if (heap != this)
+        {
+            _heapArray.clear();
+            heap.CopyToVector(_heapArray, 1);
+        }
+
+        return *this;
+    }
+
+
+    Heap& operator=(Heap&& heap)
+    {
+        if (&heap != this)
+        {
+            _heapArray = heap._heapArray;
+            heap._heapArray = nullptr;
+        }
+
+        return *this;
+    }
 
 
     /// <summary>
