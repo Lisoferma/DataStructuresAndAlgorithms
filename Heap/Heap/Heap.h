@@ -35,6 +35,27 @@ public:
 
 
     /// <summary>
+    /// Конструктор копирования.
+    /// </summary>
+    /// <param name="heap">Куча которую нужно скопировать в текущую.</param>
+    Heap(const Heap& heap) : Heap()
+    {
+        heap.CopyToVector(_heapArray, 1);
+    }
+
+
+    /// <summary>
+    /// Конструктор перемещения.
+    /// </summary>
+    /// <param name="heap">Куча которую нужно переместить в текущую.</param>
+    Heap(Heap&& heap)
+    {
+        _heapArray = heap._heapArray;
+        heap._heapArray = nullptr;
+    }
+
+
+    /// <summary>
     /// Вставить элемент в кучу.
     /// </summary>
     /// <param name="value">Элемент который нужно вставить.</param>

@@ -18,10 +18,9 @@ int main()
     integerHeap.Insert(4);
     integerHeap.Insert(200);
     integerHeap.Insert(1);
-
-    // Инициализация кучи вектором
-    //vector<int> integerVector{ 10, 5, 7, 15, 4, 200, 1 };
-    //Heap<int> heapFromVector(integerVector);
+    
+    // Инициализация с помощью котнструктора перемещения и вектора
+    // Heap<int> heap(Heap<int>(vector<int>{5, 2, 3, 1, 10}));
 
     // Удаление элементов
     integerHeap.Remove(7);
