@@ -119,7 +119,9 @@ public:
     /// <param name="index">Индекс с которого записывать копируемые данные в заданный вектор.</param>
     void CopyToVector(std::vector<T>& copyVector, size_t index) const
     {
-        copyVector.insert(copyVector.begin(), _heapArray.begin() + 1, _heapArray.end());
+        copyVector.insert(copyVector.begin() + index,
+            _heapArray.begin() + 1,
+            _heapArray.end());
     }
 
 
