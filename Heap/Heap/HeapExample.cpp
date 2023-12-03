@@ -29,7 +29,7 @@ int main()
 
     // Получить вектор из кучи
     vector<int> heapVector;
-    integerHeap.CopyToVector(heapVector);
+    integerHeap.CopyToVector(heapVector, 0);
 
     cout << "Heap: ";
     for (int item : heapVector)

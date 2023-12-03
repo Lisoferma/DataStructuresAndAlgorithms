@@ -116,7 +116,8 @@ public:
     /// Скопировать кучу в вектор.
     /// </summary>
     /// <param name="copyVector">Вектор который будет принимать данные кучи.</param>
-    void CopyToVector(std::vector<T>& copyVector) const
+    /// <param name="index">Индекс с которого записывать копируемые данные в заданный вектор.</param>
+    void CopyToVector(std::vector<T>& copyVector, size_t index) const
     {
         copyVector.insert(copyVector.begin(), _heapArray.begin() + 1, _heapArray.end());
     }

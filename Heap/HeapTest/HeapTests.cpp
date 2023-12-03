@@ -15,7 +15,7 @@ template <typename T>
 bool IsMinHeap(const Heap<T>& heap)
 {
 	std::vector<T> vectorHeap;
-	heap.CopyToVector(vectorHeap);
+	heap.CopyToVector(vectorHeap, 0);
 	return VectorIsMinHeap(vectorHeap, 0);
 }
 
@@ -153,6 +153,9 @@ TEST(CopyToVector, CopyFilledHeapToVector_VectorIsHeap)
 {
 	std::vector<int> initVector{ 10, 5, 7, 15, 4, 200, 12 };
 	Heap<int> heap(initVector);
+	std::vector<int> copyHeap;
 
-	EXPECT_TRUE(IsMinHeap(heap));
+	heap.CopyToVector(copyHeap, 0);
+
+	EXPECT_TRUE(VectorIsMinHeap(copyHeap, 0));
 }
