@@ -1,6 +1,7 @@
 ﻿// @author Lisoferma
 
 #include <iostream>
+#include <algorithm>
 #include "Heap.h"
 
 using namespace std;
@@ -44,14 +45,43 @@ int main()
     cout << "Top element after Pop(): " << integerHeap.Top() << endl;
 
     // Проверка на пустую кучу
-    if (integerHeap.IsEmpty())
-    {
-        cout << "Heap is empty" << endl;
-    }
-    else
-    {
-        cout << "Heap is not empty" << endl;
-    }
+    integerHeap.IsEmpty()
+        ? cout << "Heap is empty" << endl
+        : cout << "Heap is not empty" << endl;
+
+
+    // Куча в STL
+    vector<int> v1 = { 10, 5, 7, 15, 4, 200, 1 };
+
+    // Конвертировать контейнер в кучу на выбранном отрезке
+    make_heap(v1.begin(), v1.end());
+
+    cout << "\nHeap STL: ";
+    for (int item : v1)
+        cout << item << " ";
+
+    // Проверка на кучу
+    is_heap(v1.begin(), v1.end())
+        ? cout << "\nThe container is max-heap "
+        : cout << "\nThe container is not max-heap";
+
+    // push_heap используется только после добавления элемента в конец
+    v1.push_back(50);
+    push_heap(v1.begin(), v1.end());
+
+    cout << "\nHeap after push_heap(): ";
+    for (int item : v1)
+        cout << item << " ";
+
+    // Перемещает наибольший элемент в конец
+    pop_heap(v1.begin(), v1.end());
+
+    // Теперь можно удалить наибольший элемент
+    v1.pop_back();
+
+    cout << "\nHeap after pop_heap(): ";
+    for (int item : v1)
+        cout << item << " ";
 
     return 0;
 }
