@@ -18,9 +18,6 @@
     <ClCompile Include="BinaryTreeExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BinaryNodeTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTreeService.h">
