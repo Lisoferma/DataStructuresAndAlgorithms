@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 int main()
 {
     vector<int> v1{ 12, 11, 13, 5, 6, 7, 20, -5, -6, 0 };
@@ -16,11 +15,11 @@ int main()
     for (int item : v1)
         cout << item << " ";
 
-    vector<int> v2{ 12, 11, 13, 5, 6, 7, 20, -5, -6, 0 };
+    //vector<int> v2{ 0, 12, 11, 13, 5, 6, 7, 20, -5, -6, 1 };
 
-    TournamentSort(v2);
+    //TournamentSort(v2);
 
-    cout << "\nVector after tournament sort: ";
-    for (int item : v2)
-        cout << item << " ";
+    //cout << "\nVector after tournament sort: ";
+    //for (int item : v2)
+    //    cout << item << " ";
 }
