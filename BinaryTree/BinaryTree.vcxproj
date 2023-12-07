@@ -133,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryNode.h" />
-    <ClInclude Include="BinaryNodeTests.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="IIterated.h" />
     <ClInclude Include="InorderIterator.h" />

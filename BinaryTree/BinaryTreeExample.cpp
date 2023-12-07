@@ -1,7 +1,6 @@
 ﻿//@author Lisoferma
 
 #include "BinaryNode.h"
-#include "BinaryNodeTests.h"
 #include "BinarySearchTree.h"
 #include "BinaryTreeService.h"
 #include <vector>
@@ -41,8 +40,6 @@ void VectorPrintToConsole(const vector<T>& vector)
 // Пример работы с двоичным деревом
 int main()
 {
-    TreeNodeTests::TreeNode_CreateTree_DataIsEqualInitial();
-
     BinaryNode<int>* root = CreateBinarySearchTree();
 
     // Созданное дерево:
