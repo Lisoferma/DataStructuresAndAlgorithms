@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "../../BinarySearchTree.h"
-#include "../../BinaryTreeService.h"
+#include "../../BinaryTree/BinarySearchTree.h"
+#include "../../BinaryTree/BinaryTreeService.h"
 #include <vector>
 
 using namespace DSAABinaryTree;

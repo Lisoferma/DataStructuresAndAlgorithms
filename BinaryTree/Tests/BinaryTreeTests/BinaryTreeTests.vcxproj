@@ -45,12 +45,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BinaryTree.vcxproj">
-      <Project>{e556dbd2-d6f7-4bb0-8966-59bbf026732b}</Project>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\BinaryTree\BinaryTree.vcxproj">
+      <Project>{e556dbd2-d6f7-4bb0-8966-59bbf026732b}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
