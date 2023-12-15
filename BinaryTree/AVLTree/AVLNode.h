@@ -1,4 +1,4 @@
-//@author Lisoferma
+п»ї//@author Lisoferma
 
 #pragma once
 
@@ -9,29 +9,29 @@ using namespace DSAABinaryTree;
 namespace DSAAVLTree
 {
 	/// <summary>
-	///	Узел АВЛ-дерева.
+	///	РЈР·РµР» РђР’Р›-РґРµСЂРµРІР°.
 	/// </summary>
 	/// <typeparam name="T">
-	///	Тип данных который хранит узел.
+	///	РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ СѓР·РµР».
 	/// </typeparam>
 	template<typename T>
 	struct AVLNode : BinaryNode<T>
 	{
 		/// <summary>
-		/// Высота поддерева с корнем в данном узле.
+		/// Р’С‹СЃРѕС‚Р° РїРѕРґРґРµСЂРµРІР° СЃ РєРѕСЂРЅРµРј РІ РґР°РЅРЅРѕРј СѓР·Р»Рµ.
 		/// </summary>
 		unsigned char Height;
 
 
 		/// <summary>
-		/// Инициализирует узел с высотой равной 1.
+		/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СѓР·РµР» СЃ РІС‹СЃРѕС‚РѕР№ СЂР°РІРЅРѕР№ 1.
 		/// </summary>
 		AVLNode() : Height(1)
 		{ }
 
 
 		/// <summary>
-		/// Инициализирует узел с высотой равной 1.
+		/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СѓР·РµР» СЃ РІС‹СЃРѕС‚РѕР№ СЂР°РІРЅРѕР№ 1.
 		/// </summary>
 		AVLNode(const T& data) : BinaryNode<T>(data)
 		{

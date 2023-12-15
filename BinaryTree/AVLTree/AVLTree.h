@@ -1,4 +1,4 @@
-//@author Lisoferma
+п»ї//@author Lisoferma
 
 #pragma once
 
@@ -12,9 +12,9 @@ namespace DSAAVLTree
 	{
 	public:
 		/// <summary>
-		/// Вставить данные в дерево.
+		/// Р’СЃС‚Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ РІ РґРµСЂРµРІРѕ.
 		/// </summary>
-		/// <param name="data">Данные которые нужно вставить.</param>
+		/// <param name="data">Р”Р°РЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ.</param>
 		void Insert(const T& data)
 		{
 			_root = Insert(_root, data);
@@ -22,15 +22,15 @@ namespace DSAAVLTree
 
 
 	private:
-		// Корень АВЛ-дерева
+		// РљРѕСЂРµРЅСЊ РђР’Р›-РґРµСЂРµРІР°
 		AVLNode<T>* _root;
 
 
 		/// <summary>
-		/// Вспомогательный метод для получения высоты поддерева
-		/// с корнем в указаном узле с проверкой на пустоту (nullptr).
+		/// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РІС‹СЃРѕС‚С‹ РїРѕРґРґРµСЂРµРІР°
+		/// СЃ РєРѕСЂРЅРµРј РІ СѓРєР°Р·Р°РЅРѕРј СѓР·Р»Рµ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° РїСѓСЃС‚РѕС‚Сѓ (nullptr).
 		/// </summary>
-		/// <param name="node">Узел у которого нужно получить высоту.</param>
+		/// <param name="node">РЈР·РµР» Сѓ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РІС‹СЃРѕС‚Сѓ.</param>
 		unsigned char GetHeight(AVLNode<T>* node)
 		{
 			return node == nullptr ? 0 : node->Height;
@@ -38,9 +38,9 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Восстановить коректное значение поля Height заданного узла.
+		/// Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РєРѕСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ Height Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°.
 		/// </summary>
-		/// <param name="node">Узел в котором нужно восстановить высоту.</param>
+		/// <param name="node">РЈР·РµР» РІ РєРѕС‚РѕСЂРѕРј РЅСѓР¶РЅРѕ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РІС‹СЃРѕС‚Сѓ.</param>
 		void FixHeight(AVLNode<T>* node)
 		{
 			unsigned char HeightLeft = GetHeight(node->Left);
@@ -51,9 +51,9 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Получить баланс фактор заданного узла.
+		/// РџРѕР»СѓС‡РёС‚СЊ Р±Р°Р»Р°РЅСЃ С„Р°РєС‚РѕСЂ Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°.
 		/// </summary>
-		/// <param name="node">Узел для которого нужно найти баланс фактор.</param>
+		/// <param name="node">РЈР·РµР» РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё Р±Р°Р»Р°РЅСЃ С„Р°РєС‚РѕСЂ.</param>
 		/// <returns></returns>
 		int GetBalanceFactor(AVLNode<T>* node)
 		{
@@ -65,10 +65,10 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Правый поворот вокруг заданного узла.
+		/// РџСЂР°РІС‹Р№ РїРѕРІРѕСЂРѕС‚ РІРѕРєСЂСѓРі Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°.
 		/// </summary>
-		/// <param name="node">Узел для которого сделать поворот.</param>
-		/// <returns>Новый корень дерева.</returns>
+		/// <param name="node">РЈР·РµР» РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃРґРµР»Р°С‚СЊ РїРѕРІРѕСЂРѕС‚.</param>
+		/// <returns>РќРѕРІС‹Р№ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</returns>
 		AVLNode<T>* RotateRight(AVLNode<T>* node)
 		{
 			if (node == nullptr)
@@ -86,10 +86,10 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Левый поворот вокруг заданного узла.
+		/// Р›РµРІС‹Р№ РїРѕРІРѕСЂРѕС‚ РІРѕРєСЂСѓРі Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°.
 		/// </summary>
-		/// <param name="node">Узел для которого сделать поворот.</param>
-		/// <returns>Новый корень дерева.</returns>
+		/// <param name="node">РЈР·РµР» РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃРґРµР»Р°С‚СЊ РїРѕРІРѕСЂРѕС‚.</param>
+		/// <returns>РќРѕРІС‹Р№ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</returns>
 		AVLNode<T>* RotateLeft(AVLNode<T>* node)
 		{
 			if (node == nullptr)
@@ -107,10 +107,10 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Балансировка заданного узла.
+		/// Р‘Р°Р»Р°РЅСЃРёСЂРѕРІРєР° Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°.
 		/// </summary>
-		/// <param name="node">Узел для которого произвести балансировку.</param>
-		/// <returns>Новый корень дерева.</returns>
+		/// <param name="node">РЈР·РµР» РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРёР·РІРµСЃС‚Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєСѓ.</param>
+		/// <returns>РќРѕРІС‹Р№ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</returns>
 		AVLNode<T>* Balance(AVLNode<T>* node)
 		{
 			if (node == nullptr)
@@ -134,17 +134,17 @@ namespace DSAAVLTree
 				return RotateRight(node);
 			}
 
-			// Если балансировка не нужна.
+			// Р•СЃР»Рё Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєР° РЅРµ РЅСѓР¶РЅР°.
 			return node;
 		}
 
 
 		/// <summary>
-		/// Вставить данные в дерево.
+		/// Р’СЃС‚Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ РІ РґРµСЂРµРІРѕ.
 		/// </summary>
-		/// <param name="root">Корень дерева.</param>
-		/// <param name="data">Данные которые нужно вставить.</param>
-		/// <returns>Новый корень дерева.</returns>
+		/// <param name="root">РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</param>
+		/// <param name="data">Р”Р°РЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ.</param>
+		/// <returns>РќРѕРІС‹Р№ РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</returns>
 		AVLNode<T>* Insert(AVLNode<T>* root, const T& data)
 		{
 			if (root == nullptr)
@@ -159,12 +159,12 @@ namespace DSAAVLTree
 		}
 
 
-		//node* findmin(node* p) // поиск узла с минимальным ключом в дереве p 
+		//node* findmin(node* p) // РїРѕРёСЃРє СѓР·Р»Р° СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј РєР»СЋС‡РѕРј РІ РґРµСЂРµРІРµ p 
 		//{
 		//	return p->left ? findmin(p->left) : p;
 		//}
 
-		//node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
+		//node* removemin(node* p) // СѓРґР°Р»РµРЅРёРµ СѓР·Р»Р° СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј РєР»СЋС‡РѕРј РёР· РґРµСЂРµРІР° p
 		//{
 		//	if (p->left == 0)
 		//		return p->right;
@@ -172,7 +172,7 @@ namespace DSAAVLTree
 		//	return balance(p);
 		//}
 
-		//node* remove(node* p, int k) // удаление ключа k из дерева p
+		//node* remove(node* p, int k) // СѓРґР°Р»РµРЅРёРµ РєР»СЋС‡Р° k РёР· РґРµСЂРµРІР° p
 		//{
 		//	if (!p) return 0;
 		//	if (k < p->key)
