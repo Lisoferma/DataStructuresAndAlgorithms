@@ -37,5 +37,17 @@ namespace DSAAVLTree
 		{
 			Height = 1;
 		}
+
+
+		AVLNode<T>* GetLeft()
+		{
+			return static_cast<AVLNode<T>*>(this->Left);
+		}
+
+
+		AVLNode<T>* GetRight()
+		{
+			return static_cast<AVLNode<T>*>(this->Right);
+		}
 	};
 }

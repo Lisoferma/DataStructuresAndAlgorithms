@@ -12,6 +12,13 @@ namespace DSAAVLTree
 	{
 	public:
 		/// <summary>
+		/// Инициализировать пустое дерево.
+		/// </summary>
+		AVLTree() : _root(nullptr)
+		{ }
+
+
+		/// <summary>
 		/// Вставить данные в дерево.
 		/// </summary>
 		/// <param name="data">Данные которые нужно вставить.</param>
@@ -43,8 +50,8 @@ namespace DSAAVLTree
 		/// <param name="node">Узел в котором нужно восстановить высоту.</param>
 		void FixHeight(AVLNode<T>* node)
 		{
-			unsigned char HeightLeft = GetHeight(node->Left);
-			unsigned char HeightRight = GetHeight(node->Right);
+			unsigned char HeightLeft = GetHeight(node->GetLeft());
+			unsigned char HeightRight = GetHeight(node->GetRight());
 
 			node->Height = (HeightLeft > HeightRight ? HeightLeft : HeightRight) + 1;
 		}
@@ -60,7 +67,7 @@ namespace DSAAVLTree
 			if (node == nullptr)
 				throw std::invalid_argument("Node must not be nullptr.");
 
-			return GetHeight(node->Right) - GetHeight(node->Left);
+			return GetHeight(node->GetRight()) - GetHeight(node->GetLeft());
 		}
 
 
@@ -74,9 +81,9 @@ namespace DSAAVLTree
 			if (node == nullptr)
 				throw std::invalid_argument("Node must not be nullptr.");
 
-			AVLNode<T>* q = node->Left;
-			node->Left = q->right;
-			q->right = node;
+			AVLNode<T>* q = node->GetLeft();
+			node->Left = q->GetRight();
+			q->Right = node;
 
 			FixHeight(node);
 			FixHeight(q);
@@ -95,8 +102,8 @@ namespace DSAAVLTree
 			if (node == nullptr)
 				throw std::invalid_argument("Node must not be nullptr.");
 
-			AVLNode<T>* p = node->Right;
-			node->Right = p->Left;
+			AVLNode<T>* p = node->GetRight();
+			node->Right = p->GetLeft();
 			p->Left = node;
 
 			FixHeight(node);
@@ -120,16 +127,16 @@ namespace DSAAVLTree
 
 			if (GetBalanceFactor(node) == 2)
 			{
-				if (GetBalanceFactor(node->Right) < 0)
-					node->Right = RotateRight(node->Right);
+				if (GetBalanceFactor(node->GetRight()) < 0)
+					node->Right = RotateRight(node->GetRight());
 
 				return RotateLeft(node);
 			}
 
 			if (GetBalanceFactor(node) == -2)
 			{
-				if (GetBalanceFactor(node->Left) > 0)
-					node->Left = RotateLeft(node->Left);
+				if (GetBalanceFactor(node->GetLeft()) > 0)
+					node->Left = RotateLeft(node->GetLeft());
 
 				return RotateRight(node);
 			}
@@ -151,9 +158,9 @@ namespace DSAAVLTree
 				return new AVLNode<T>(data);
 
 			if (data < root->Data)
-				root->Left = Insert(root->Left, data);
+				root->Left = Insert(root->GetLeft(), data);
 			else
-				root->Right = Insert(root->Right, data);
+				root->Right = Insert(root->GetRight(), data);
 
 			return Balance(root);
 		}
