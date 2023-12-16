@@ -56,6 +56,9 @@ namespace DSAAVLTree
 		/// </summary>
 		T MaxItem() const
 		{
+			if (IsEmpty())
+				throw std::out_of_range("Tree is empty.");
+
 			return BinaryTreeService::GetMaximumNode(_root)->Data;
 		}
 
@@ -65,15 +68,21 @@ namespace DSAAVLTree
 		/// </summary>
 		T MinItem() const
 		{
+			if (IsEmpty())
+				throw std::out_of_range("Tree is empty.");
+
 			return BinaryTreeService::GetMinimumNode(_root)->Data;
 		}
 
 
 		/// <summary>
-		/// Высота дерева.
+		/// Высота дерева, -1 если пустое.
 		/// </summary>
 		int GetHeight() const
 		{
+			if (IsEmpty())
+				return -1;
+
 			return _root->Height - 1;
 		}
 
@@ -100,7 +109,7 @@ namespace DSAAVLTree
 		/// <summary>
 		/// Получить корень дерева.
 		/// </summary>
-		const AVLNode<T>* GetRoot()
+		AVLNode<T>* GetRoot()
 		{
 			return _root;
 		}
