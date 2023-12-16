@@ -19,6 +19,17 @@ namespace DSAAVLTree
 		AVLTree() : _root(nullptr)
 		{ }
 
+		
+		/// <summary>
+		/// Инициализировать дерево вектрором.
+		/// </summary>
+		/// <param name="dataVector">Вектор который содержит данные для вставки в дерево.</param>
+		AVLTree(const std::vector<T>& dataVector) : AVLTree()
+		{
+			for (T data : dataVector)
+				Insert(data);
+		}
+
 
 		/// <summary>
 		/// Вставить данные в дерево.
