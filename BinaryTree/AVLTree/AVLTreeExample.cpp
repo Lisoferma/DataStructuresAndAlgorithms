@@ -1,4 +1,4 @@
-// @author Lisoferma
+п»ї// @author Lisoferma
 
 #include <iostream>
 #include "AVLTree.h"
@@ -10,7 +10,7 @@ int main()
 {
     AVLTree<int> tree;
     
-    // Вставка данных
+    // Р’СЃС‚Р°РІРєР° РґР°РЅРЅС‹С…
     tree.Insert(7);
     tree.Insert(6);
     tree.Insert(5);
@@ -20,11 +20,11 @@ int main()
     tree.Insert(1);
     tree.Insert(0);
     
-    // Удаление данных
+    // РЈРґР°Р»РµРЅРёРµ РґР°РЅРЅС‹С…
     tree.Remove(4);
     tree.Remove(7);
 
-    // Полученное дерево:
+    // РџРѕР»СѓС‡РµРЅРЅРѕРµ РґРµСЂРµРІРѕ:
     // 
     //         2
     //        / \
@@ -32,5 +32,7 @@ int main()
     //      /   / \
     //     0   3   6
 
-    cout << "Height: " << tree.GetHeight();
+    cout << "Min: " << tree.MinItem() << endl;
+    cout << "Max: " << tree.MaxItem() << endl;
+    cout << "Height: " << tree.GetHeight() << endl;
 }
