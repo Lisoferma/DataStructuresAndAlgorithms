@@ -113,6 +113,9 @@ namespace DSAAVLTree
 		/// <summary>
 		/// Получить корень дерева.
 		/// </summary>
+		/// <remarks>
+		/// Только для тестов. Не изменяйте корень.
+		/// </remarks>
 		AVLNode<T>* GetRoot()
 		{
 			return _root;
