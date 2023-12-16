@@ -60,7 +60,7 @@ namespace DSAAVLTree
 		/// <summary>
 		/// Высота дерева.
 		/// </summary>
-		int GetHeight()
+		int GetHeight() const
 		{
 			return _root->Height - 1;
 		}
@@ -83,7 +83,7 @@ namespace DSAAVLTree
 		{
 			BinaryTreeService::Delete(_root);
 		}
-
+		
 
 	private:
 		// Корень АВЛ-дерева
@@ -95,7 +95,7 @@ namespace DSAAVLTree
 		/// с корнем в указаном узле с проверкой на пустоту (nullptr).
 		/// </summary>
 		/// <param name="node">Узел у которого нужно получить высоту.</param>
-		unsigned char GetHeight(AVLNode<T>* node)
+		unsigned char GetHeight(AVLNode<T>* node) const
 		{
 			return node == nullptr ? 0 : node->Height;
 		}
@@ -119,7 +119,7 @@ namespace DSAAVLTree
 		/// </summary>
 		/// <param name="node">Узел для которого нужно найти баланс фактор.</param>
 		/// <returns>Баланс фактор.</returns>
-		int GetBalanceFactor(AVLNode<T>* node)
+		int GetBalanceFactor(AVLNode<T>* node) const
 		{
 			if (node == nullptr)
 				throw std::invalid_argument("Node must not be nullptr.");
@@ -228,7 +228,7 @@ namespace DSAAVLTree
 		/// </summary>
 		/// <param name="root">Корень дерева.</param>
 		/// <returns>Указатель на найденный узел.</returns>
-		AVLNode<T>* GetMin(AVLNode<T>* root)
+		AVLNode<T>* GetMin(AVLNode<T>* root) const
 		{
 			return root->Left ? GetMin(root->GetLeft()) : root;
 		}
