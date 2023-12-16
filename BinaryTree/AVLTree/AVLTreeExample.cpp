@@ -32,5 +32,5 @@ int main()
     //      /   / \
     //     0   3   6
 
-    //cout << "Height: " << tree.GetHeight();
+    cout << "Height: " << tree.GetHeight();
 }
