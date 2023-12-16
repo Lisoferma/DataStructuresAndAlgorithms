@@ -39,12 +39,18 @@ namespace DSAAVLTree
 		}
 
 
+		/// <summary>
+		/// Получить левый дочерний узел.
+		/// </summary>
 		AVLNode<T>* GetLeft()
 		{
 			return static_cast<AVLNode<T>*>(this->Left);
 		}
 
 
+		/// <summary>
+		/// Получить правый дочерний узел.
+		/// </summary>
 		AVLNode<T>* GetRight()
 		{
 			return static_cast<AVLNode<T>*>(this->Right);
