@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include "AVLNode.h"
+#include "../BinaryTree/BinaryTreeService.h"
 
 namespace DSAAVLTree
 {
@@ -25,6 +26,26 @@ namespace DSAAVLTree
 		void Insert(const T& data)
 		{
 			_root = Insert(_root, data);
+		}
+
+
+		/// <summary>
+		/// Максимум в дереве.
+		/// </summary>
+		/// <returns>Максимальные данные в дереве.</returns>
+		T MaxItem() const
+		{
+			return BinaryTreeService::GetMaximumNode(_root)->Data;
+		}
+
+
+		/// <summary>
+		/// Минимум в дереве.
+		/// </summary>
+		/// <returns>Минимальные данные в дереве.</returns>
+		T MinItem() const
+		{
+			return BinaryTreeService::GetMinimumNode(_root)->Data;
 		}
 
 
@@ -166,38 +187,52 @@ namespace DSAAVLTree
 		}
 
 
-		//node* findmin(node* p) // поиск узла с минимальным ключом в дереве p 
-		//{
-		//	return p->left ? findmin(p->left) : p;
-		//}
+	//	node* findmin(node* p) // поиск узла с минимальным ключом в дереве p 
+	//	{
+	//		return p->left ? findmin(p->left) : p;
+	//	}
 
-		//node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
-		//{
-		//	if (p->left == 0)
-		//		return p->right;
-		//	p->left = removemin(p->left);
-		//	return balance(p);
-		//}
 
-		//node* remove(node* p, int k) // удаление ключа k из дерева p
-		//{
-		//	if (!p) return 0;
-		//	if (k < p->key)
-		//		p->left = remove(p->left, k);
-		//	else if (k > p->key)
-		//		p->right = remove(p->right, k);
-		//	else //  k == p->key 
-		//	{
-		//		node* q = p->left;
-		//		node* r = p->right;
-		//		delete p;
-		//		if (!r) return q;
-		//		node* min = findmin(r);
-		//		min->right = removemin(r);
-		//		min->left = q;
-		//		return balance(min);
-		//	}
-		//	return balance(p);
-		//}
-	};
+	//	node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
+	//	{
+	//		if (p->left == 0)
+	//			return p->right;
+
+	//		p->left = removemin(p->left);
+
+	//		return balance(p);
+	//	}
+
+
+	//	node* remove(node* p, int k) // удаление ключа k из дерева p
+	//	{
+	//		if (!p) return 0;
+
+	//		if (k < p->key)
+	//		{
+	//			p->left = remove(p->left, k);
+	//		}	
+	//		else if (k > p->key)
+	//		{
+	//			p->right = remove(p->right, k);
+	//		}
+	//		else //  k == p->key 
+	//		{
+	//			node* q = p->left;
+	//			node* r = p->right;
+
+	//			delete p;
+
+	//			if (!r) return q;
+
+	//			node* min = BinaryTreeService::GetMinimumNode(_root);
+	//			min->right = removemin(r);
+	//			min->left = q;
+
+	//			return balance(min);
+	//		}
+
+	//		return balance(p);
+	//	}
+	//};
 }
