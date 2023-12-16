@@ -19,6 +19,8 @@ int main()
     tree.Insert(2);
     tree.Insert(1);
     tree.Insert(0);
+    tree.Insert(-3);
+    tree.Insert(-5);
     
     // Удаление данных
     tree.Remove(4);
@@ -26,11 +28,13 @@ int main()
 
     // Полученное дерево:
     // 
-    //         2
+    //         0
     //        / \
-    //       1   5
+    //      -3   5
     //      /   / \
-    //     0   3   6
+    //    -5   2   6
+    //        / \
+    //       1   3
 
     cout << "Min: " << tree.MinItem() << endl;
     cout << "Max: " << tree.MaxItem() << endl;
