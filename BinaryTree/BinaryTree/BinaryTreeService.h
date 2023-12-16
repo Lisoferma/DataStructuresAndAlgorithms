@@ -391,8 +391,8 @@ namespace DSAABinaryTree
 		{
 			if (root == nullptr) return;
 
-			Delete(root->Left);
-			Delete(root->Right);
+			DeleteRecursively(root->Left);
+			DeleteRecursively(root->Right);
 
 			delete root;
 			root = nullptr;
