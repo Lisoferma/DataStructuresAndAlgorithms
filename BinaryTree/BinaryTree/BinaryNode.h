@@ -13,7 +13,9 @@ namespace DSAABinaryTree
 	template<typename T>
 	struct BinaryNode
 	{
-		// Данные узла
+		/// <summary>
+		/// Данные которые хранит узел.
+		/// </summary>
 		T Data;
 
 		/// <summary>
