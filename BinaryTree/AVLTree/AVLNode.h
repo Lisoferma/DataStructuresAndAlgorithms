@@ -31,7 +31,7 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Инициализирует узел с высотой равной 1.
+		/// Инициализировать узел данными.
 		/// </summary>
 		AVLNode(const T& data) : BinaryNode<T>(data)
 		{
