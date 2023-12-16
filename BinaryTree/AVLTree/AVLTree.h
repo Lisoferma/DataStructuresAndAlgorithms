@@ -57,6 +57,34 @@ namespace DSAAVLTree
 		}
 
 
+		/// <summary>
+		/// Высота дерева.
+		/// </summary>
+		int GetHeight()
+		{
+			return _root->Height - 1;
+		}
+
+
+		/// <summary>
+		/// Пустое ли дерево.
+		/// </summary>
+		/// <returns>True - пустое, false - не пустое.</returns>
+		bool IsEmpty() const
+		{
+			return _root == nullptr;
+		}
+
+
+		/// <summary>
+		/// Удалить дерево.
+		/// </summary>
+		void Delete()
+		{
+			BinaryTreeService::Delete(_root);
+		}
+
+
 	private:
 		// Корень АВЛ-дерева
 		AVLNode<T>* _root;
