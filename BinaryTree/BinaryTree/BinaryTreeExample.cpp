@@ -37,7 +37,6 @@ void VectorPrintToConsole(const vector<T>& vector)
 }
 
 
-// Пример работы с двоичным деревом
 int main()
 {
     BinaryNode<int>* root = CreateBinarySearchTree();
@@ -132,21 +131,19 @@ int main()
 
     // Применение итератора
     cout << "\n\nIterator: ";
-
-    for (int item : bst)
-    {
-        cout << item;
-    }
+    for (int item : bst) cout << item;
 
 
-    // Использование std algorithm
+    // ------ Пример использования STD Algorithm с бинарным деревом ------
+    // 
     cout << "\n\nAlgorithm: ";
    
-
+    // Применить функцию к каждому элементу диапозона
     cout << "\n for_each: ";
     std::for_each(bst.begin(), bst.end(), [](auto item) { std::cout << item << " "; });
 
 
+    // Удовлетворяет ли хотя бы один из элементов диапазона заданному критерию
     cout << "\n any_of: ";
     if ( std::any_of(bst.begin(), bst.end(), [](int i) { return i % 2 == 0; }) )
         std::cout << "There are even numbers";
@@ -154,6 +151,7 @@ int main()
         std::cout << "There are no even numbers";
 
 
+    // Удовлетворяют ли все элементы диапазона заданному критерию
     cout << "\n all_of: ";
     if (std::all_of(bst.begin(), bst.end(), [](int i) { return i % 2 == 0; }))
         std::cout << "All numbers are even";
@@ -161,6 +159,7 @@ int main()
         std::cout << "Not all numbers are even";
 
 
+    // Проверить что ни один из элементов диапазона не удовлетворяет заданному критерию
     cout << "\n none_of: ";
     if (std::none_of(bst.begin(), bst.end(), [](int i) { return i == 8; }))
         std::cout << "No number is equal to 8";
@@ -168,11 +167,14 @@ int main()
         std::cout << "There is a number equal to 8";
 
 
+    // Изменить каждый элемент диапазона заданной функцией
     cout << "\n transform: ";
     std::transform(bst.begin(), bst.end(), bst.begin(), [](int i) { return i * 2; });
     for (int item : bst) cout << item << " ";
 
 
+    // Копировать в контейнер с указанного положения итератора
+    // из другого контейнера если удовлетворяет условию
     cout << "\n copy_if: ";
     std::vector<int> vector(2);
     std::copy_if(bst.begin(), bst.end(), vector.begin(), [](int i) { return i % 4 == 0; });
