@@ -49,7 +49,7 @@ namespace DSAABinaryTree
 		/// <param name="left">Дочерний левый узел.</param>
 		/// <param name="right">Дочерний правый узел.</param>
 		/// <param name="parent">Родительский узел.</param>
-		BinaryNode(const T& data, BinaryNode* left, BinaryNode* right, BinaryNode* parent)
+		BinaryNode(const T& data, BinaryNode* left, BinaryNode* right)
 			: Data(data), Left(left), Right(right)
 		{ }
 	};
