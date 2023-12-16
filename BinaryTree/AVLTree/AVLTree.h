@@ -30,9 +30,18 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Максимум в дереве.
+		/// Удалить узел по заданому ключу.
 		/// </summary>
-		/// <returns>Максимальные данные в дереве.</returns>
+		/// <param name="key">Данные узла который нужно удалить.</param>
+		void Remove(const T& key)
+		{
+			_root = Remove(_root, key);
+		}
+
+
+		/// <summary>
+		/// Максимальный элемент в дереве.
+		/// </summary>
 		T MaxItem() const
 		{
 			return BinaryTreeService::GetMaximumNode(_root)->Data;
@@ -40,9 +49,8 @@ namespace DSAAVLTree
 
 
 		/// <summary>
-		/// Минимум в дереве.
+		/// Минимальный элемент в дереве.
 		/// </summary>
-		/// <returns>Минимальные данные в дереве.</returns>
 		T MinItem() const
 		{
 			return BinaryTreeService::GetMinimumNode(_root)->Data;
@@ -187,52 +195,71 @@ namespace DSAAVLTree
 		}
 
 
-	//	node* findmin(node* p) // поиск узла с минимальным ключом в дереве p 
-	//	{
-	//		return p->left ? findmin(p->left) : p;
-	//	}
+		/// <summary>
+		/// Получить узел с минимальными данными в дереве.
+		/// </summary>
+		/// <param name="root">Корень дерева.</param>
+		/// <returns>Указатель на найденный узел.</returns>
+		AVLNode<T>* GetMin(AVLNode<T>* root)
+		{
+			return root->Left ? GetMin(root->GetLeft()) : root;
+		}
 
 
-	//	node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
-	//	{
-	//		if (p->left == 0)
-	//			return p->right;
+		/// <summary>
+		/// Удалить узел с минимальными данными.
+		/// </summary>
+		/// <param name="root">Корень дерева.</param>
+		/// <returns>Указатель на новй корень дерева.</returns>
+		AVLNode<T>* RemoveMin(AVLNode<T>* root)
+		{
+			if (root->Left == nullptr)
+				return root->GetRight();
 
-	//		p->left = removemin(p->left);
+			root->Left = RemoveMin(root->GetLeft());
 
-	//		return balance(p);
-	//	}
+			return Balance(root);
+		}
 
 
-	//	node* remove(node* p, int k) // удаление ключа k из дерева p
-	//	{
-	//		if (!p) return 0;
+		/// <summary>
+		/// Удаление узла по заданому ключу.
+		/// </summary>
+		/// <param name="root">Корень дерева.</param>
+		/// <param name="key">Данные узла который нужно удалить.</param>
+		/// <returns>Указатель на новый корень дерева.</returns>
+		AVLNode<T>* Remove(AVLNode<T>* root, const T& key)
+		{
+			if (root == nullptr)
+				return nullptr;
 
-	//		if (k < p->key)
-	//		{
-	//			p->left = remove(p->left, k);
-	//		}	
-	//		else if (k > p->key)
-	//		{
-	//			p->right = remove(p->right, k);
-	//		}
-	//		else //  k == p->key 
-	//		{
-	//			node* q = p->left;
-	//			node* r = p->right;
+			if (key < root->Data)
+			{
+				root->Left = Remove(root->GetLeft(), key);
+			}	
+			else if (key > root->Data)
+			{
+				root->Right = Remove(root->GetRight(), key);
+			}
+			else // key == root->Data 
+			{
+				AVLNode<T>* q = root->GetLeft();
+				AVLNode<T>* r = root->GetRight();
 
-	//			delete p;
+				delete root;
 
-	//			if (!r) return q;
+				if (r == nullptr)
+					return q;
 
-	//			node* min = BinaryTreeService::GetMinimumNode(_root);
-	//			min->right = removemin(r);
-	//			min->left = q;
+				AVLNode<T>* min = GetMin(r);
 
-	//			return balance(min);
-	//		}
+				min->Right = RemoveMin(r);
+				min->Left = q;
 
-	//		return balance(p);
-	//	}
-	//};
+				return Balance(min);
+			}
+
+			return Balance(root);
+		}
+	};
 }
