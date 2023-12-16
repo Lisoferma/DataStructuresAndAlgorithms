@@ -61,7 +61,7 @@ namespace DSAAVLTree
 		/// Получить баланс фактор заданного узла.
 		/// </summary>
 		/// <param name="node">Узел для которого нужно найти баланс фактор.</param>
-		/// <returns></returns>
+		/// <returns>Баланс фактор.</returns>
 		int GetBalanceFactor(AVLNode<T>* node)
 		{
 			if (node == nullptr)
