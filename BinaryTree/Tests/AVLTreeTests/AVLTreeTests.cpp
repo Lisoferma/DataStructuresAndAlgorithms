@@ -1,4 +1,4 @@
-//@author Lisoferma
+п»ї//@author Lisoferma
 
 #include <vector>
 #include <stdexcept>
@@ -10,11 +10,11 @@ using namespace DSAAVLTree;
 
 
 /// <summary>
-/// Получить высоту дерева.
+/// РџРѕР»СѓС‡РёС‚СЊ РІС‹СЃРѕС‚Сѓ РґРµСЂРµРІР°.
 /// </summary>
-/// <typeparam name="T">Тип данных который содержит дерево.</typeparam>
-/// <param name="root">Корень дерева.</param>
-/// <returns>Высота дерева.</returns>
+/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂС‹Р№ СЃРѕРґРµСЂР¶РёС‚ РґРµСЂРµРІРѕ.</typeparam>
+/// <param name="root">РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</param>
+/// <returns>Р’С‹СЃРѕС‚Р° РґРµСЂРµРІР°.</returns>
 template <typename T>
 int GetHeight(AVLNode<T>* root)
 {
@@ -26,11 +26,11 @@ int GetHeight(AVLNode<T>* root)
 
 
 /// <summary>
-/// Является ли бинарное дерево сбалансированным.
+/// РЇРІР»СЏРµС‚СЃСЏ Р»Рё Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ СЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅС‹Рј.
 /// </summary>
-/// <typeparam name="T">Тип данных который хранит дерево.</typeparam>
-/// <param name="root">Корень дерева.</param>
-/// <returns>True - сбалансировано, false - несбалансировано.</returns>
+/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РґРµСЂРµРІРѕ.</typeparam>
+/// <param name="root">РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°.</param>
+/// <returns>True - СЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРѕ, false - РЅРµСЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРѕ.</returns>
 template <typename T>
 bool IsBalanced(AVLNode<T>* root)
 {
