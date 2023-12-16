@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <vector>
 #include <stdexcept>
 #include "AVLNode.h"
 #include "../BinaryTree/BinaryTreeService.h"
@@ -84,6 +85,15 @@ namespace DSAAVLTree
 			BinaryTreeService::Delete(_root);
 		}
 		
+		
+		/// <summary>
+		/// Получить корень дерева.
+		/// </summary>
+		const AVLNode<T>* GetRoot()
+		{
+			return _root;
+		}
+
 
 	private:
 		// Корень АВЛ-дерева
