@@ -97,13 +97,17 @@ namespace DSAAVLTree
 		}
 
 
+		// TODO: Исправить метод удаления дерева.
 		/// <summary>
 		/// Удалить дерево.
 		/// </summary>
-		void Delete()
-		{
-			BinaryTreeService::Delete(_root);
-		}
+		//void Delete()
+		//{
+		//	BinaryNode<T>* rootPtr = static_cast<BinaryNode<T>*>(_root);
+		//	BinaryNode<T>*& rootPtrRef = _root;
+
+		//	BinaryTreeService::Delete(rootPtrRef);
+		//}
 		
 		
 		/// <summary>
