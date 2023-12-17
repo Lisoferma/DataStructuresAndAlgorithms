@@ -39,4 +39,6 @@ int main()
     cout << "Min: " << tree.MinItem() << endl;
     cout << "Max: " << tree.MaxItem() << endl;
     cout << "Height: " << tree.GetHeight() << endl;
+    cout << "Find 5: " << (tree.Find(5) ? "true" : "false") << endl;
+    cout << "Find 7: " << (tree.Find(7) ? "true" : "false") << endl;
 }
