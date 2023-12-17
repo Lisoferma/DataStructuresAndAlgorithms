@@ -52,6 +52,17 @@ namespace DSAAVLTree
 
 
 		/// <summary>
+		/// Проверить наличие элемента в дереве.
+		/// </summary>
+		/// <param name="key">Данные которые нужно проверить.</param>
+		/// <returns>True - элемент есть в дереве, false - элемента нет в дереве.</returns>
+		bool Find(const T& key) const
+		{
+			return BinaryTreeService::Search(_root, key) != nullptr;
+		}
+
+
+		/// <summary>
 		/// Максимальный элемент в дереве.
 		/// </summary>
 		T MaxItem() const
