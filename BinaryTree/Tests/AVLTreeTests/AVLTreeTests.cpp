@@ -122,6 +122,35 @@ TEST(Remove, RemoveAllData_TreeIsEmpty)
 }
 
 
+TEST(Find, FindExistingItem_ReturnTrue)
+{
+    int findItem = 22;
+    std::vector<int> initData{ 10, 5, 7, -5, 1, -1, 3, 9, -10, 4, 2 };
+    AVLTree<int> tree(initData);
+    tree.Insert(findItem);
+
+    EXPECT_TRUE(tree.Find(findItem));
+}
+
+
+TEST(Find, FindNonExistingItem_ReturnFalse)
+{
+    int findItem = 100;
+    std::vector<int> initData{ 10, 5, 7, -5, 1, -1, 3, 9, -10, 4, 2 };
+    AVLTree<int> tree(initData);
+
+    EXPECT_FALSE(tree.Find(findItem));
+}
+
+
+TEST(Find, FindInEmptyTree_ReturnFalse)
+{
+    AVLTree<int> tree;
+
+    EXPECT_FALSE(tree.Find(100));
+}
+
+
 TEST(MaxItem, GetMaxItemInFilledTree_MaxItemIsCorrect)
 {
     int maxItem = 20;
