@@ -1,4 +1,4 @@
-// @author Lisoferma
+п»ї// @author Lisoferma
 
 #include <iostream>
 #include <string>
@@ -9,10 +9,10 @@ using namespace DSAHashTable;
 
 
 /// <summary>
-/// Хэш-функция djb2 для строк.
+/// РҐСЌС€-С„СѓРЅРєС†РёСЏ djb2 РґР»СЏ СЃС‚СЂРѕРє.
 /// </summary>
-/// <param name="str">Строка для которой нужно получить хэш.</param>
-/// <returns>Хэш строки.</returns>
+/// <param name="str">РЎС‚СЂРѕРєР° РґР»СЏ РєРѕС‚РѕСЂРѕР№ РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ С…СЌС€.</param>
+/// <returns>РҐСЌС€ СЃС‚СЂРѕРєРё.</returns>
 unsigned long HashDJB2(const string& str)
 {
 	unsigned long hash = 5381;
@@ -28,7 +28,7 @@ int main()
 {
 	HashTable<string> table(100ul, HashDJB2);
 
-	// Вставка элементов
+	// Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚РѕРІ
 	table.Insert("Hello");
 	table.Insert("World");
 	table.Insert("Fox");
@@ -36,7 +36,7 @@ int main()
 	table.Insert("Dog");
 
 
-	// Проверить есть ли ключ в таблице
+	// РџСЂРѕРІРµСЂРёС‚СЊ РµСЃС‚СЊ Р»Рё РєР»СЋС‡ РІ С‚Р°Р±Р»РёС†Рµ
 	cout << "Find(Hello): ";
 
 	table.Find("Hello") 
@@ -50,7 +50,7 @@ int main()
 		: cout << "not found" << endl;
 
 
-	// Проверка ключей на равенство
+	// РџСЂРѕРІРµСЂРєР° РєР»СЋС‡РµР№ РЅР° СЂР°РІРµРЅСЃС‚РІРѕ
 	cout << "KeyAreEqual(fox, fox): ";
 
 	table.KeyAreEqual("fox", "fox")
@@ -64,7 +64,7 @@ int main()
 		: cout << "not equal" << endl;
 
 
-	// Удалить ключ
+	// РЈРґР°Р»РёС‚СЊ РєР»СЋС‡
 	table.Remove("Hello");
 
 	cout << "Remove(Hello): ";

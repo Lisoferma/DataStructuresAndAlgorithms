@@ -1,4 +1,4 @@
-// @author Lisoferma
+п»ї// @author Lisoferma
 
 #pragma once
 
@@ -7,24 +7,24 @@
 namespace DSAHashTable
 {
 	/// <summary>
-	/// Хэш-таблица.
+	/// РҐСЌС€-С‚Р°Р±Р»РёС†Р°.
 	/// </summary>
-	/// <typeparam name="T">Тип ключей который она содержит.</typeparam>
+	/// <typeparam name="T">РўРёРї РєР»СЋС‡РµР№ РєРѕС‚РѕСЂС‹Р№ РѕРЅР° СЃРѕРґРµСЂР¶РёС‚.</typeparam>
 	template <typename T>
 	class HashTable
 	{
 	public:
 		/// <summary>
-		/// Указатель на функцию которая возвращает хэш ключа.
+		/// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ РєРѕС‚РѕСЂР°СЏ РІРѕР·РІСЂР°С‰Р°РµС‚ С…СЌС€ РєР»СЋС‡Р°.
 		/// </summary>
 		using HashFunction = unsigned long(*)(const T& Key);
 
 
 		/// <summary>
-		/// Инициализировать хэш-таблицу.
+		/// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ С…СЌС€-С‚Р°Р±Р»РёС†Сѓ.
 		/// </summary>
-		/// <param name="capacity">Вместимость таблицы.</param>
-		/// <param name="hashFunction">Хэш-функция для заданного типа ключей.</param>
+		/// <param name="capacity">Р’РјРµСЃС‚РёРјРѕСЃС‚СЊ С‚Р°Р±Р»РёС†С‹.</param>
+		/// <param name="hashFunction">РҐСЌС€-С„СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР° РєР»СЋС‡РµР№.</param>
 		HashTable(unsigned long capacity, HashFunction hashFunction)
 			: _capacity(capacity), _hashFunction(hashFunction)
 		{
@@ -33,9 +33,9 @@ namespace DSAHashTable
 
 
 		/// <summary>
-		/// Вставить ключ в таблицу.
+		/// Р’СЃС‚Р°РІРёС‚СЊ РєР»СЋС‡ РІ С‚Р°Р±Р»РёС†Сѓ.
 		/// </summary>
-		/// <param name="key">Ключ который нужно вставить.</param>
+		/// <param name="key">РљР»СЋС‡ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ.</param>
 		void Insert(const T& key)
 		{
 			unsigned long index = GetKeyIndex(key);
@@ -44,10 +44,10 @@ namespace DSAHashTable
 
 
 		/// <summary>
-		/// Проверить есть ли ключ в таблице.
+		/// РџСЂРѕРІРµСЂРёС‚СЊ РµСЃС‚СЊ Р»Рё РєР»СЋС‡ РІ С‚Р°Р±Р»РёС†Рµ.
 		/// </summary>
-		/// <param name="key">Ключ который нужно найти.</param>
-		/// <returns>True - если ключ найден, иначе false.</returns>
+		/// <param name="key">РљР»СЋС‡ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё.</param>
+		/// <returns>True - РµСЃР»Рё РєР»СЋС‡ РЅР°Р№РґРµРЅ, РёРЅР°С‡Рµ false.</returns>
 		bool Find(const T& key) const
 		{
 			unsigned long index = GetKeyIndex(key);
@@ -56,9 +56,9 @@ namespace DSAHashTable
 
 
 		/// <summary>
-		/// Удалить ключ из таблицы.
+		/// РЈРґР°Р»РёС‚СЊ РєР»СЋС‡ РёР· С‚Р°Р±Р»РёС†С‹.
 		/// </summary>
-		/// <param name="key">Ключ который нужно удалить.</param>
+		/// <param name="key">РљР»СЋС‡ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ.</param>
 		void Remove(const T& key)
 		{
 			unsigned long index = GetKeyIndex(key);
@@ -67,11 +67,11 @@ namespace DSAHashTable
 
 
 		/// <summary>
-		/// Проверить ключи на равенство.
+		/// РџСЂРѕРІРµСЂРёС‚СЊ РєР»СЋС‡Рё РЅР° СЂР°РІРµРЅСЃС‚РІРѕ.
 		/// </summary>
-		/// <param name="key1">Первый ключ.</param>
-		/// <param name="key2">Второй ключ.</param>
-		/// <returns>True - если ключи равны, иначе false.</returns>
+		/// <param name="key1">РџРµСЂРІС‹Р№ РєР»СЋС‡.</param>
+		/// <param name="key2">Р’С‚РѕСЂРѕР№ РєР»СЋС‡.</param>
+		/// <returns>True - РµСЃР»Рё РєР»СЋС‡Рё СЂР°РІРЅС‹, РёРЅР°С‡Рµ false.</returns>
 		bool KeyAreEqual(const T& key1, const T& key2) const
 		{
 			return _hashFunction(key1) == _hashFunction(key2);
@@ -87,26 +87,26 @@ namespace DSAHashTable
 
 	private:
 		/// <summary>
-		/// Массив ключей, которые хранятся в дереве для избежания коллизии.
+		/// РњР°СЃСЃРёРІ РєР»СЋС‡РµР№, РєРѕС‚РѕСЂС‹Рµ С…СЂР°РЅСЏС‚СЃСЏ РІ РґРµСЂРµРІРµ РґР»СЏ РёР·Р±РµР¶Р°РЅРёСЏ РєРѕР»Р»РёР·РёРё.
 		/// </summary>
 		DSAAVLTree::AVLTree<T>* _items;
 
 		/// <summary>
-		/// Вместимость хэш-таблицы.
+		/// Р’РјРµСЃС‚РёРјРѕСЃС‚СЊ С…СЌС€-С‚Р°Р±Р»РёС†С‹.
 		/// </summary>
 		unsigned long _capacity;
 
 		/// <summary>
-		/// Хэш-функция для получения хэша из ключа.
+		/// РҐСЌС€-С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С…СЌС€Р° РёР· РєР»СЋС‡Р°.
 		/// </summary>
 		HashFunction _hashFunction;
 
 
 		/// <summary>
-		/// Получить индекс в таблице для ключа, на основе его хэша.
+		/// РџРѕР»СѓС‡РёС‚СЊ РёРЅРґРµРєСЃ РІ С‚Р°Р±Р»РёС†Рµ РґР»СЏ РєР»СЋС‡Р°, РЅР° РѕСЃРЅРѕРІРµ РµРіРѕ С…СЌС€Р°.
 		/// </summary>
-		/// <param name="key">Ключ для которого нужно найти индекс.</param>
-		/// <returns>Индекс в хэш-таблице.</returns>
+		/// <param name="key">РљР»СЋС‡ РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё РёРЅРґРµРєСЃ.</param>
+		/// <returns>РРЅРґРµРєСЃ РІ С…СЌС€-С‚Р°Р±Р»РёС†Рµ.</returns>
 		unsigned long GetKeyIndex(const T& key) const
 		{
 			return _hashFunction(key) % _capacity;
