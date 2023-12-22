@@ -7,7 +7,7 @@
 namespace DSAHashTable
 {
 	/// <summary>
-	/// Хэш-таблица.
+	/// Хэш-таблица. Вставка, удаление, поиск - в худшем O(logN), в среднем O(1).
 	/// </summary>
 	/// <typeparam name="T">Тип ключей который она содержит.</typeparam>
 	template <typename T>
@@ -75,6 +75,15 @@ namespace DSAHashTable
 		bool KeyAreEqual(const T& key1, const T& key2) const
 		{
 			return _hashFunction(key1) == _hashFunction(key2);
+		}
+
+
+		/// <summary>
+		/// Получить ёмкость хэш-таблицы.
+		/// </summary>
+		unsigned long GetCapacity() const
+		{
+			return _capacity;
 		}
 
 
