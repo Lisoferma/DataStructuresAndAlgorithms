@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <stdexcept>
 #include "../../BinaryTree/AVLTree/AVLTree.h"
 
 namespace DSAHashTable
@@ -28,6 +29,9 @@ namespace DSAHashTable
 		HashTable(unsigned long capacity, HashFunction hashFunction)
 			: _capacity(capacity), _hashFunction(hashFunction)
 		{
+			if (capacity == 0)
+				throw std::invalid_argument("Capacity should not be equal to 0.");
+
 			_items = new DSAAVLTree::AVLTree<T>[_capacity];
 		}
 
@@ -83,6 +87,20 @@ namespace DSAHashTable
 		/// </summary>
 		unsigned long GetCapacity() const
 		{
+			return _capacity;
+		}
+
+
+		unsigned long GetItemsCount() const
+		{
+			unsigned long count = 0;
+
+			for (item : _items)
+			{
+				if (!item.IsEmpty())
+					count += item.
+			}
+
 			return _capacity;
 		}
 
