@@ -98,6 +98,12 @@ namespace DSAAVLTree
 		}
 
 
+		int GetNodeCount() const
+		{
+			return _root->Height - 1;
+		}
+
+
 		/// <summary>
 		/// Пустое ли дерево.
 		/// </summary>
