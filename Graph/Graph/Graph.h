@@ -155,9 +155,9 @@ namespace DSAGraph
 
 			_vertexes.remove(vertex);
 
-			// После удаления вершины от матрицы смежности отделяется три области,
-			// которые нужно сдвинуть, заполняя освободившиеся ячейки
 			int row, col;
+
+			// Сдвинуть индекс столбцов влево
 			for (row = 0; row < position; ++row)
 			{
 				for (col = position + 1; col < _vertexes.size(); ++col)
@@ -166,6 +166,7 @@ namespace DSAGraph
 				}	
 			}
 
+			// Сдвинуть индекс строк вверх и индекс столбцов влево
 			for (row = position + 1; row < _vertexes.size(); ++row)
 			{
 				for (col = position + 1; col < _vertexes.size(); ++col)
@@ -174,6 +175,7 @@ namespace DSAGraph
 				}	
 			}
 
+			// Сдвинуть индекс строк вверх
 			for (row = position + 1; row < _vertexes.size(); ++row)
 			{
 				for (col = 0; col < position; ++col)
