@@ -43,4 +43,15 @@ int main()
 
     for (char item : traversal)
         cout << item << " ";
+
+    
+    // Удалить ребро
+    graph.DeleteEdge('a', 'c');
+
+    cout << "\nDepth first traversal from 'a' after delete edge 'ac': ";
+    traversal = graph.DepthFirstTraversal('a');
+
+    for (char item : traversal)
+        cout << item << " ";
+
 }
