@@ -23,15 +23,17 @@ int main()
     graph.InsertEdge('b', 'c', 3);
     graph.InsertEdge('b', 'd', 4);
 
+
     // Информация о графе
     cout << "Vertexes count: " << graph.VertexesCount() << endl;
     cout << "Edges count: " << graph.EdgesCount() << endl;
 
+
     // Получить все вершины у которых есть ребро с указанной вершиной
     cout << "Neighbors for 'a': ";
-    list<char>* vertexNeighbors = graph.GetNeighbors('a');
+    list<char> vertexNeighbors = graph.GetNeighbors('a');
 
-    for (char item : *vertexNeighbors)
+    for (char item : vertexNeighbors)
         cout << item << " ";
 
     delete vertexNeighbors;

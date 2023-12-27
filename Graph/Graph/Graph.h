@@ -78,14 +78,14 @@ namespace DSAGraph
 		/// </summary>
 		/// <param name="vertex">Вершина для которой нужно найти соседние вершины.</param>
 		/// <returns>Список найденных вершин. Если вершин нет - пустой список.</returns>
-		std::list<T>* GetNeighbors(const T& vertex) const
+		std::list<T>& GetNeighbors(const T& vertex) const
 		{
 			std::list<T>* neighborsList = new std::list<T>();
 
-			if (IsEmpty()) return neighborsList;
+			if (IsEmpty()) return *neighborsList;
 
 			int position = GetVertexPosition(vertex);
-			if (position == -1) return neighborsList;
+			if (position == -1) return *neighborsList;
 
 			// Создать список из вершин, имеющих ребро из vertex ненулевого веса 			
 			int i = 0;
@@ -99,7 +99,7 @@ namespace DSAGraph
 				++i;
 			}
 
-			return neighborsList;
+			return *neighborsList;
 		}
 
 
