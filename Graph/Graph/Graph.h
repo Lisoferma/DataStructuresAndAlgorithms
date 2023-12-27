@@ -123,7 +123,7 @@ namespace DSAGraph
 		/// <param name="vertex1">Первая вершина для которой нужно вствить ребро.</param>
 		/// <param name="vertex2">Вторая вершина для которой нужно вствить ребро с первой.</param>
 		/// <param name="weight">Вес ребра.</param>
-		/// <returns
+		/// <returns>
 		/// True - если удалось вствить ребро,
 		/// false - если как минимум одна из вершин не найдена.
 		/// </returns>
@@ -191,7 +191,7 @@ namespace DSAGraph
 		/// </summary>
 		/// <param name="vertex1">Первая вершина между которой находится ребро.</param>
 		/// <param name="vertex2">Вторая вершина между которой находится ребро.</param>
-		/// <returns
+		/// <returns>
 		/// True - если удалось удалить ребро,
 		/// false - если как минимум одна из вершин не найдена.
 		/// </returns>
