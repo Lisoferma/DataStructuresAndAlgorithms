@@ -36,5 +36,11 @@ int main()
     for (char item : vertexNeighbors)
         cout << item << " ";
 
-    delete vertexNeighbors;
+
+    // Получить список вершин обходом в глубину
+    cout << "\nDepth first traversal from 'a': ";
+    list<char> traversal = graph.DepthFirstTraversal('a');
+
+    for (char item : traversal)
+        cout << item << " ";
 }

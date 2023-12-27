@@ -259,5 +259,48 @@ namespace DSAGraph
 		{
 			return _vertexes.empty();
 		}
+
+
+		/// <summary>
+		/// Получить список вершин обходом "сначала в глубину" начиная с заданной вершины.
+		/// </summary>
+		/// <param name="beginVertex">Вершина с которой начинать обход.</param>
+		/// <returns>Список вершин после обхода.</returns>
+		std::list<T>& DepthFirstTraversal(const T& beginVertex)
+		{
+			// Стэк для временного хранения вершин, ожидающих обработки
+			std::stack<T> stack;
+
+			// Список пройденных вершин
+			std::list<T>* traversedVertexes = new std::list<T>();
+
+			// Список вершин смежных с текущей
+			std::list<T> adjacentVertexes;
+
+			// Извлечённая из стэка вершина
+			T vertex;
+
+			stack.push(beginVertex);
+
+			while (!stack.empty())
+			{
+				vertex = stack.top();
+				stack.pop();
+
+				// Если вершина посещена, переходим к следующей
+				if (FindVertex(*traversedVertexes, vertex) != -1)
+					continue;
+
+				traversedVertexes->push_back(vertex);
+				adjacentVertexes = GetNeighbors(vertex);
+				
+				// Поместить в стэк смежные вершины, которые не были посещены
+				for (auto item : adjacentVertexes)
+					if (FindVertex(*traversedVertexes, item) == -1)
+						stack.push(item);
+			}
+
+			return *traversedVertexes;
+		}
 	};
 }
