@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <exception>
+#include <stack>
 
 namespace DSAGraph
 {
@@ -36,9 +37,21 @@ namespace DSAGraph
 		/// <returns>Индекс вершины. -1 если такой вершины нет.</returns>
 		int GetVertexPosition(const T& vertex) const
 		{
+			return FindVertex(_vertexes, vertex);
+		}
+
+
+		/// <summary>
+		/// Получить позицию вершины в списке.
+		/// </summary>
+		/// <param name="list">Список в котором нужно искать вершину.</param>
+		/// <param name="vertex">Вершина которую нужно найти.</param>
+		/// <returns>Позиция вершины в списке. -1 если не найдена.</returns>
+		int FindVertex(const std::list<T>& list, const T& vertex) const
+		{
 			int position = 0;
 
-			for (auto item : _vertexes)
+			for (auto item : list)
 				if (item == vertex) return position;
 				else ++position;
 
