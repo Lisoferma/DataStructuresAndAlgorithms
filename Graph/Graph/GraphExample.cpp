@@ -37,9 +37,17 @@ int main()
         cout << item << " ";
 
 
-    // Получить список вершин обходом в глубину
+    // Получить список вершин обходом сначала в глубину
     cout << "\nDepth first traversal from 'a': ";
     list<char> traversal = graph.DepthFirstTraversal('a');
+
+    for (char item : traversal)
+        cout << item << " ";
+
+
+    // Получить список вершин обходом сначала в ширину
+    cout << "\nBreadth first traversal from 'a': ";
+    traversal = graph.BreadthFirstTraversal('a');
 
     for (char item : traversal)
         cout << item << " ";

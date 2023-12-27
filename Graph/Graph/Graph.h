@@ -4,15 +4,16 @@
 
 #include <list>
 #include <vector>
-#include <exception>
 #include <stack>
+#include <queue>
 
 namespace DSAGraph
 {
 	/// <summary>
 	/// Ориентированный взвешенный граф.
 	/// Вставка вершин - O(1); вставка рёбер - O(n);
-	/// удаление вершин - O(n^2); удаление рёбер - O(n).
+	/// удаление вершин - O(n^2); удаление рёбер - O(n);
+	/// обход - O(n^2).
 	/// </summary>
 	/// <typeparam name="T">Тип данных вершин.</typeparam>
 	template <typename T>
@@ -303,6 +304,52 @@ namespace DSAGraph
 				for (auto item : adjacentVertexes)
 					if (FindVertex(*traversedVertexes, item) == -1)
 						stack.push(item);
+			}
+
+			return *traversedVertexes;
+		}
+
+
+		/// <summary>
+		/// Получить список вершин обходом "сначала в ширину" начиная с заданной вершины.
+		/// </summary>
+		/// <param name="beginVertex">Вершина с которой начинать обход.</param>
+		/// <returns>Список вершин после обхода.</returns>
+		std::list<T>& BreadthFirstTraversal(const T& beginVertex)
+		{
+			// Очередь для временного хранения вершин, ожидающих обработки
+			std::queue<T> queue;
+
+			// Список пройденных вершин
+			std::list<T>* traversedVertexes = new std::list<T>();
+
+			// Список вершин смежных с текущей
+			std::list<T> adjacentVertexes;
+
+			// Извлечённая из очереди вершина
+			T vertex;
+
+			if (IsEmpty() || GetVertexPosition(beginVertex) == -1)
+				return *traversedVertexes;
+
+			queue.push(beginVertex);
+
+			while (!queue.empty())
+			{
+				vertex = queue.front();
+				queue.pop();
+
+				// Если вершина посещена, переходим к следующей
+				if (FindVertex(*traversedVertexes, vertex) != -1)
+					continue;
+
+				traversedVertexes->push_back(vertex);
+				adjacentVertexes = GetNeighbors(vertex);
+
+				// Поместить в стэк смежные вершины, которые не были посещены
+				for (auto item : adjacentVertexes)
+					if (FindVertex(*traversedVertexes, item) == -1)
+						queue.push(item);
 			}
 
 			return *traversedVertexes;
