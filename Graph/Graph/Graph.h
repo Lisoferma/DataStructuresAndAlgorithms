@@ -280,6 +280,9 @@ namespace DSAGraph
 			// Извлечённая из стэка вершина
 			T vertex;
 
+			if (IsEmpty() || GetVertexPosition(beginVertex) == -1)
+				return *traversedVertexes;
+
 			stack.push(beginVertex);
 
 			while (!stack.empty())
