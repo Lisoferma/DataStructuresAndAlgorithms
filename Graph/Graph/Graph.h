@@ -10,6 +10,26 @@
 namespace DSAGraph
 {
 	/// <summary>
+	/// Описывает путь между двумя вершинами и его стоимость.
+	/// </summary>
+	/// <typeparam name="T">Тип данных вершин.</typeparam>
+	template <typename T>
+	struct PathInfo
+	{
+		// Начальная и конечная вершина пути.
+		T startVertex, endVertex;
+
+		// Стоимость пути.
+		int cost;
+
+		bool operator <= (const PathInfo& a, const PathInfo& b) const
+		{
+			return a.cost <= b.cost;
+		}
+	};
+
+
+	/// <summary>
 	/// Ориентированный взвешенный граф.
 	/// Вставка вершин - O(1); вставка рёбер - O(n);
 	/// удаление вершин - O(n^2); удаление рёбер - O(n);
