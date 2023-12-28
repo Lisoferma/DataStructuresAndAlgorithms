@@ -22,9 +22,9 @@ namespace DSAGraph
 		// Стоимость пути.
 		int cost;
 
-		bool operator <= (const PathInfo& a, const PathInfo& b) const
+		bool operator < (const PathInfo& pathInfo) const
 		{
-			return a.cost <= b.cost;
+			return cost < pathInfo.cost;
 		}
 	};
 
@@ -373,6 +373,80 @@ namespace DSAGraph
 			}
 
 			return *traversedVertexes;
+		}
+
+
+		/// <summary>
+		/// Найти минимальный по стоимости путь между двумя вершинами.
+		/// </summary>
+		/// <param name="startVertex">Вершина с которой начинается путь.</param>
+		/// <param name="endVertex">Вершина где заканчивается путь.</param>
+		/// <returns>Минимальная стоимость пути. -1 если пути нет.</returns>
+		int MinimumPath(const T& startVertex, const T& endVertex)
+		{
+			std::priority_queue<PathInfo<T>> queue;
+
+			// Используется при вставке/удалении объектов PathInfo в очереди
+			PathInfo<T> pathData;
+
+			// Список всех вершин, достижимых из startVertex
+			// и стоимость которых уже учтена
+			std::list<T> traversedVertexes;
+
+			// Список вершин смежных с текущей
+			std::list<T> adjacentVertexes;
+
+			// Для временного хранения данных PathInfo из очереди
+			T sv{}, ev{};
+			int minCost = 0;
+
+			pathData.startVertex = startVertex;
+			pathData.endVertex = startVertex;
+			pathData.cost = 0;
+
+			queue.push(pathData);
+
+			// Обрабатывать вершины, пока не будет найден минимальный путь
+			// к endVertex или пока не опустеет очередь
+			while (!queue.empty())
+			{
+				pathData = queue.top();
+				queue.pop();
+				ev = pathData.endVertex;
+				minCost = pathData.cost;
+
+				// Если минимальный путь найден
+				if (ev == endVertex)
+					break;
+
+				// Если текущая конечная вершина уже рассмотрена - пропустить её
+				if (FindVertex(traversedVertexes, ev) != -1)
+					continue;
+
+				traversedVertexes.push_back(ev);
+				sv = ev;
+				adjacentVertexes = GetNeighbors(sv);
+
+				for (auto item : adjacentVertexes)
+				{
+					ev = item;
+
+					if (FindVertex(traversedVertexes, ev) != -1)
+						continue;
+
+					// Создать новый элемент приоритетной очереди
+					pathData.startVertex = sv;
+					pathData.endVertex = ev;
+					pathData.cost = minCost + GetWeight(sv, ev);
+
+					queue.push(pathData);
+				}
+			}
+
+			if (ev == endVertex)
+				return minCost;
+			else
+				return -1;
 		}
 	};
 }

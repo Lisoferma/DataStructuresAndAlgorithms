@@ -52,6 +52,10 @@ int main()
     for (char item : traversal)
         cout << item << " ";
 
+
+    // Получить минимальный путь между двумя вершинами
+    cout << "\nMinimum path between 'a' and 'd': " << graph.MinimumPath('a', 'd');
+
     
     // Удалить ребро
     graph.DeleteEdge('a', 'c');
