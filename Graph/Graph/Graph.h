@@ -61,10 +61,7 @@ namespace DSAGraph
 		/// <param name="data">Вектор который содержит данные вершин.</param>
 		Graph(const std::vector<T>& data)
 		{
-			_edges.reserve(data.capacity());
-
-			for (auto item : data)
-				InsertVertex(item);
+			InsertVertexFromVector(data);
 		}
 
 
@@ -109,6 +106,19 @@ namespace DSAGraph
 			_edges.resize(_vertexes.size());
 			for (int i = 0; i < _vertexes.size(); i++)
 				_edges[i].resize(_vertexes.size());
+		}
+
+
+		/// <summary>
+		/// Вставить вершины графа с данными из вектора.
+		/// </summary>
+		/// <param name="vertex">Вектор который содержит данные вершин.</param>
+		void InsertVertexFromVector(const std::vector<T>& data)
+		{
+			_edges.reserve(data.capacity());
+
+			for (auto item : data)
+				InsertVertex(item);
 		}
 
 
