@@ -276,6 +276,15 @@ namespace DSAGraph
 
 
 		/// <summary>
+		/// Получить список вершин.
+		/// </summary>
+		const std::list<T>& GetVertexes() const
+		{
+			return _vertexes;
+		}
+
+
+		/// <summary>
 		/// Граф пуст.
 		/// </summary>
 		bool IsEmpty() const
