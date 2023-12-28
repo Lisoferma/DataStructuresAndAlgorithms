@@ -56,7 +56,7 @@ int main()
 
 
     // Получить минимальный путь между двумя вершинами
-    cout << "\nMinimum path between 'a' and 'd': " << graph.MinimumPath('a', 'd');
+    cout << "\nMinimum path between 'a' and 'd': " << graph.PathCost('a', 'd');
 
     
     // Удалить ребро

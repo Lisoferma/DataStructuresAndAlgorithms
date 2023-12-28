@@ -370,12 +370,12 @@ namespace DSAGraph
 
 
 		/// <summary>
-		/// Найти минимальный по стоимости путь между двумя вершинами.
+		/// Найти стоимость пути между двумя вершинами.
 		/// </summary>
 		/// <param name="startVertex">Вершина с которой начинается путь.</param>
 		/// <param name="endVertex">Вершина где заканчивается путь.</param>
-		/// <returns>Минимальная стоимость пути. -1 если пути нет.</returns>
-		int MinimumPath(const T& startVertex, const T& endVertex) const
+		/// <returns>Стоимость пути. -1 если пути нет.</returns>
+		int PathCost(const T& startVertex, const T& endVertex) const
 		{
 			std::priority_queue<PathInfo<T>> queue;
 
