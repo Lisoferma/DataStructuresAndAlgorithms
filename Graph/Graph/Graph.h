@@ -130,11 +130,11 @@ namespace DSAGraph
 		/// <param name="weight">Вес ребра.</param>
 		/// <returns>
 		/// True - если удалось вствить ребро,
-		/// false - если как минимум одна из вершин не найдена.
+		/// false - если как минимум одна из вершин не найдена или вес ребра 0.
 		/// </returns>
 		bool InsertEdge(const T& vertex1, const T& vertex2, int weight)
 		{
-			if (IsEmpty()) return false;
+			if (IsEmpty() || weight == 0) return false;
 
 			int position1 = GetVertexPosition(vertex1);
 			if (position1 == -1) return false;
