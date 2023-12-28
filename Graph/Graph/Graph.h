@@ -289,7 +289,7 @@ namespace DSAGraph
 		/// </summary>
 		/// <param name="beginVertex">Вершина с которой начинать обход.</param>
 		/// <returns>Список вершин после обхода.</returns>
-		std::list<T>& DepthFirstTraversal(const T& beginVertex)
+		std::list<T>& DepthFirstTraversal(const T& beginVertex) const
 		{
 			// Стэк для временного хранения вершин, ожидающих обработки
 			std::stack<T> stack;
@@ -335,7 +335,7 @@ namespace DSAGraph
 		/// </summary>
 		/// <param name="beginVertex">Вершина с которой начинать обход.</param>
 		/// <returns>Список вершин после обхода.</returns>
-		std::list<T>& BreadthFirstTraversal(const T& beginVertex)
+		std::list<T>& BreadthFirstTraversal(const T& beginVertex) const
 		{
 			// Очередь для временного хранения вершин, ожидающих обработки
 			std::queue<T> queue;
@@ -382,7 +382,7 @@ namespace DSAGraph
 		/// <param name="startVertex">Вершина с которой начинается путь.</param>
 		/// <param name="endVertex">Вершина где заканчивается путь.</param>
 		/// <returns>Минимальная стоимость пути. -1 если пути нет.</returns>
-		int MinimumPath(const T& startVertex, const T& endVertex)
+		int MinimumPath(const T& startVertex, const T& endVertex) const
 		{
 			std::priority_queue<PathInfo<T>> queue;
 
