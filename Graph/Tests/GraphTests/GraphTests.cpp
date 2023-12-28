@@ -351,7 +351,7 @@ TEST_F(FilledGraph, BreadthFirstTraversal_GetVertexesByTreversal_ResultingSequen
 }
 
 
-TEST_F(FilledGraph, PathCost_GetMinimumPathInFilledGraph_ResultIsCorrect)
+TEST_F(FilledGraph, PathCost_GetPathInFilledGraph_ResultIsCorrect)
 {
 	int expectedPathAF = 17;
 	int expectedPathAA = 0;
