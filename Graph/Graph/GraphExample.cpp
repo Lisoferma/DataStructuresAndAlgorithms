@@ -1,6 +1,8 @@
 ﻿// @author Lisoferma
 
 #include <iostream>
+#include <string>
+#include <list>
 #include "Graph.h"
 
 using namespace std;
@@ -66,4 +68,19 @@ int main()
     for (char item : traversal)
         cout << item << " ";
 
+
+    // Прочитать граф из файла
+    cout << "\nRead graph from file: " << endl;
+
+    const string filename = "GraphData.txt";
+    Graph<string> graphFromFile;
+
+    bool result = graphFromFile.ReadFromFile(filename);
+    if (result == false) cout << "Failed to open file";
+
+    list<string> list = graphFromFile.GetVertexes();
+
+    for (string& item : list)
+        cout << item << " ";
+        
 }

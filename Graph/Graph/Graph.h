@@ -6,6 +6,8 @@
 #include <vector>
 #include <stack>
 #include <queue>
+#include <string>  
+#include <fstream>
 
 namespace DSAGraph
 {
@@ -39,47 +41,6 @@ namespace DSAGraph
 	template <typename T>
 	class Graph
 	{
-	private:
-		/// <summary>
-		/// Список вершин.
-		/// </summary>
-		std::list<T> _vertexes;
-
-		/// <summary>
-		/// Матрица смежности графа.
-		/// </summary>
-		std::vector<std::vector<int>> _edges;
-
-
-		/// <summary>
-		/// Получить позицию-индекс вершины в матрице смежности.
-		/// </summary>
-		/// <param name="vertex">Вершина для которой нужно найти индекс.</param>
-		/// <returns>Индекс вершины. -1 если такой вершины нет.</returns>
-		int GetVertexPosition(const T& vertex) const
-		{
-			return FindVertex(_vertexes, vertex);
-		}
-
-
-		/// <summary>
-		/// Получить позицию вершины в списке.
-		/// </summary>
-		/// <param name="list">Список в котором нужно искать вершину.</param>
-		/// <param name="vertex">Вершина которую нужно найти.</param>
-		/// <returns>Позиция вершины в списке. -1 если не найдена.</returns>
-		int FindVertex(const std::list<T>& list, const T& vertex) const
-		{
-			int position = 0;
-
-			for (auto item : list)
-				if (item == vertex) return position;
-				else ++position;
-
-			return -1;
-		}
-
-
 	public:
 		Graph() = default;
 
@@ -456,6 +417,165 @@ namespace DSAGraph
 				return minCost;
 			else
 				return -1;
+		}
+
+
+		/// <summary>
+		/// Добавить данные к графу из файла,
+		/// анализируя текстовый файл соответствующий специальному формату разметки.
+		/// </summary>
+		/// <param name="filename">Имя файла, который содержит данные графа.</param>
+		/// <returns>True - если удалось открыть файл, иначе false.</returns>
+		bool ReadFromFile(const std::string& filename)
+		{
+			const std::string separators{ "^-,\n" };
+			const char vertexSign = '^';
+			const char edgeSign = '-';
+
+			std::ifstream file(filename);
+			std::string line;
+
+			if (!file.is_open()) return false;
+
+			while (std::getline(file, line))
+			{
+				switch (line[0])
+				{
+					case vertexSign:
+						InsertVertexesFromString(line);
+						break;
+
+					case edgeSign:
+						InsertEdgesFromString(line);
+						break;
+				}
+			}
+
+			file.close();
+			return true;
+		}
+
+
+	private:
+		/// <summary>
+		/// Список вершин.
+		/// </summary>
+		std::list<T> _vertexes;
+
+		/// <summary>
+		/// Матрица смежности графа.
+		/// </summary>
+		std::vector<std::vector<int>> _edges;
+
+
+		/// <summary>
+		/// Получить позицию-индекс вершины в матрице смежности.
+		/// </summary>
+		/// <param name="vertex">Вершина для которой нужно найти индекс.</param>
+		/// <returns>Индекс вершины. -1 если такой вершины нет.</returns>
+		int GetVertexPosition(const T& vertex) const
+		{
+			return FindVertex(_vertexes, vertex);
+		}
+
+
+		/// <summary>
+		/// Получить позицию вершины в списке.
+		/// </summary>
+		/// <param name="list">Список в котором нужно искать вершину.</param>
+		/// <param name="vertex">Вершина которую нужно найти.</param>
+		/// <returns>Позиция вершины в списке. -1 если не найдена.</returns>
+		int FindVertex(const std::list<T>& list, const T& vertex) const
+		{
+			int position = 0;
+
+			for (auto item : list)
+				if (item == vertex) return position;
+				else ++position;
+
+			return -1;
+		}
+
+
+		/// <summary>
+		/// Вставить вершины в граф, анализируя строку соответствующую специальному формату разметки.
+		/// </summary>
+		/// <param name="str">Строка с данными о вершинах.</param>
+		void InsertVertexesFromString(const std::string& str)
+		{
+			const std::string separators{ "^,\n" };
+
+			// Начальный индекс первого слова
+			size_t start = str.find_first_not_of(separators);
+
+			while (start != std::string::npos)
+			{
+				// Конечный индекс слова
+				size_t end = str.find_first_of(separators, start + 1);
+
+				// Если не найден ни один из символов-разделителей
+				if (end == std::string::npos)
+					end = str.length();
+
+				// Полученная строка - вершина
+				InsertVertex(str.substr(start, end - start));
+
+				// Начальный индекс следующего слова
+				start = str.find_first_not_of(separators, end + 1);
+			}
+		}
+
+
+		/// <summary>
+		/// Вставить рёбра в граф, анализируя строку соответствующую специальному формату разметки.
+		/// </summary>
+		/// <param name="str">Строка с данными о рёбрах.</param>
+		void InsertEdgesFromString(const std::string& str)
+		{
+			const std::string separators{ "-,\n" };
+
+			// Индекс слова в строке
+			int index = 0;
+
+			// Начальная и конечная вершина ребра
+			T vertexStart, vertexEnd;
+
+			// Вес ребра
+			int weight;
+
+			// Начальный индекс первого слова
+			size_t start = str.find_first_not_of(separators);
+
+			while (start != std::string::npos)
+			{
+				// Конечный индекс слова
+				size_t end = str.find_first_of(separators, start + 1);
+
+				// Если не найден ни один из символов-разделителей
+				if (end == std::string::npos)
+					end = str.length();
+
+				std::string dataString = str.substr(start, end - start);
+
+				switch (index)
+				{
+				case 0:
+					vertexStart = dataString;
+					break;
+				case 1:
+					vertexEnd = dataString;
+					break;
+				case 2:
+					weight = std::stoi(dataString);
+					break;
+				}
+
+				// Начальный индекс следующего слова
+				start = str.find_first_not_of(separators, end + 1);
+				++index;
+			}
+
+			InsertEdge(vertexStart, vertexEnd, weight);
 		}
 	};
 }
