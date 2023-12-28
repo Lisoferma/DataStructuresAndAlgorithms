@@ -56,6 +56,19 @@ namespace DSAGraph
 
 
 		/// <summary>
+		/// Инициализировать вершины графа данными из вектора.
+		/// </summary>
+		/// <param name="data">Вектор который содержит данные вершин.</param>
+		Graph(const std::vector<T>& data)
+		{
+			_edges.reserve(data.capacity());
+
+			for (auto item : data)
+				InsertVertex(item);
+		}
+
+
+		/// <summary>
 		/// Получить список вершин, у которых есть ребро с указанной вершиной.
 		/// </summary>
 		/// <param name="vertex">Вершина для которой нужно найти соседние вершины.</param>
