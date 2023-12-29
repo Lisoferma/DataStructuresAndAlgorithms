@@ -32,7 +32,7 @@ namespace DSAGraph
 
 
 	/// <summary>
-	/// Ориентированный взвешенный граф.
+	/// Ориентированный взвешенный граф. Вес ребра > 0.
 	/// Вставка вершин - O(1); вставка рёбер - O(n);
 	/// удаление вершин - O(n^2); удаление рёбер - O(n);
 	/// обход - O(n^2).
@@ -127,7 +127,7 @@ namespace DSAGraph
 		/// </summary>
 		/// <param name="vertex1">Первая вершина для которой нужно вствить ребро.</param>
 		/// <param name="vertex2">Вторая вершина для которой нужно вствить ребро с первой.</param>
-		/// <param name="weight">Вес ребра.</param>
+		/// <param name="weight">Вес ребра (>0).</param>
 		/// <returns>
 		/// True - если удалось вствить ребро,
 		/// false - если как минимум одна из вершин не найдена или вес ребра 0.
@@ -480,6 +480,24 @@ namespace DSAGraph
 		}
 
 
+		/// <summary>
+		/// Получить позицию вершины в списке.
+		/// </summary>
+		/// <param name="list">Список в котором нужно искать вершину.</param>
+		/// <param name="vertex">Вершина которую нужно найти.</param>
+		/// <returns>Позиция вершины в списке. -1 если не найдена.</returns>
+		static int FindVertex(const std::list<T>& list, const T& vertex)
+		{
+			int position = 0;
+
+			for (auto item : list)
+				if (item == vertex) return position;
+				else ++position;
+
+			return -1;
+		}
+
+
 	private:
 		/// <summary>
 		/// Список вершин.
@@ -487,7 +505,7 @@ namespace DSAGraph
 		std::list<T> _vertexes;
 
 		/// <summary>
-		/// Матрица смежности графа.
+		/// Матрица смежности графа. Хранит информацию о рёбрах между вершинами и их вес.
 		/// </summary>
 		std::vector<std::vector<int>> _edges;
 
@@ -500,24 +518,6 @@ namespace DSAGraph
 		int GetVertexPosition(const T& vertex) const
 		{
 			return FindVertex(_vertexes, vertex);
-		}
-
-
-		/// <summary>
-		/// Получить позицию вершины в списке.
-		/// </summary>
-		/// <param name="list">Список в котором нужно искать вершину.</param>
-		/// <param name="vertex">Вершина которую нужно найти.</param>
-		/// <returns>Позиция вершины в списке. -1 если не найдена.</returns>
-		int FindVertex(const std::list<T>& list, const T& vertex) const
-		{
-			int position = 0;
-
-			for (auto item : list)
-				if (item == vertex) return position;
-				else ++position;
-
-			return -1;
 		}
 
 
