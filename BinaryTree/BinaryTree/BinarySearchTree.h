@@ -78,6 +78,9 @@ namespace DSAABinaryTree
         /// <returns>Максимальные данные в дереве.</returns>
         T MaxItem() const
         {
+            if (IsEmpty())
+                throw std::out_of_range("Tree is empty.");
+
             return BinaryTreeService::GetMaximumNode(root)->Data;
         }
 
@@ -88,6 +91,9 @@ namespace DSAABinaryTree
         /// <returns>Минимальные данные в дереве.</returns>
         T MinItem() const
         {
+            if (IsEmpty())
+                throw std::out_of_range("Tree is empty.");
+
             return BinaryTreeService::GetMinimumNode(root)->Data;
         }
 
