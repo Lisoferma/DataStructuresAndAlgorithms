@@ -179,3 +179,26 @@ TEST(MinItem, GetMinItemInFilledTree_MinItemIsCorrect)
 
 	EXPECT_EQ(result, expectedMinItem);
 }
+
+
+//TEST(MaxItem, GetMaxItemInExpectedTree_ShpuldThrowOutOfRange)
+//{
+//	BinarySearchTree<int> bst;
+//
+//	int result = bst.MaxItem();
+//
+//	ASSERT_THROW(heap.Remove(999), std::out_of_range); (result, expectedMaxItem);
+//}
+//
+//
+//TEST(MinItem, GetMinItemInFilledTree_MinItemIsCorrect)
+//{
+//	int expectedMinItem = -5;
+//	vector<int> initData = { 3, 1, 2, 4, 5, 6 };
+//	BinarySearchTree<int> bst(initData);
+//	bst.Insert(expectedMinItem);
+//
+//	int result = bst.MinItem();
+//
+//	EXPECT_EQ(result, expectedMinItem);
+//}
