@@ -34,9 +34,9 @@ namespace DSAABinaryTree
         /// Инициализировать дерево вектором.
         /// </summary>
         /// <param name="dataVector">Вектор который хранит данные для узлов.</param>
-        BinarySearchTree(const std::vector<T>& dataVector)
+        BinarySearchTree(const std::vector<T>& dataVector) : root(nullptr)
         {
-            for (T data : dataVector)
+            for (auto data : dataVector)
                 Insert(data);
         }
         
@@ -136,6 +136,17 @@ namespace DSAABinaryTree
         InorderIterator<T>& end() override
         {
             return *new InorderIterator<T>(nullptr, false);
+        }
+
+
+        /// <summary>
+        /// Получить вектор содержищий данные дерева.
+        /// </summary>
+        /// <param name="vector">Вектор в который будут записываться данные.</param>
+        void ToVector(std::vector<T>& vector) const
+        {
+            BinaryTreeService::InorderTraversal<T>(root, [&vector](BinaryNode<T>& node) {
+                vector.push_back(node.Data); });
         }
 
 
