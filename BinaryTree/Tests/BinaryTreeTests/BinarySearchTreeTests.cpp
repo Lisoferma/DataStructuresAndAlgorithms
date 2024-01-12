@@ -203,3 +203,20 @@ TEST(MinItem, GetMinItemInEmptyTree_ShouldThrowOutOfRange)
 
 	ASSERT_THROW(bst.MinItem(), std::out_of_range);
 }
+
+
+TEST(Iterator, UseIteratorInForEach_IteratorItemsSameInorderTreversal)
+{
+	vector<int> initData = { 3, 1, 2, 4, 5, 6 };
+	BinarySearchTree<int> bst(initData);
+
+	vector<int> inorderTreversal;
+	bst.ToVector(inorderTreversal);
+
+	int i = 0;
+	for (auto item : bst)
+	{
+		ASSERT_EQ(item, inorderTreversal[i]);
+		++i;
+	}
+}
