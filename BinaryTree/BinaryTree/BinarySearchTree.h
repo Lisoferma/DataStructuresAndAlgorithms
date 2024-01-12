@@ -146,7 +146,7 @@ namespace DSAABinaryTree
 
 
         /// <summary>
-        /// Получить вектор содержищий данные дерева.
+        /// Получить вектор содержищий данные дерева (Inorder Treversal).
         /// </summary>
         /// <param name="vector">Вектор в который будут записываться данные.</param>
         void ToVector(std::vector<T>& vector) const
