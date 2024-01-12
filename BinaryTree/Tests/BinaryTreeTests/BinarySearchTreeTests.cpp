@@ -155,6 +155,14 @@ TEST(Search, SearchNonExistingItem_ResultNullptr)
 }
 
 
+TEST(Search, SearchInEmptyTree_ReturnNullptr)
+{
+	BinarySearchTree<int> tree;
+
+	EXPECT_EQ(tree.Search(100), nullptr);
+}
+
+
 TEST(MaxItem, GetMaxItemInFilledTree_MaxItemIsCorrect)
 {
 	int expectedMaxItem = 10;
@@ -165,6 +173,14 @@ TEST(MaxItem, GetMaxItemInFilledTree_MaxItemIsCorrect)
 	int result = bst.MaxItem();
 
 	EXPECT_EQ(result, expectedMaxItem);
+}
+
+
+TEST(MaxItem, GetMaxItemInEmptyTree_ShouldThrowOutOfRange)
+{
+	BinarySearchTree<int> bst;
+
+	ASSERT_THROW(bst.MaxItem(), std::out_of_range);
 }
 
 
@@ -181,24 +197,9 @@ TEST(MinItem, GetMinItemInFilledTree_MinItemIsCorrect)
 }
 
 
-//TEST(MaxItem, GetMaxItemInExpectedTree_ShpuldThrowOutOfRange)
-//{
-//	BinarySearchTree<int> bst;
-//
-//	int result = bst.MaxItem();
-//
-//	ASSERT_THROW(heap.Remove(999), std::out_of_range); (result, expectedMaxItem);
-//}
-//
-//
-//TEST(MinItem, GetMinItemInFilledTree_MinItemIsCorrect)
-//{
-//	int expectedMinItem = -5;
-//	vector<int> initData = { 3, 1, 2, 4, 5, 6 };
-//	BinarySearchTree<int> bst(initData);
-//	bst.Insert(expectedMinItem);
-//
-//	int result = bst.MinItem();
-//
-//	EXPECT_EQ(result, expectedMinItem);
-//}
+TEST(MinItem, GetMinItemInEmptyTree_ShouldThrowOutOfRange)
+{
+	BinarySearchTree<int> bst;
+
+	ASSERT_THROW(bst.MinItem(), std::out_of_range);
+}
