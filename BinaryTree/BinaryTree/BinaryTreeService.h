@@ -430,6 +430,20 @@ namespace DSAABinaryTree
 
 			root = nullptr;
 		}
+
+
+		/// <summary>
+		/// Получить вектор содержищий данные дерева (Inorder Treversal).
+		/// </summary>
+		/// <param name="root">Корень дерева.</param>
+		/// <param name="vector">Вектор в который будут записываться данные.</param>
+		/// <typeparam name="T">Тип данных дерева.</typeparam>
+		template<typename T>
+		void ToVector(BinaryNode<T>* root, std::vector<T>& vector)
+		{
+			InorderTraversal<T>(root, [&vector](BinaryNode<T>& node) {
+				vector.push_back(node.Data); });
+		}
 	}
 }
 
