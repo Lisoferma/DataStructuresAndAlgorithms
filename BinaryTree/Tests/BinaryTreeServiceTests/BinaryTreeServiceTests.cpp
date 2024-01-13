@@ -502,6 +502,26 @@ TEST_F(FilledTree, Remove_RemoveAllItems_TreeIsEmpty)
 }
 
 
+TEST_F(DegenerateTree, Remove_RemoveExistingItems_OtherItemsStill)
+{
+	vector<int> expectedResult{ 2, 4 };
+
+	Remove(root, 1);
+	Remove(root, 3);
+	Remove(root, 5);
+
+	vector<int> resultData;
+	ToVector(root, resultData);
+
+	EXPECT_EQ(expectedResult.size(), resultData.size());
+
+	for (int i = 0; i < expectedResult.size(); ++i)
+	{
+		EXPECT_EQ(resultData[i], expectedResult[i]);
+	}
+}
+
+
 TEST_F(EmptyTree, Remove_RemoveNonExistingItem_TreeStillEmpty)
 {
 	Remove(root, 100);
