@@ -13,51 +13,6 @@ using namespace BinaryTreeService;
 
 
 /// <summary>
-/// Получить высоту дерева.
-/// </summary>
-/// <typeparam name="T">Тип данных который содержит дерево.</typeparam>
-/// <param name="root">Корень дерева.</param>
-/// <returns>Высота дерева.</returns>
-template <typename T>
-int GetHeight(BinaryNode<T>* root)
-{
-	if (root == nullptr)
-		return 0;
-
-	return 1 + std::max(GetHeight(root->GetLeft()), GetHeight(root->GetRight()));
-}
-
-
-/// <summary>
-/// Является ли бинарное дерево сбалансированным.
-/// </summary>
-/// <typeparam name="T">Тип данных который хранит дерево.</typeparam>
-/// <param name="root">Корень дерева.</param>
-/// <returns>True - сбалансировано, false - несбалансировано.</returns>
-template <typename T>
-bool IsBalanced(BinaryNode<T>* root)
-{
-	int leftHeight;
-	int rightHeight;
-
-	if (root == nullptr)
-		return true;
-
-	leftHeight = GetHeight(root->GetLeft());
-	rightHeight = GetHeight(root->GetRight());
-
-	if (abs(leftHeight - rightHeight) <= 1
-		&& IsBalanced(root->GetLeft())
-		&& IsBalanced(root->GetRight()))
-	{
-		return true;
-	}
-
-	return false;
-}
-
-
-/// <summary>
 /// Наполненное данными дерево.
 /// </summary>
 class FilledTree : public::testing::Test
