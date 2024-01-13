@@ -220,3 +220,29 @@ TEST(Iterator, UseIteratorInForEach_IteratorItemsSameInorderTreversal)
 		++i;
 	}
 }
+
+
+TEST(Iterator, UseIteratorForEmptyTree_IteratorEqualEnd)
+{
+	BinarySearchTree<int> bst;
+
+	ASSERT_EQ(bst.begin(), bst.end());
+}
+
+
+TEST(Iterator, UseIteratorForEmptyTree_IteratorIsNullptr)
+{
+	BinarySearchTree<int> bst;
+
+	ASSERT_TRUE(bst.begin().IsEnd());
+}
+
+
+TEST(Iterator, UseIteratorForOnlyOneNode_ReturnCorrect)
+{
+	vector<int> initData = { 1 };
+	BinarySearchTree<int> bst(initData);
+
+	for (auto item : bst)
+		ASSERT_EQ(item, 1);
+}
