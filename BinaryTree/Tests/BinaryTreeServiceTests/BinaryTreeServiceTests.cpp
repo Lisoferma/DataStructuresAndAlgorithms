@@ -447,19 +447,109 @@ TEST_F(StumpTree, Insert_InsertSmallestItem_AllItemsInExpectedPositions)
 }
 
 
-//TEST_F(EmptyTree, Insert_InsertSomeItem_AllItemsInExpectedPositions)
-//{
-//	vector<int> expectedData{ 1, 2 };
-//
-//	Insert(root, 2);
-//
-//	vector<int> resultData;
-//	ToVector(root, resultData);
-//
-//	EXPECT_EQ(expectedData.size(), resultData.size());
-//
-//	for (int i = 0; i < expectedData.size(); ++i)
-//	{
-//		EXPECT_EQ(resultData[i], expectedData[i]);
-//	}
-//}
+TEST_F(EmptyTree, Insert_InsertSomeItem_DataIsSearchTree)
+{
+	const vector<int> initData{ 6, 4, 7, 3, 5 };
+
+	for (auto item : initData)
+		Insert(root, item);
+
+	EXPECT_EQ(root->Data, 6);
+	EXPECT_EQ(root->Right->Data, 7);
+	EXPECT_EQ(root->Left->Data, 4);
+	EXPECT_EQ(root->Left->Left->Data, 3);
+	EXPECT_EQ(root->Left->Right->Data, 5);
+}
+
+
+TEST_F(FilledTree, Successor_GetSuccessorForExistingItems_ReturnCorrect)
+{
+	EXPECT_EQ(Successor(root, 6)->Data, 7);
+	EXPECT_EQ(Successor(root, 5)->Data, 6);
+	EXPECT_EQ(Successor(root, 4)->Data, 5);
+	EXPECT_EQ(Successor(root, 3)->Data, 4);
+}
+
+
+TEST_F(FilledTree, Successor_GetSuccessorForNonExistingItem_ReturnNullptr)
+{
+	EXPECT_EQ(Successor(root, 100), nullptr);
+}
+
+
+TEST_F(FilledTree, Successor_GetSuccessorForBiggestItem_ReturnNullptr)
+{
+	EXPECT_EQ(Successor(root, 7), nullptr);
+}
+
+
+TEST_F(DegenerateTree, Successor_GetSuccessorForExistingItems_ReturnCorrect)
+{
+	EXPECT_EQ(Successor(root, 4)->Data, 5);
+}
+
+
+TEST_F(StumpTree, Successor_GetSuccessorForExistingItems_ReturnNullptr)
+{
+	EXPECT_EQ(Successor(root, 1), nullptr);
+}
+
+
+TEST_F(EmptyTree, Successor_GetSuccessorForNonExistingItems_ReturnNullptr)
+{
+	EXPECT_EQ(Successor(root, 100), nullptr);
+}
+
+
+TEST_F(FilledTree, Remove_RemoveExistingItems_OtherItemsStill)
+{
+	vector<int> expectedResult{ 3, 6, 7 };
+
+	Remove(root, 4);
+	Remove(root, 5);
+
+	vector<int> resultData;
+	ToVector(root, resultData);
+
+	EXPECT_EQ(expectedResult.size(), resultData.size());
+
+	for (int i = 0; i < expectedResult.size(); ++i)
+	{
+		EXPECT_EQ(resultData[i], expectedResult[i]);
+	}
+}
+
+
+TEST_F(FilledTree, Remove_RemoveNonExistingItems_AllItemsStill)
+{
+	vector<int> expectedResult{ 3, 4, 5, 6, 7 };
+
+	Remove(root, 100);
+
+	vector<int> resultData;
+	ToVector(root, resultData);
+
+	EXPECT_EQ(expectedResult.size(), resultData.size());
+
+	for (int i = 0; i < expectedResult.size(); ++i)
+	{
+		EXPECT_EQ(resultData[i], expectedResult[i]);
+	}
+}
+
+
+TEST_F(FilledTree, Remove_RemoveAllItems_TreeIsEmpty)
+{
+	for (auto item : INIT_DATA)
+		Remove(root, item);
+
+	EXPECT_EQ(root, nullptr);
+}
+
+
+TEST_F(EmptyTree, Remove_RemoveNonExistingItem_TreeStillEmpty)
+{
+	Remove(root, 100);
+
+	EXPECT_EQ(root, nullptr);
+}
