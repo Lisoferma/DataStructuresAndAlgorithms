@@ -1,4 +1,4 @@
-// @author Lisoferma
+п»ї// @author Lisoferma
 
 #pragma once
 
@@ -10,36 +10,36 @@
 namespace DSAList
 {
 	/// <summary>
-	/// Односвязный список.
+	/// РћРґРЅРѕСЃРІСЏР·РЅС‹Р№ СЃРїРёСЃРѕРє.
 	/// </summary>
-	/// <typeparam name="T">Тип данных который хранит список.</typeparam>
+	/// <typeparam name="T">РўРёРї РґР°РЅРЅС‹С… РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ СЃРїРёСЃРѕРє.</typeparam>
 	template <typename T>
 	class List : public IIterated<T>
 	{
 	private:
 		/// <summary>
-		/// Указатель на первый узел списка.
+		/// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ СѓР·РµР» СЃРїРёСЃРєР°.
 		/// </summary>
 		Node<T>* _first;
 
 		/// <summary>
-		/// Указатель на последний узел списка.
+		/// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїРѕСЃР»РµРґРЅРёР№ СѓР·РµР» СЃРїРёСЃРєР°.
 		/// </summary>
 		Node<T>* _last;
 
 
 	public:
 		/// <summary>
-		/// Инициализировать пустой списк.
+		/// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РїСѓСЃС‚РѕР№ СЃРїРёСЃРє.
 		/// </summary>
 		List() : _first(nullptr), _last(nullptr)
 		{ }
 
 
 		/// <summary>
-		/// Инициализировать список данными из вектора.
+		/// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРїРёСЃРѕРє РґР°РЅРЅС‹РјРё РёР· РІРµРєС‚РѕСЂР°.
 		/// </summary>
-		/// <param name="vector">Вектор который хранит данные для списка.</param>
+		/// <param name="vector">Р’РµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РґР°РЅРЅС‹Рµ РґР»СЏ СЃРїРёСЃРєР°.</param>
 		List(const std::vector<T>& vector) : List()
 		{
 			for (auto item : vector)
@@ -48,9 +48,9 @@ namespace DSAList
 
 
 		/// <summary>
-		/// Пустой ли список.
+		/// РџСѓСЃС‚РѕР№ Р»Рё СЃРїРёСЃРѕРє.
 		/// </summary>
-		/// <returns>True - пустой, иначе false.</returns>
+		/// <returns>True - РїСѓСЃС‚РѕР№, РёРЅР°С‡Рµ false.</returns>
 		bool IsEmpty() const
 		{
 			return _first == nullptr;
@@ -58,9 +58,9 @@ namespace DSAList
 
 
 		/// <summary>
-		/// Вставить данные в конец списка.
+		/// Р’СЃС‚Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ РІ РєРѕРЅРµС† СЃРїРёСЃРєР°.
 		/// </summary>
-		/// <param name="data">Данные которые нужно вставить.</param>
+		/// <param name="data">Р”Р°РЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ.</param>
 		void PushBack(const T& data)
 		{
 			Node<T>* newNode = new Node(data);
@@ -78,10 +78,10 @@ namespace DSAList
 
 
 		/// <summary>
-		/// Проверить находится ли элемент в cписке по заданному ключу.
+		/// РџСЂРѕРІРµСЂРёС‚СЊ РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё СЌР»РµРјРµРЅС‚ РІ cРїРёСЃРєРµ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РєР»СЋС‡Сѓ.
 		/// </summary>
-		/// <param name="key">Ключ-данные элемента который нужно проверить.</param>
-		/// <returns>True - элемент в списке, иначе false.</returns>
+		/// <param name="key">РљР»СЋС‡-РґР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚Р° РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ.</param>
+		/// <returns>True - СЌР»РµРјРµРЅС‚ РІ СЃРїРёСЃРєРµ, РёРЅР°С‡Рµ false.</returns>
 		bool IsInList(const T& key) const
 		{
 			Node<T>* current = _first;
@@ -94,9 +94,9 @@ namespace DSAList
 
 
 		/// <summary>
-		/// Удалить элемент по заданному ключу.
+		/// РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РєР»СЋС‡Сѓ.
 		/// </summary>
-		/// <param name="key">Ключ-данные элемента который нужно удалить</param>
+		/// <param name="key">РљР»СЋС‡-РґР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚Р° РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ</param>
 		void Remove(const T& key)
 		{
 			Node<T>* current = _first;
@@ -127,7 +127,7 @@ namespace DSAList
 
 
 		/// <summary>
-		/// Получить итератор в начале списка.
+		/// РџРѕР»СѓС‡РёС‚СЊ РёС‚РµСЂР°С‚РѕСЂ РІ РЅР°С‡Р°Р»Рµ СЃРїРёСЃРєР°.
 		/// </summary>
 		ListIterator<T>& begin() override
 		{
@@ -136,7 +136,7 @@ namespace DSAList
 
 
 		/// <summary>
-		/// Получить итератор в конце списка.
+		/// РџРѕР»СѓС‡РёС‚СЊ РёС‚РµСЂР°С‚РѕСЂ РІ РєРѕРЅС†Рµ СЃРїРёСЃРєР°.
 		/// </summary>
 		ListIterator<T>& end() override
 		{
